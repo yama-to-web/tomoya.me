@@ -1,0 +1,28 @@
+.explain {
+  margin: 25px 0;
+  font-size: 0.8rem;
+}
+
+.article_wrap {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  max-width: 910px;
+
+  &::after {
+    width: 100%;
+    max-width: 450px;
+    content: '';
+  }
+}
+
+@media (min-width: 480px) {
+  .article_wrap {
+    &::after {
+      max-width: 300px;
+    }
+  }
+}

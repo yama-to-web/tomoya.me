@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order"
+  ],
+  "rules": {
+    "string-quotes": "single",
+    "selector-class-pattern": "^[a-z][a-z0-9_-]+$",
+    "selector-id-pattern": "^[a-z][a-z0-9_-]+$"
+  },
+  "ignoreFiles": [
+    "**/node_modules/**"
+  ]
+}

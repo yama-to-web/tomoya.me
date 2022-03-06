@@ -1,0 +1,91 @@
+.article {
+  width: 100%;
+  max-width: 300px;
+  max-height: 250px;
+  padding: 10px;
+  overflow: hidden;
+  word-wrap: break-word;
+  background: #fff;
+  border: #e6e6e691 solid 1px;
+  border-radius: 5px;
+  box-shadow: 0 1rem 1rem hsl(0deg 0% 0% / 5%);
+
+  &:last-child {
+    border-bottom: #e6e6e6 solid 1px;
+  }
+
+  .atc_link {
+    text-decoration: none;
+
+    .atc_eyecatch {
+      float: right;
+      width: 100px;
+      overflow: hidden;
+      border-radius: 4px;
+
+      img {
+        width: 100%;
+        height: auto;
+        vertical-align: top;
+      }
+    }
+
+    .atc_body {
+      padding: 15px 5px 0;
+
+      .atc_ttl {
+        display: flex;
+        margin-bottom: 8px;
+        overflow: hidden;
+        font-size: 0.9rem;
+        font-weight: bold;
+        font-feature-settings: 'palt';
+        line-height: 1.5;
+        color: #333;
+        letter-spacing: 0.04em;
+        word-break: break-all;
+      }
+
+      .atc_description {
+        display: flex;
+        float: left;
+        height: 3.6rem;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: #787c7b;
+        word-break: break-all;
+      }
+    }
+
+    .atc_suki {
+      display: flex;
+      align-items: flex-end;
+      padding: 0 16px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #ea3f60;
+
+      .suki_icon {
+        width: 0.9rem;
+        margin-right: 4px;
+      }
+
+      .suki_label {
+        line-height: 1;
+      }
+    }
+
+    .publish_at {
+      float: right;
+      padding: 5px 10px;
+      overflow: hidden;
+      font-size: 0.6rem;
+      line-height: 1;
+      color: #787c7b;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
