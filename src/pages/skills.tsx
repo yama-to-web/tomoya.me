@@ -7,7 +7,7 @@ const Skills: NextPage<React.ReactNode> = (props) => {
 
 export default Skills;
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   const res = await fetch('https://note.com/api/v2/creators/yama_to_web/contents?kind=note&page=1');
   const posts = await res.json();
 
