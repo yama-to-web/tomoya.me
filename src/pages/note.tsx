@@ -20,7 +20,12 @@ type ArticleProps = {
   publishAt: string;
 };
 
+type DisplayArti = {
+  [key: string]: string | number;
+};
+
 const Note: NextPage<React.ReactNode> = (props: Props) => {
+  const moment = require('moment');
   let articles = props.articles;
   if (!articles) {
     articles = [
@@ -54,7 +59,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
                   name={article.name}
                   body={article.body}
                   likeCount={article.likeCount}
-                  publishAt={article.publishAt}
+                  publishAt={moment(article.publishAt).format('YYYY-MM-DD HH:mm')}
                 />
               );
             }
@@ -65,18 +70,27 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
   );
 };
 
-Note.getInitialProps = async function (context) {
-  const { req, query, asPath, pathname } = context;
-  let url = 'index.php';
-  if (req?.headers.host === 'localhost:3000') {
-    url = 'http://localhost:8000/index.php';
-  }
-  const res = await fetch(url);
-  const data = await res.json();
+export async function getStaticProps() {
+  const res = await fetch('https://note.com/api/v2/creators/yama_to_web/contents?kind=note&page=1');
+  const posts = await res.json();
+  const allowedKeys = ['name', 'likeCount', 'publishAt', 'eyecatch', 'body', 'noteUrl'];
+  let contents = posts['data']['contents'];
+  let articles = contents.map((article: DisplayArti) => {
+    const filteredArti = Object.keys(article)
+      .filter((key) => allowedKeys.includes(key))
+      .reduce((obj: DisplayArti, key: string) => {
+        const keyName: keyof typeof article = key as keyof typeof article;
+        obj[keyName] = article[keyName];
+
+        return obj;
+      }, {});
+
+    return filteredArti;
+  });
 
   return {
-    articles: data,
+    props: { articles },
   };
-};
+}
 
 export default Note;
