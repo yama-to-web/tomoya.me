@@ -1,6 +1,7 @@
 // import Image from 'next/image';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import styles from '../styles/components/article.module.scss';
 
 type Props = {
@@ -15,7 +16,21 @@ type Props = {
 
 const Article = (props: Props) => {
   return (
-    <div className={styles.article}>
+    <motion.div
+      className={styles.article}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+      viewport={{ once: true }}
+      whileHover={{
+        position: 'relative',
+        zIndex: 1,
+        background: 'white',
+        scale: [1, 1.05],
+        transition: {
+          duration: 0.2,
+        },
+      }}
+    >
       <a className={styles.atc_link} href={props.noteUrl} rel="noreferrer">
         <div className={styles.atc_eyecatch}>
           {/* Image moduleがSSG対応していないため */}
@@ -33,7 +48,7 @@ const Article = (props: Props) => {
         </div>
         <div className={styles.publish_at}>{props.publishAt}</div>
       </a>
-    </div>
+    </motion.div>
   );
 };
 

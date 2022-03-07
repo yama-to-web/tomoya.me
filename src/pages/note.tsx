@@ -1,6 +1,5 @@
-import Fetch from 'isomorphic-unfetch';
+import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import Article from '../components/article';
 import CommonMeta from '../components/common_meta';
 import PageLayout from '../components/page_layout';
