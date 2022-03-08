@@ -1,8 +1,9 @@
 import type { NextPage } from 'next';
+import Image from 'next/image';
 import CommonMeta from '../components/common_meta';
 import Nav from '../components/nav';
 import Sns from '../components/sns';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/home.module.scss';
 
 const Home: NextPage = () => {
   return (
@@ -13,9 +14,18 @@ const Home: NextPage = () => {
         pagePath="/"
       />
       <div id={styles.mv}>
-        <div className={styles.links}>
-          <Nav></Nav>
-          <Sns></Sns>
+        <div>
+          <Image
+            src="/title.png"
+            className={styles.title}
+            width={500}
+            height={100}
+            alt="tomoya.me"
+          />
+          <div className={styles.links}>
+            <Nav></Nav>
+            <Sns></Sns>
+          </div>
         </div>
       </div>
     </main>

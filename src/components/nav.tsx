@@ -7,12 +7,12 @@ export default function Nav() {
       <Link href="/about">
         <a>ABOUT</a>
       </Link>
-      <Link href="/works">
+      {/* <Link href="/works">
         <a>WORKS</a>
       </Link>
       <Link href="/skills">
         <a>SKILLS</a>
-      </Link>
+      </Link> */}
       <Link href="/note">
         <a>NOTE</a>
       </Link>
