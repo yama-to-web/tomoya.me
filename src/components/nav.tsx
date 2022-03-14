@@ -1,20 +1,13 @@
 import Link from 'next/link';
-import styles from '../styles/components/nav.module.scss';
 
 export default function Nav() {
   return (
-    <nav className={styles.nav}>
+    <nav className="flex flex-col lg:flex-row">
       <Link href="/about">
-        <a>ABOUT</a>
+        <a className="px-3 my-2.5">ABOUT</a>
       </Link>
-      {/* <Link href="/works">
-        <a>WORKS</a>
-      </Link>
-      <Link href="/skills">
-        <a>SKILLS</a>
-      </Link> */}
       <Link href="/note">
-        <a>NOTE</a>
+        <a className="px-3 my-2">NOTE</a>
       </Link>
     </nav>
   );

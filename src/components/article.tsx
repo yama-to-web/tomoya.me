@@ -2,7 +2,6 @@
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import styles from '../styles/components/article.module.scss';
 
 type Props = {
   key: number;
@@ -17,7 +16,7 @@ type Props = {
 const Article = (props: Props) => {
   return (
     <motion.div
-      className={styles.article}
+      className="overflow-hidden p-2.5 max-w-xs max-h-64 bg-white rounded border border-gray-100 border-solid shadow shadow-gray-100"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
       viewport={{ once: true }}
@@ -31,22 +30,26 @@ const Article = (props: Props) => {
         },
       }}
     >
-      <a className={styles.atc_link} href={props.noteUrl} rel="noreferrer">
-        <div className={styles.atc_eyecatch}>
-          {/* Image moduleがSSG対応していないため */}
+      <a className="no-underline" href={props.noteUrl} rel="noreferrer">
+        <div className="float-right w-24">
+          {/* Image ComponentがSSG非対応していないため */}
           <img src={props.eyecatch} width="1280" height="670" alt="" />
         </div>
-        <div className={styles.atc_body}>
-          <p className={styles.atc_ttl}>{props.name}</p>
-          <p className={styles.atc_description}>{props.body}</p>
+        <div className="px-1.5 pt-3.5">
+          <p className="flex overflow-hidden mb-2 text-sm font-semibold tracking-wide text-gray-700">
+            {props.name}
+          </p>
+          <p className="flex float-left overflow-hidden my-1 h-16 text-xs leading-5 text-gray-500 break-all">
+            {props.body}
+          </p>
         </div>
-        <div className={styles.atc_suki}>
-          <div className={styles.suki_icon}>
+        <div className="flex items-center px-4 mt-4 text-sm text-pink-400">
+          <div className="mr-1 w-3.5">
             <FontAwesomeIcon icon={faHeart} />
           </div>
-          <div className={styles.suki_label}>{props.likeCount}</div>
+          <div className="leading-4">{props.likeCount}</div>
         </div>
-        <div className={styles.publish_at}>{props.publishAt}</div>
+        <div className="float-right text-xs">{props.publishAt}</div>
       </a>
     </motion.div>
   );

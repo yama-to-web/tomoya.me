@@ -1,4 +1,4 @@
-import '../styles/globals.scss';
+import '../styles/globals.css';
 import '../styles/reset.scss';
 import { motion } from 'framer-motion';
 import type { AppProps } from 'next/app';
@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         pageAnimate: {
           opacity: 1,
           transition: {
-            duration: 0.8,
+            duration: 1,
           },
         },
       }}

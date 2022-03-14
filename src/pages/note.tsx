@@ -2,7 +2,6 @@ import type { NextPage, GetStaticProps } from 'next';
 import Article from '../components/article';
 import CommonMeta from '../components/common_meta';
 import PageLayout from '../components/page_layout';
-import styles from '../styles/note.module.scss';
 
 type Props = {
   children?: React.ReactNode;
@@ -28,25 +27,24 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
   if (!articles) {
     articles = [
       {
-        noteUrl: 'string',
-        eyecatch: 'string',
-        name: 'string',
-        body: 'string',
+        noteUrl: '',
+        eyecatch: '',
+        name: '',
+        body: '',
         likeCount: 0,
-        publishAt: 'string',
+        publishAt: '',
       },
     ];
   }
   return (
     <div>
       <CommonMeta
-        pageTitle="Note | Tomoya Fujiwara（藤原 智弥）Portfolio Site"
-        pageDescription="demo"
-        pagePath="/note"
+        pageTitle="Note"
+        pageDescription="Webエンジニア 藤原智弥のnoteに投稿された最新記事を紹介します。"
       />
       <PageLayout title="Note">
-        <p className={styles.explain}>about web, programing, outdoor, etc...</p>
-        <div className={styles.article_wrap}>
+        <p className="my-6 text-sm">about web, programing, outdoor, etc...</p>
+        <div className="flex flex-row flex-wrap gap-2 justify-center items-center max-w-5xl">
           {articles.map((article: ArticleProps, index: number) => {
             if (article) {
               return (

@@ -1,24 +1,23 @@
 import { faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
-import styles from '../styles/components/sns.module.scss';
 
 export default function Sns() {
   return (
-    <div className={styles.sns_icons}>
+    <div className="flex justify-center items-center my-5">
       <Link href="https://twitter.com/yama_to_web">
-        <a>
-          <FontAwesomeIcon icon={faTwitter} />
+        <a className="my-1 mx-2.5">
+          <FontAwesomeIcon className="text-2xl" icon={faTwitter} />
         </a>
       </Link>
       <Link href="https://www.instagram.com/yama_to_web">
-        <a>
-          <FontAwesomeIcon icon={faInstagram} />
+        <a className="my-1 mx-2.5">
+          <FontAwesomeIcon className="text-2xl" icon={faInstagram} />
         </a>
       </Link>
       <Link href="https://github.com/yama-to-web">
-        <a>
-          <FontAwesomeIcon icon={faGithub} />
+        <a className="my-1 mx-2.5">
+          <FontAwesomeIcon className="text-2xl" icon={faGithub} />
         </a>
       </Link>
     </div>

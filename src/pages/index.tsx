@@ -1,31 +1,49 @@
+import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import CommonMeta from '../components/common_meta';
 import Nav from '../components/nav';
 import Sns from '../components/sns';
-import styles from '../styles/home.module.scss';
 
 const Home: NextPage = () => {
   return (
     <main>
-      <CommonMeta
-        pageTitle="Tomoya Fujiwara（藤原 智弥）Portfolio Site"
-        pageDescription="demo"
-        pagePath="/"
-      />
-      <div id={styles.mv}>
+      <CommonMeta pageTitle="Home" pageDescription="" />
+      <div className="flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-[url('/mv.jpg')] bg-cover">
         <div>
-          <Image
-            src="/title.png"
-            className={styles.title}
-            width={500}
-            height={100}
-            alt="tomoya.me"
-          />
-          <div className={styles.links}>
+          <motion.div
+            className="mx-auto"
+            initial={{
+              opacity: 0,
+              scale: 0.99,
+            }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 1.2,
+              },
+            }}
+          >
+            <Image src="/title.png" width={500} height={100} alt="tomoya.me" />
+          </motion.div>
+          <motion.div
+            className="flex flex-col justify-center items-start mt-8 text-white lg: lg:flex-row lg:justify-between lg:items-center"
+            initial={{
+              opacity: 0,
+              y: 30,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 1.8,
+              },
+            }}
+          >
             <Nav></Nav>
             <Sns></Sns>
-          </div>
+          </motion.div>
         </div>
       </div>
     </main>

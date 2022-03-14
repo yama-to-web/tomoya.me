@@ -1,0 +1,26 @@
+@import url('https://use.typekit.net/uht4tfc.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply leading-relaxed tracking-wider;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: muli, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
