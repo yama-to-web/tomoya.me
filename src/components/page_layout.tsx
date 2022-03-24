@@ -11,7 +11,7 @@ const PageLayout = ({ children, title }: Props) => {
   return (
     <>
       <Header />
-      <section className="flex-col flex-none justify-center items-start mx-8 mt-24 w-[calc(100%-48px)] max-w-[calc(100%-48px)] h-40 text-3xl lg:mx-auto lg:max-w-screen-lg">
+      <section className="flex-col flex-none justify-center items-start px-5 mt-24 h-40 text-3xl lg:mx-auto lg:max-w-screen-lg">
         <h3>{title}</h3>
       </section>
       <motion.main

@@ -46,7 +46,7 @@ export default function Header() {
       alignItems: 'center',
     },
     bmItem: {
-      display: 'inline-block',
+      display: 'flex',
     },
     bmOverlay: {
       background: 'rgba(0, 0, 0, 0.3)',
@@ -55,8 +55,8 @@ export default function Header() {
   };
 
   return (
-    <header className="flex fixed top-0 z-10 px-5 w-full max-w-screen-lg h-16">
-      <div className="flex flex-row items-center">
+    <header className="flex fixed inset-0 top-0 z-10 px-5 mx-auto w-full max-w-screen-lg h-16">
+      <div className="flex flex-row items-center w-full">
         <div className="text-xs text-black">
           <Link href="/">
             <a className="flex">
@@ -66,14 +66,24 @@ export default function Header() {
             </a>
           </Link>
         </div>
+        <div className="hidden ml-auto text-sm text-black lg:flex">
+          <Link href="/about">
+            <a className="px-3 my-2.5 ">ABOUT</a>
+          </Link>
+          <Link href="/note">
+            <a className="px-3 my-2.5 ">NOTE</a>
+          </Link>
+        </div>
       </div>
-      <Menu styles={styles} right width={250}>
-        <Link href="/about">
-          <a className="px-3 my-2.5 text-white">ABOUT</a>
-        </Link>
-        <Link href="/note">
-          <a className="px-3 my-2 text-white">NOTE</a>
-        </Link>
+      <Menu styles={styles} right width={250} burgerButtonClassName="lg:hidden">
+        <div className="flex flex-col items-center m-auto text-xl">
+          <Link href="/about">
+            <a className="px-3 my-2.5 text-white">ABOUT</a>
+          </Link>
+          <Link href="/note">
+            <a className="px-3 my-2 text-white">NOTE</a>
+          </Link>
+        </div>
         <div className="mt-auto text-white">
           <Sns></Sns>
         </div>
