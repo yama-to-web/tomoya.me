@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
-// import Image from 'next/image';
+import Image from 'next/image';
 import CommonMeta from '../components/common_meta';
 import Nav from '../components/nav';
 import Sns from '../components/sns';
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
               },
             }}
           >
-            <img src="/title.png" width="500" height="100" alt="tomoya.me" />
+            <Image src="/title.png" width="500" height="100" alt="tomoya.me" />
           </motion.div>
           <motion.div
             className="flex flex-col justify-center items-start mt-8 text-white lg: lg:flex-row lg:justify-between lg:items-center"

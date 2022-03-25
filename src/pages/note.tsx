@@ -1,4 +1,4 @@
-import type { NextPage, GetStaticProps } from 'next';
+import type { NextPage, GetStaticProps, GetServerSideProps } from 'next';
 import Article from '../components/article';
 import CommonMeta from '../components/common_meta';
 import PageLayout from '../components/page_layout';
@@ -66,7 +66,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
   );
 };
 
-export const getServerSideProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const res = await fetch('https://note.com/api/v2/creators/yama_to_web/contents?kind=note&page=1');
   const posts = await res.json();
   const allowedKeys = ['name', 'likeCount', 'publishAt', 'eyecatch', 'body', 'noteUrl'];
