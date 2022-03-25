@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Nav() {
   return (
-    <nav className="flex flex-col lg:flex-row">
+    <nav className="flex flex-col font-semibold lg:flex-row">
       <Link href="/about">
         <a className="px-3 my-2.5">ABOUT</a>
       </Link>

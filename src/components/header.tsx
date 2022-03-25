@@ -76,12 +76,12 @@ export default function Header() {
         </div>
       </div>
       <Menu styles={styles} right width={250} burgerButtonClassName="lg:hidden">
-        <div className="flex flex-col items-center m-auto text-xl">
+        <div className="flex flex-col items-center m-auto text-xl text-white">
           <Link href="/about">
-            <a className="px-3 my-2.5 text-white">ABOUT</a>
+            <a className="px-3 my-2.5 ">ABOUT</a>
           </Link>
           <Link href="/note">
-            <a className="px-3 my-2 text-white">NOTE</a>
+            <a className="px-3 my-2">NOTE</a>
           </Link>
         </div>
         <div className="mt-auto text-white">

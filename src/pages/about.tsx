@@ -13,7 +13,7 @@ const About: NextPage = () => {
           <div className="m-auto w-52 h-52 bg-[url('/profile.png')] bg-repeat bg-contain"></div>
           <div className="py-10 m-auto">
             <div className="flex items-center text-2xl">Tomoya Fujiwara</div>
-            <div className="mt-4 text-sm tracking-wider leading-loose">
+            <div className="mt-4 text-xs tracking-wider leading-loose">
               1995年生まれ Webエンジニア
               <br />
               中学から大学まで10年間陸上競技に熱中し、大学卒業とともにIT企業に就職し、現在3年目。

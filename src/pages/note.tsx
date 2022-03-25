@@ -66,7 +66,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetStaticProps = async () => {
   const res = await fetch('https://note.com/api/v2/creators/yama_to_web/contents?kind=note&page=1');
   const posts = await res.json();
   const allowedKeys = ['name', 'likeCount', 'publishAt', 'eyecatch', 'body', 'noteUrl'];

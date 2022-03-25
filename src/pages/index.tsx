@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <main>
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div className="flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-[url('/mv.jpg')] bg-cover">
+      <div className="flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-[url('/mv.gif')] bg-cover sm:bg-[url('/mv.jpg')]">
         <div>
           <motion.div
             className="mx-auto"
