@@ -44,7 +44,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
       />
       <PageLayout title="Note">
         <p className="my-6 text-sm">about web, programing, outdoor, etc...</p>
-        <div className="flex flex-row flex-wrap gap-2 justify-center items-center max-w-5xl">
+        <div className="flex flex-row flex-wrap gap-2 justify-center items-start max-w-5xl">
           {articles.map((article: ArticleProps, index: number) => {
             if (article) {
               return (
@@ -66,7 +66,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch('https://note.com/api/v2/creators/yama_to_web/contents?kind=note&page=1');
   const posts = await res.json();
   const allowedKeys = ['name', 'likeCount', 'publishAt', 'eyecatch', 'body', 'noteUrl'];

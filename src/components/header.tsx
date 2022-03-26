@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { slide as Menu } from 'react-burger-menu';
 import Sns from '../components/sns';
 
 export default function Header() {
+  const route = useRouter().pathname;
   const styles = {
     bmBurgerButton: {
       position: 'fixed',
@@ -68,20 +70,44 @@ export default function Header() {
         </div>
         <div className="hidden ml-auto text-sm text-black lg:flex">
           <Link href="/about">
-            <a className="px-3 my-2.5 ">ABOUT</a>
+            <a
+              className={
+                'p-3 my-1' + (route == '/about' ? ' pointer-events-none text-gray-400' : '')
+              }
+            >
+              ABOUT
+            </a>
           </Link>
           <Link href="/note">
-            <a className="px-3 my-2.5 ">NOTE</a>
+            <a
+              className={
+                'p-3 my-1' + (route == '/note' ? ' pointer-events-none text-gray-400' : '')
+              }
+            >
+              NOTE
+            </a>
           </Link>
         </div>
       </div>
-      <Menu styles={styles} right width={250} burgerButtonClassName="lg:hidden">
+      <Menu right styles={styles} width={250} burgerButtonClassName="lg:hidden">
         <div className="flex flex-col items-center m-auto text-xl text-white">
           <Link href="/about">
-            <a className="px-3 my-2.5 ">ABOUT</a>
+            <a
+              className={
+                'p-3 my-1' + (route == '/about' ? ' pointer-events-none text-gray-400' : '')
+              }
+            >
+              ABOUT
+            </a>
           </Link>
           <Link href="/note">
-            <a className="px-3 my-2">NOTE</a>
+            <a
+              className={
+                'p-3 my-1' + (route == '/note' ? ' pointer-events-none text-gray-400' : '')
+              }
+            >
+              NOTE
+            </a>
           </Link>
         </div>
         <div className="mt-auto text-white">
