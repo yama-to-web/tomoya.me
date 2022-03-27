@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="flex flex-col justify-center items-center py-8">
       <Sns></Sns>
-      <p className="text-xs">TOMOYA FUJIWARA | ©All rights reserved</p>
+      <p className="text-xxs">©2022 TOMOYA FUJIWARA | yama_to_web</p>
     </footer>
   );
 };

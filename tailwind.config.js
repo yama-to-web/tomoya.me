@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       backgroundImage: {
         'profile-img': "url('../../public/profile.png')",
+      },
+      fontSize: {
+        'xxs': '.625rem'
       }
     },
   },

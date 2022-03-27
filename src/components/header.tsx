@@ -5,6 +5,7 @@ import Sns from '../components/sns';
 
 export default function Header() {
   const route = useRouter().pathname;
+  // ハンバーガーメニューCSS
   const styles = {
     bmBurgerButton: {
       position: 'fixed',
