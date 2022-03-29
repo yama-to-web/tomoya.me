@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { motion } from 'framer-motion';
 import type { NextPage } from 'next';
 import Image from 'next/image';
@@ -6,10 +7,19 @@ import Nav from '../components/nav';
 import Sns from '../components/sns';
 
 const Home: NextPage = () => {
+  const pcMvClass = '/pc_mv' + Math.floor(Math.random() * 2) + '.jpg';
+  const mvStyle = {
+    backgroundImage: 'url(' + pcMvClass + ')',
+  };
   return (
     <main>
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div className="flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-[url('/mv.gif')] bg-cover sm:bg-[url('/mv.jpg')]">
+      <div
+        className={
+          'flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-cover'
+        }
+        style={mvStyle}
+      >
         <div>
           <motion.div
             className="mx-auto"
