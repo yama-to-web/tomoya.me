@@ -7,15 +7,16 @@ import Nav from '../components/nav';
 import Sns from '../components/sns';
 
 const Home: NextPage = () => {
-  const mvBgClass = ['bg-mv-0', 'bg-mv-1'];
+  const mvPath = '/mv' + Math.floor(Math.random() * 2) + '.jpg';
+  const mvStyle = {
+    backgroundImage: 'url(' + mvPath + ')',
+  };
   return (
     <main>
       <CommonMeta pageTitle="Home" pageDescription="" />
       <div
-        className={
-          'flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-cover ' +
-          mvBgClass[Math.floor(Math.random() * 2)]
-        }
+        className="flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-cover"
+        style={mvStyle}
       >
         <div>
           <motion.div
