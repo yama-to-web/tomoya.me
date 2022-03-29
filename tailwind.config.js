@@ -4,7 +4,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'profile-img': "url('../../public/profile.png')",
+        'profile': "url('../../public/profile.png')",
+        'mv-0': "url('../../public/mv0.jpg')",
+        'mv-1': "url('../../public/mv1.jpg')",
       },
       fontSize: {
         'xxs': '.625rem'

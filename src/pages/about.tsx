@@ -10,7 +10,7 @@ const About: NextPage = () => {
       />
       <PageLayout title="About">
         <div className="flex flex-col">
-          <div className="m-auto w-52 h-52 bg-[url('/profile.png')] bg-repeat bg-contain"></div>
+          <div className="m-auto w-52 h-52 bg-repeat bg-contain bg-profile"></div>
           <div className="py-10 m-auto">
             <div className="flex items-center text-2xl">Tomoya Fujiwara</div>
             <div className="mt-4 text-xs tracking-wider leading-loose">
