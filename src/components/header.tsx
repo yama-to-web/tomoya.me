@@ -34,7 +34,7 @@ export default function Header() {
       height: '100%',
     },
     bmMenu: {
-      background: '#494b52fa',
+      background: 'rgb(28 28 30 / 90%)',
       padding: '2.5em 1.5em 0',
       fontSize: '1.15em',
     },
@@ -73,7 +73,8 @@ export default function Header() {
           <Link href="/about">
             <a
               className={
-                'p-3 my-1' + (route == '/about' ? ' pointer-events-none text-gray-400' : '')
+                'p-3 my-1 hover:text-gray-400 duration-300' +
+                (route == '/about' ? ' pointer-events-none text-gray-400' : '')
               }
             >
               ABOUT
@@ -82,7 +83,8 @@ export default function Header() {
           <Link href="/note">
             <a
               className={
-                'p-3 my-1' + (route == '/note' ? ' pointer-events-none text-gray-400' : '')
+                'p-3 my-1 hover:text-gray-400 duration-300' +
+                (route == '/note' ? ' pointer-events-none text-gray-400' : '')
               }
             >
               NOTE
@@ -90,7 +92,13 @@ export default function Header() {
           </Link>
         </div>
       </div>
-      <Menu right styles={styles} width={250} burgerButtonClassName="lg:hidden">
+      <Menu
+        right
+        styles={styles}
+        width={250}
+        customBurgerIcon={<img src="/icon.png" />}
+        burgerButtonClassName="lg:hidden"
+      >
         <div className="flex flex-col items-center m-auto text-xl text-white">
           <Link href="/about">
             <a
