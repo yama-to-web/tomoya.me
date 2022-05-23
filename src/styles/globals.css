@@ -8,6 +8,18 @@
     @apply leading-relaxed tracking-wider;
   }
 }
+@layer components {
+  .bg-mask {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    background: #000;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+  }
+}
 
 html,
 body {

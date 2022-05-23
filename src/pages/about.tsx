@@ -14,14 +14,16 @@ const About: NextPage = () => {
           <div className="py-10 m-auto">
             <div className="flex items-center text-2xl">Tomoya Fujiwara</div>
             <div className="mt-4 text-xs tracking-wider leading-loose">
-              1995年生まれ Webエンジニア
+              1995年生まれ Webエンジニア。
               <br />
-              中学から大学まで10年間陸上競技に熱中し、大学卒業とともにIT企業に就職し、現在3年目。
-              <br />
-              デザイン、フロントエンド、バックエンドと幅広い分野に興味を持ち、日々邁進中。
+              スポーツ一筋だった学生時代から大学卒業とともに未経験でIT企業に就職。
               <br />
               <br />
-              山とwebをテーマに自然とウェブに触れる楽しさを発信していきます。
+              フロントエンジニアとして商品比較サイトの開発に関わりながら、フルスタックエンジニアを目指し日々邁進中。
+              <br />
+              趣味はアウトドア。
+              <br />
+              新しくてワクワクするようなプロダクトに興味があります。
             </div>
           </div>
         </div>

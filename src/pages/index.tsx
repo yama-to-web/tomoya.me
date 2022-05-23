@@ -15,10 +15,10 @@ const Home: NextPage = () => {
     <main>
       <CommonMeta pageTitle="Home" pageDescription="" />
       <div
-        className="flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-cover"
+        className="flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-cover after:bg-mask"
         style={mvStyle}
       >
-        <div>
+        <div className="z-50">
           <motion.div
             className="mx-auto"
             initial={{
