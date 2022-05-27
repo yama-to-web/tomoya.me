@@ -1,13 +1,27 @@
-import { resolve } from 'path';
 import { motion } from 'framer-motion';
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
 import CommonMeta from '../components/common_meta';
 import Nav from '../components/nav';
 import Sns from '../components/sns';
 
-const Home: NextPage = () => {
-  const mvPath = '/mv' + Math.floor(Math.random() * 2) + '.jpg';
+type Props = {
+  children?: React.ReactNode;
+  images?: Array<InstaImg>;
+};
+
+type InstaImg = {
+  [key: string]: string;
+};
+
+const Home: NextPage<React.ReactNode> = (props: Props) => {
+  const mvImages = props.images;
+  let mvPath;
+  if (mvImages) {
+    mvPath = mvImages[Math.floor(Math.random() * mvImages.length)];
+  } else {
+    mvPath = '/mv' + Math.floor(Math.random() * 2) + '.jpg';
+  }
   const mvStyle = {
     backgroundImage: 'url(' + mvPath + ')',
   };
@@ -58,4 +72,18 @@ const Home: NextPage = () => {
   );
 };
 
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch(
+    `https://graph.facebook.com/v14.0/17841450072012853?fields=media.limit(5){media_url,media_type}&access_token=${process.env.INSTA_GRAPH_API_KEY}`,
+  );
+
+  const posts = await res.json();
+  let images = posts.media.data.map((img: InstaImg) => {
+    return img.media_url;
+  }, {});
+
+  return {
+    props: { images },
+  };
+};
 export default Home;
