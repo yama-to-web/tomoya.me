@@ -58,13 +58,14 @@ export default function Header() {
   };
 
   return (
-    <header className="flex fixed inset-0 top-0 z-10 px-5 mx-auto w-full max-w-screen-lg h-16">
+    <header className="flex fixed inset-0 top-0 z-10 px-4 mx-auto w-full max-w-screen-xl h-16 lg:px-8">
       <div className="flex flex-row items-center w-full">
+        <img className="hidden mx-1 w-11 lg:block" src="/icon.png" />
         <div className="text-xs text-black">
           <Link href="/">
-            <a className="flex">
+            <a className="flex flex-row items-center lg:flex-col">
               <h1 className="font-semibold tracking-widest">TOMOYA FUJIWARA</h1>
-              <span className="mx-1">|</span>
+              <span className="mx-1 lg:hidden">|</span>
               <h2>tomoya.me</h2>
             </a>
           </Link>
@@ -74,7 +75,7 @@ export default function Header() {
             <a
               className={
                 'p-3 my-1 hover:text-gray-400 duration-300' +
-                (route == '/about' ? ' pointer-events-none text-gray-400' : '')
+                (route == '/about' ? ' pointer-events-none line-through text-gray-400' : '')
               }
             >
               ABOUT
@@ -84,7 +85,7 @@ export default function Header() {
             <a
               className={
                 'p-3 my-1 hover:text-gray-400 duration-300' +
-                (route == '/note' ? ' pointer-events-none text-gray-400' : '')
+                (route == '/note' ? ' pointer-events-none line-through text-gray-400' : '')
               }
             >
               NOTE
@@ -103,7 +104,7 @@ export default function Header() {
           <Link href="/about">
             <a
               className={
-                'p-3 my-1' + (route == '/about' ? ' pointer-events-none text-gray-400' : '')
+                'p-3 my-1' + (route == '/about' ? ' pointer-events-none line-through' : '')
               }
             >
               ABOUT
@@ -111,9 +112,7 @@ export default function Header() {
           </Link>
           <Link href="/note">
             <a
-              className={
-                'p-3 my-1' + (route == '/note' ? ' pointer-events-none text-gray-400' : '')
-              }
+              className={'p-3 my-1' + (route == '/note' ? ' pointer-events-none line-through' : '')}
             >
               NOTE
             </a>
