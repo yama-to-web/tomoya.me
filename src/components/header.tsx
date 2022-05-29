@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { slide as Menu } from 'react-burger-menu';
@@ -9,8 +10,8 @@ export default function Header() {
   const styles = {
     bmBurgerButton: {
       position: 'fixed',
-      width: '30px',
-      height: '25px',
+      width: '2rem',
+      height: '2rem',
       right: '20px',
       top: '20px',
     },
@@ -60,22 +61,24 @@ export default function Header() {
   return (
     <header className="flex fixed inset-0 top-0 z-10 px-4 mx-auto w-full max-w-screen-xl h-16 lg:px-8">
       <div className="flex flex-row items-center w-full">
-        <img className="hidden mx-1 w-11 lg:block" src="/icon.png" />
-        <div className="text-xs text-black">
-          <Link href="/">
-            <a className="flex flex-row items-center lg:flex-col">
+        <Link href="/">
+          <a className="flex items-center">
+            <div className="hidden mx-1 w-9 h-9 lg:block">
+              <Image src="/icon.png" alt="icon" width={30} height={30} layout="responsive" />
+            </div>
+            <div className="flex flex-row items-center text-xxs text-black lg:flex-col-reverse">
               <h1 className="font-semibold tracking-widest">TOMOYA FUJIWARA</h1>
               <span className="mx-1 lg:hidden">|</span>
               <h2>tomoya.me</h2>
-            </a>
-          </Link>
-        </div>
+            </div>
+          </a>
+        </Link>
         <div className="hidden ml-auto text-sm text-black lg:flex">
           <Link href="/about">
             <a
               className={
                 'p-3 my-1 hover:text-gray-400 duration-300' +
-                (route == '/about' ? ' pointer-events-none line-through text-gray-400' : '')
+                (route == '/about' ? ' pointer-events-none line-through' : '')
               }
             >
               ABOUT
@@ -85,7 +88,7 @@ export default function Header() {
             <a
               className={
                 'p-3 my-1 hover:text-gray-400 duration-300' +
-                (route == '/note' ? ' pointer-events-none line-through text-gray-400' : '')
+                (route == '/note' ? ' pointer-events-none line-through' : '')
               }
             >
               NOTE
@@ -97,7 +100,9 @@ export default function Header() {
         right
         styles={styles}
         width={250}
-        customBurgerIcon={<img src="/icon.png" />}
+        customBurgerIcon={
+          <Image src="/icon.png" alt="icon" width={30} height={30} layout="responsive" />
+        }
         burgerButtonClassName="lg:hidden"
       >
         <div className="flex flex-col items-center m-auto text-xl text-white">
