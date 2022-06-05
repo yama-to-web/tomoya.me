@@ -9,13 +9,13 @@ type Props = {
 
 const PageLayout = ({ children, title }: Props) => {
   return (
-    <>
+    <div className="flex flex-col items-center">
       <Header />
-      <section className="flex-col flex-none justify-center items-start px-5 mt-24 h-40 text-3xl lg:mx-auto lg:max-w-screen-lg">
-        <h3 className="text-2xl font-bold">{title}</h3>
+      <section className="flex items-start px-5 mt-24 w-full h-40 text-3xl lg:max-w-screen-lg">
+        <h3 className="text-lg font-bold">{title}</h3>
       </section>
       <motion.main
-        className="flex-col flex-1 items-center px-6 min-h-screen lg:m-auto lg:max-w-screen-lg"
+        className="flex flex-col flex-1 items-center min-h-screen lg:max-w-screen-lg"
         initial="pageInitial"
         animate="pageAnimate"
         variants={{
@@ -35,7 +35,7 @@ const PageLayout = ({ children, title }: Props) => {
         {children}
       </motion.main>
       <Footer />
-    </>
+    </div>
   );
 };
 
