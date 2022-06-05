@@ -43,12 +43,12 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
         pageDescription="Webエンジニア 藤原智弥のnoteに投稿された最新記事を紹介します。"
       />
       <PageLayout title="note">
-        <div>
+        <div className="lg:max-w-screen-lg">
           <div>
             <p className="text-xs leading-6">Work, Programing, Outdoor etc...</p>
             <p className="mb-6 text-xs leading-6">note記事サイトに遷移します。</p>
           </div>
-          <div className="flex flex-row flex-wrap gap-2 justify-center items-start max-w-5xl">
+          <div className="flex flex-wrap gap-2 justify-center items-start max-w-5xl">
             {articles.map((article: ArticleProps, index: number) => {
               if (article) {
                 return (

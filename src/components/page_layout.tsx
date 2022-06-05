@@ -15,7 +15,7 @@ const PageLayout = ({ children, title }: Props) => {
         <h3 className="text-lg font-bold">{title}</h3>
       </section>
       <motion.main
-        className="flex flex-col flex-1 items-center min-h-screen lg:max-w-screen-lg"
+        className="flex flex-col flex-1 items-center px-5 min-h-screen lg:max-w-screen-lg"
         initial="pageInitial"
         animate="pageAnimate"
         variants={{

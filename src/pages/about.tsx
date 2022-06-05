@@ -41,10 +41,21 @@ const About: NextPage = () => {
         </Section>
         <Section title="Skills">
           <div className="px-2 lg:max-w-screen-lg">
-            <p>資格</p>
+            <p className="text-lg font-thin">Certification</p>
             <ul>
-              <li>・基本情報技術者</li>
-              <li>・Google Cloud Certified - Associate Cloud Engineer</li>
+              <li className="p-2 border-b-2">
+                <p className="text-xs text-gray-500">2022.05.23</p>
+                <p className="text-sm leading-6">
+                  Associate Cloud Engineer
+                  <span className="pl-1 text-xxs">- Google Cloud Certified</span>
+                </p>
+              </li>
+              <li className="p-2 border-b-2">
+                <p className="text-xs text-gray-500">2021.04.27</p>
+                <p className="text-sm leading-6">
+                  基本情報技術者<span className="pl-1 text-xxs">- 情報処理推進機構(IPA)</span>
+                </p>
+              </li>
             </ul>
           </div>
         </Section>

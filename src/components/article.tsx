@@ -16,7 +16,7 @@ type Props = {
 const Article = (props: Props) => {
   return (
     <motion.div
-      className="overflow-hidden p-2.5 w-full max-h-64 bg-white rounded border-0 border-gray-100 shadow shadow-gray-200 md:max-w-xs"
+      className="overflow-hidden p-2.5 w-full max-h-64 bg-white rounded border-0 border-gray-100 shadow shadow-gray-200 sm:max-w-xs"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
       viewport={{ once: true }}
