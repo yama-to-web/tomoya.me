@@ -5,6 +5,27 @@ import CommonMeta from '../components/common_meta';
 import PageLayout from '../components/page_layout';
 
 const About: NextPage = () => {
+  const products = [
+    {
+      name: 'tomoya.me',
+      category: 'Webサイト',
+      explanation: 'ポートフォリオ',
+      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Figma'],
+    },
+  ];
+  const certification = [
+    {
+      name: 'Associate Cloud Engineer',
+      date: '2022.05.23',
+      vendor: 'Google Cloud Certified',
+    },
+    {
+      name: '基本情報技術者',
+      date: '2021.04.27',
+      vendor: '情報処理推進機構(IPA)',
+    },
+  ];
+
   return (
     <div>
       <CommonMeta
@@ -41,43 +62,48 @@ const About: NextPage = () => {
         </Section>
         <Section title="Works">Comming Soon...</Section>
         <Section title="Skills">
-          <div className="mb-8 lg:max-w-screen-lg">
+          <div className="px-2 mb-8 lg:max-w-screen-lg">
             <p className="mb-4 w-fit text-xl font-thin">Products</p>
             <ul className="pl-1">
-              <li className="py-2 border-b-2 border-b-gray-100">
-                <p className="text-xxs text-gray-500">Webサイト</p>
-                <p className="mb-3 text-xl leading-4">
-                  tomoya.me
-                  <span className="pl-1 text-xs">- ポートフォリオ</span>
-                </p>
-                <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
-                  <li className="px-1 before:content-['#'] bg-slate-200 rounded-lg">Next.js</li>
-                  <li className="px-1 before:content-['#'] bg-slate-200 rounded-lg">React</li>
-                  <li className="px-1 before:content-['#'] bg-slate-200 rounded-lg">TypeScript</li>
-                  <li className="px-1 before:content-['#'] bg-slate-200 rounded-lg">
-                    Tailwind CSS
+              {products.map((data) => {
+                return (
+                  <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
+                    <p className="text-xxs text-gray-500">{data.category}</p>
+                    <p className="mb-3 text-xl leading-4">
+                      {data.name}
+                      <span className="pl-1 text-xs before:content-['-']"> ポートフォリオ</span>
+                    </p>
+                    <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
+                      {data.tags.map((tag) => {
+                        return (
+                          <li
+                            className="py-0.5 px-1 before:content-['#'] bg-slate-200 rounded-lg"
+                            key={tag}
+                          >
+                            {tag}
+                          </li>
+                        );
+                      })}
+                    </ul>
                   </li>
-                  <li className="px-1 before:content-['#'] bg-slate-200 rounded-lg">Figma</li>
-                </ul>
-              </li>
+                );
+              })}
             </ul>
           </div>
-          <div className="mb-8 lg:max-w-screen-lg">
+          <div className="px-2 mb-8 lg:max-w-screen-lg">
             <p className="mb-4 w-fit text-xl font-thin">Certification</p>
             <ul className="pl-1">
-              <li className="py-2 border-b-2 border-b-gray-100">
-                <p className="text-xs text-gray-500">2022.05.23</p>
-                <p className="text-sm leading-6">
-                  Associate Cloud Engineer
-                  <span className="pl-1 text-xxs">- Google Cloud Certified</span>
-                </p>
-              </li>
-              <li className="py-2 border-b-2 border-b-gray-100">
-                <p className="text-xs text-gray-500">2021.04.27</p>
-                <p className="text-sm leading-6">
-                  基本情報技術者<span className="pl-1 text-xxs">- 情報処理推進機構(IPA)</span>
-                </p>
-              </li>
+              {certification.map((data) => {
+                return (
+                  <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
+                    <p className="text-xs text-gray-500">{data.date}</p>
+                    <p className="text-sm leading-6">
+                      {data.name}
+                      <span className="pl-1 text-xxs before:content-['-']"> {data.vendor}</span>
+                    </p>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </Section>

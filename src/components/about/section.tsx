@@ -8,7 +8,7 @@ type Props = {
 const Section = ({ children, title }: Props) => {
   return (
     <motion.section
-      className="mb-28 w-full"
+      className="px-2 mb-28 w-full "
       initial={{
         opacity: 0,
         scale: 0.99,
@@ -22,7 +22,7 @@ const Section = ({ children, title }: Props) => {
       }}
     >
       <h4 className="mb-10 text-3xl font-thin lg:max-w-screen-lg">{title}</h4>
-      <div className="px-2 lg:max-w-screen-lg">{children}</div>
+      <div className="lg:max-w-screen-lg">{children}</div>
     </motion.section>
   );
 };
