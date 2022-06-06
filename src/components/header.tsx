@@ -58,8 +58,19 @@ export default function Header() {
     },
   };
 
+  const links = [
+    {
+      content: 'ABOUT',
+      path: '/about',
+    },
+    {
+      content: 'NOTE',
+      path: '/note',
+    },
+  ];
+
   return (
-    <header className="flex fixed inset-0 top-0 z-10 px-4 mx-auto w-full max-w-screen-xl h-16 lg:px-8">
+    <header className="flex fixed inset-0 top-0 z-10 px-4 mx-auto w-full max-w-screen-xl h-16 lg:px-8 lg:h-20">
       <div className="flex flex-row items-center w-full">
         <Link href="/">
           <a className="flex items-center">
@@ -73,27 +84,21 @@ export default function Header() {
             </div>
           </a>
         </Link>
-        <div className="hidden ml-auto text-sm text-black lg:flex">
-          <Link href="/about">
-            <a
-              className={
-                'p-3 my-1 hover:text-gray-400 duration-300' +
-                (route == '/about' ? ' pointer-events-none line-through' : '')
-              }
-            >
-              ABOUT
-            </a>
-          </Link>
-          <Link href="/note">
-            <a
-              className={
-                'p-3 my-1 hover:text-gray-400 duration-300' +
-                (route == '/note' ? ' pointer-events-none line-through' : '')
-              }
-            >
-              NOTE
-            </a>
-          </Link>
+        <div className="hidden ml-auto text-sm font-bold text-black lg:flex">
+          {links.map((data) => {
+            return (
+              <Link href={data.path} key={data.content}>
+                <a
+                  className={
+                    'p-3 my-1 hover:text-gray-400 duration-300' +
+                    (route == data.path ? ' pointer-events-none line-through' : '')
+                  }
+                >
+                  {data.content}
+                </a>
+              </Link>
+            );
+          })}
         </div>
       </div>
       <Menu
@@ -105,23 +110,21 @@ export default function Header() {
         }
         burgerButtonClassName="lg:hidden"
       >
-        <div className="flex flex-col items-center m-auto text-xl text-white">
-          <Link href="/about">
-            <a
-              className={
-                'p-3 my-1' + (route == '/about' ? ' pointer-events-none line-through' : '')
-              }
-            >
-              ABOUT
-            </a>
-          </Link>
-          <Link href="/note">
-            <a
-              className={'p-3 my-1' + (route == '/note' ? ' pointer-events-none line-through' : '')}
-            >
-              NOTE
-            </a>
-          </Link>
+        <div className="flex flex-col items-start m-auto ml-0 text-lg font-thin text-white">
+          {links.map((data) => {
+            return (
+              <Link href={data.path} key={data.content}>
+                <a
+                  className={
+                    'p-3 my-1 hover:text-gray-400 duration-300' +
+                    (route == data.path ? ' pointer-events-none line-through' : '')
+                  }
+                >
+                  {data.content}
+                </a>
+              </Link>
+            );
+          })}
         </div>
         <div className="mt-auto text-white">
           <Sns></Sns>

@@ -33,27 +33,31 @@ const About: NextPage = () => {
         pageDescription="Webエンジニア 藤原智弥の自己紹介ページです。"
       />
       <PageLayout title="ABOUT">
-        <Section title="Profile">
+        <Section title="Introduction">
           <div className="flex flex-col gap-y-8 justify-between items-start sm:flex-row">
             <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)]">
               <Image src="/profile.png" width="592" height="592" alt="tomoya.me" />
             </div>
             <div className="w-full sm:w-[calc(50%_-_1rem)] sm:min-w-[calc(50%_-_1rem)] lg:py-10">
-              <div>
-                <p className="mb-1 text-3xl font-light tracking-widest">TOMOYA FUJIWARA</p>
-                <p className="text-sm font-semibold tracking-wider text-gray-500">WEB ENGINEER</p>
+              <div className="mb-10">
+                <p className="mb-1 text-3xl font-bold tracking-widest">TOMOYA FUJIWARA</p>
+                <p className="text-sm italic font-semibold tracking-wider text-gray-500">
+                  WEB ENGINEER
+                </p>
               </div>
-              <div className="mt-4 text-xs tracking-widest leading-loose">
-                1995年生まれ Webエンジニア
+              <div className="mt-4 text-xs tracking-wider leading-loose">
+                三重県出身 95年生まれ 大阪府在住のWebエンジニア
                 <br />
-                中学から大学まで陸上競技に打ち込み、卒業とともに未経験でIT企業に就職
+                学生時代は陸上競技に10年間打ち込み、卒業とともに未経験でIT企業に就職
                 <br />
-                フロントエンジニアとして商品比較サイトの開発に関わりながら、
+                2019年〜現在までフロントエンジニアとして商品比較サイトの開発に携わる
+                <br />
                 <br />
                 フルスタックエンジニアを目指し日々邁進中
                 <br />
                 <br />
-                趣味はアウトドア
+                趣味はアウトドア、週末は野山に飛び出します
+                <br />
                 <br />
                 新しくてワクワクするようなプロダクトに興味があります
               </div>
