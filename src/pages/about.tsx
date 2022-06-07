@@ -3,29 +3,9 @@ import Image from 'next/image';
 import Section from '../components/about/section';
 import CommonMeta from '../components/common_meta';
 import PageLayout from '../components/page_layout';
+import { products, certification } from '../constants/about';
 
 const About: NextPage = () => {
-  const products = [
-    {
-      name: 'tomoya.me',
-      category: 'Webサイト',
-      explanation: 'ポートフォリオ',
-      tags: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Figma'],
-    },
-  ];
-  const certification = [
-    {
-      name: 'Associate Cloud Engineer',
-      date: '2022.05.23',
-      vendor: 'Google Cloud Certified',
-    },
-    {
-      name: '基本情報技術者',
-      date: '2021.04.27',
-      vendor: '情報処理推進機構(IPA)',
-    },
-  ];
-
   return (
     <div>
       <CommonMeta
