@@ -36,7 +36,7 @@ export default function Header() {
     },
     bmMenu: {
       background: 'rgb(28 28 30 / 90%)',
-      padding: '2.5em 1.5em 0',
+      padding: '2em 1.5em 0',
       fontSize: '1.15em',
     },
     bmMorphShape: {
@@ -44,7 +44,6 @@ export default function Header() {
     },
     bmItemList: {
       color: '#b8b7ad',
-      padding: '0.8em',
       display: 'flex',
       flexFlow: 'column',
       alignItems: 'center',
@@ -104,7 +103,7 @@ export default function Header() {
       <Menu
         right
         styles={styles}
-        width={250}
+        width={300}
         customBurgerIcon={
           <Image src="/icon.png" alt="icon" width={30} height={30} layout="responsive" />
         }
@@ -126,8 +125,9 @@ export default function Header() {
             );
           })}
         </div>
-        <div className="mt-auto text-white">
-          <Sns></Sns>
+        <div className="flex justify-between items-center mt-auto w-full text-white border-t border-b-gray-100">
+          <Sns mx={1} iconSize="xl"></Sns>
+          <p className="text-xxs">©2020 TOMOYA FUJIWARA</p>
         </div>
       </Menu>
     </header>
