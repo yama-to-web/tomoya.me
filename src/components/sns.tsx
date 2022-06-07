@@ -2,7 +2,7 @@ import { faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
-const Sns = ({ mx, iconSize }: { mx: number; iconSize: string }) => {
+const Sns = ({ mx, iconSize }: { mx: string; iconSize: string }) => {
   const accounts = [
     {
       id: 'twitter',
@@ -36,7 +36,7 @@ const Sns = ({ mx, iconSize }: { mx: number; iconSize: string }) => {
 };
 
 Sns.defaultProps = {
-  mx: 2.5,
+  mx: '2.5',
   iconSize: '2xl',
 };
 

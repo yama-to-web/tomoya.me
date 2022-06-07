@@ -35,7 +35,7 @@ export default function Header() {
       height: '100%',
     },
     bmMenu: {
-      background: 'rgb(28 28 30 / 90%)',
+      background: '#000',
       padding: '2em 1.5em 0',
       fontSize: '1.15em',
     },
@@ -52,7 +52,7 @@ export default function Header() {
       display: 'flex',
     },
     bmOverlay: {
-      background: 'rgba(0, 0, 0, 0.3)',
+      background: 'rgba(0, 0, 0, 0.9)',
       right: '0px',
     },
   };
@@ -125,8 +125,8 @@ export default function Header() {
             );
           })}
         </div>
-        <div className="flex justify-between items-center mt-auto w-full text-white border-t border-b-gray-100">
-          <Sns mx={1} iconSize="xl"></Sns>
+        <div className="flex justify-between items-center mt-auto mb-8 w-full font-thin text-white border-t border-gray-600/40">
+          <Sns mx="1" iconSize="xl"></Sns>
           <p className="text-xxs">©2020 TOMOYA FUJIWARA</p>
         </div>
       </Menu>
