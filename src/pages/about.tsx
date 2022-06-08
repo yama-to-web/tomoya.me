@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Section from '../components/about/section';
 import CommonMeta from '../components/common_meta';
 import PageLayout from '../components/page_layout';
-import { products, certification } from '../constants/about';
+import { products, certification } from '../constants/profile_data';
 
 const About: NextPage = () => {
   return (
