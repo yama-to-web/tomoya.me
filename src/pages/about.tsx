@@ -45,51 +45,49 @@ const About: NextPage = () => {
           </div>
         </Section>
         <Section title="Works">Comming Soon...</Section>
-        <Section title="Skills">
-          <div className="px-2 mb-8 lg:max-w-screen-lg">
-            <p className="mb-4 w-fit text-xl font-thin">Products</p>
-            <ul className="pl-1">
-              {products.map((data) => {
-                return (
-                  <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
-                    <p className="text-xxs text-gray-500">{data.category}</p>
-                    <p className="mb-3 text-xl leading-4">
-                      {data.name}
-                      <span className="pl-1 text-xs before:content-['-']"> ポートフォリオ</span>
-                    </p>
-                    <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
-                      {data.tags.map((tag) => {
-                        return (
-                          <li
-                            className="py-0.5 px-1 before:content-['#'] bg-slate-200 rounded-lg"
-                            key={tag}
-                          >
-                            {tag}
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-          <div className="px-2 mb-8 lg:max-w-screen-lg">
-            <p className="mb-4 w-fit text-xl font-thin">Certification</p>
-            <ul className="pl-1">
-              {certification.map((data) => {
-                return (
-                  <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
-                    <p className="text-xs text-gray-500">{data.date}</p>
-                    <p className="text-sm leading-6">
-                      {data.name}
-                      <span className="pl-1 text-xxs before:content-['-']"> {data.vendor}</span>
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+        <Section title="Products">
+          <ul className="pl-1">
+            {products.map((data) => {
+              return (
+                <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
+                  <p className="text-xxs text-gray-500">{data.category}</p>
+                  <p className="mb-3 text-xl leading-4">
+                    {data.name}
+                    <span className="before:px-2 pl-1 text-xs before:content-['-']">
+                      ポートフォリオ
+                    </span>
+                  </p>
+                  <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
+                    {data.tags.map((tag) => {
+                      return (
+                        <li
+                          className="py-0.5 px-1 before:content-['#'] bg-slate-200 rounded-lg"
+                          key={tag}
+                        >
+                          {tag}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </li>
+              );
+            })}
+          </ul>
+        </Section>
+        <Section title="Certification">
+          <ul className="pl-1">
+            {certification.map((data) => {
+              return (
+                <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
+                  <p className="text-xs text-gray-500">{data.date}</p>
+                  <p className="text-sm leading-6">
+                    {data.name}
+                    <span className="pl-1 text-xxs before:content-['-']"> {data.vendor}</span>
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
         </Section>
       </PageLayout>
     </div>
