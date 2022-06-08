@@ -126,7 +126,7 @@ export default function Header() {
           })}
         </div>
         <div className="flex justify-between items-center mt-auto mb-8 w-full font-thin text-white border-t border-gray-600/40">
-          <Sns mx="1" iconSize="xl"></Sns>
+          <Sns mx="mx-1" iconSize="text-xl"></Sns>
           <p className="text-xxs">©2020 TOMOYA FUJIWARA</p>
         </div>
       </Menu>

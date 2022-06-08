@@ -2,7 +2,7 @@ import { faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-i
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
-const Sns = ({ mx = '2.5', iconSize = '2xl' }: { mx: string; iconSize: string }) => {
+const Sns = ({ mx = 'mx-2.5', iconSize = 'text-2xl' }: { mx?: string; iconSize?: string }) => {
   const accounts = [
     {
       id: 'twitter',
@@ -26,8 +26,8 @@ const Sns = ({ mx = '2.5', iconSize = '2xl' }: { mx: string; iconSize: string })
       {accounts.map((data) => {
         return (
           <Link href={data.url} key={data.id}>
-            <a className={`mx-${mx}`}>
-              <FontAwesomeIcon className={`text-${iconSize}`} icon={data.icon} />
+            <a className={mx}>
+              <FontAwesomeIcon className={iconSize} icon={data.icon} />
             </a>
           </Link>
         );
