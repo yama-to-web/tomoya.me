@@ -49,12 +49,12 @@ const About: NextPage = () => {
           <ul className="pl-1">
             {products.map((data) => {
               return (
-                <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
+                <li className="py-2 w-6/12 border-b-2 border-b-gray-100" key={data.name}>
                   <p className="text-xxs text-gray-500">{data.category}</p>
                   <p className="mb-3 text-xl leading-4">
                     {data.name}
                     <span className="before:px-2 pl-1 text-xs before:content-['-']">
-                      ポートフォリオ
+                      {data.explanation}
                     </span>
                   </p>
                   <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
@@ -78,7 +78,7 @@ const About: NextPage = () => {
           <ul className="pl-1">
             {certification.map((data) => {
               return (
-                <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
+                <li className="py-2 w-6/12 border-b-2 border-b-gray-100" key={data.name}>
                   <p className="text-xs text-gray-500">{data.date}</p>
                   <p className="text-sm leading-6">
                     {data.name}

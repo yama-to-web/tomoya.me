@@ -48,7 +48,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
             <p className="text-xs leading-6">Work, Programing, Outdoor etc...</p>
             <p className="mb-6 text-xs leading-6">note記事サイトに遷移します。</p>
           </div>
-          <div className="flex flex-wrap gap-2 justify-center items-start max-w-5xl">
+          <div className="flex flex-wrap gap-3 justify-center items-start max-w-5xl">
             {articles.map((article: ArticleProps, index: number) => {
               if (article) {
                 return (
