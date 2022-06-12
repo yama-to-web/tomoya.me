@@ -56,7 +56,6 @@ const About: NextPage = (props: Props) => {
             </div>
           </div>
         </Section>
-        <Section title="WORKS">\Comming Soon...</Section>
         <Section title={products.name}>
           <ul className="pl-1">
             {products.items.map((data) => {
