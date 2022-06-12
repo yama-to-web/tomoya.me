@@ -1,11 +1,23 @@
-import type { NextPage } from 'next';
+import { readdirSync } from 'fs';
+import type { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
+import SwiperCore, { Pagination, Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Section from '../components/about/section';
 import CommonMeta from '../components/common_meta';
 import PageLayout from '../components/page_layout';
 import { products, certification } from '../constants/profile_data';
 
-const About: NextPage = () => {
+SwiperCore.use([Pagination, Navigation]);
+
+type Props = {
+  children?: React.ReactNode;
+  images?: Array<string>;
+};
+
+const About: NextPage = (props: Props) => {
+  const instaImgs = props.images;
+
   return (
     <div>
       <CommonMeta
@@ -13,7 +25,7 @@ const About: NextPage = () => {
         pageDescription="Webエンジニア 藤原智弥の自己紹介ページです。"
       />
       <PageLayout title="ABOUT">
-        <Section title="Introduction">
+        <Section title="INTRODUCTION">
           <div className="flex flex-col gap-y-8 justify-between items-start sm:flex-row">
             <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)]">
               <Image src="/profile.png" width="592" height="592" alt="tomoya.me" />
@@ -44,10 +56,10 @@ const About: NextPage = () => {
             </div>
           </div>
         </Section>
-        <Section title="Works">Comming Soon...</Section>
-        <Section title="Products">
+        <Section title="WORKS">\Comming Soon...</Section>
+        <Section title={products.name}>
           <ul className="pl-1">
-            {products.map((data) => {
+            {products.items.map((data) => {
               return (
                 <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
                   <p className="text-xxs text-gray-500">{data.category}</p>
@@ -74,9 +86,9 @@ const About: NextPage = () => {
             })}
           </ul>
         </Section>
-        <Section title="Certification">
+        <Section title={certification.name}>
           <ul className="pl-1">
-            {certification.map((data) => {
+            {certification.items.map((data) => {
               return (
                 <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
                   <p className="text-xs text-gray-500">{data.date}</p>
@@ -89,9 +101,51 @@ const About: NextPage = () => {
             })}
           </ul>
         </Section>
+        <Section>
+          <h4 className="mb-10 w-full text-2xl text-center">Instagram</h4>
+          <div className="m-auto w-80 lg:w-full">
+            <Swiper
+              slidesPerView={1}
+              // pagination={{
+              //   clickable: true,
+              // }}
+              loop={false}
+              breakpoints={{
+                1024: {
+                  slidesPerView: 3,
+                  navigation: true,
+                },
+              }}
+            >
+              {instaImgs?.map((src, index: number) => {
+                return (
+                  <SwiperSlide key={index}>
+                    <div className="m-auto w-80">
+                      <Image
+                        src={`/instagram/${index}.jpg`}
+                        width={60}
+                        height={40}
+                        layout="responsive"
+                        alt="test_image"
+                      />
+                    </div>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
+        </Section>
       </PageLayout>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const images = readdirSync('./public/instagram');
+
+  return {
+    props: { images },
+  };
 };
 
 export default About;

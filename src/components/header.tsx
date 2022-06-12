@@ -105,7 +105,14 @@ export default function Header() {
         styles={styles}
         width={300}
         customBurgerIcon={
-          <Image src="/icon.png" alt="icon" width={30} height={30} layout="responsive" />
+          <Image
+            src="/icon.png"
+            alt="icon"
+            width={30}
+            height={30}
+            layout="responsive"
+            priority={true}
+          />
         }
         burgerButtonClassName="lg:hidden"
       >
