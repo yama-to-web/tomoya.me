@@ -1,8 +1,9 @@
+import type { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 
-const Sns = ({ mx = 'mx-2.5', iconSize = 'w-6' }: { mx?: string; iconSize?: string }) => {
+const Sns = ({ gap = 'mx-2.5', size = 'lg' }: { gap?: string; size?: SizeProp }) => {
   const accounts = [
     {
       id: 'twitter',
@@ -26,8 +27,8 @@ const Sns = ({ mx = 'mx-2.5', iconSize = 'w-6' }: { mx?: string; iconSize?: stri
       {accounts.map((data) => {
         return (
           <Link href={data.url} key={data.id}>
-            <a>
-              <FontAwesomeIcon className={`${mx} ${iconSize}`} icon={data.icon} />
+            <a className={`${gap} w-6`}>
+              <FontAwesomeIcon size={size} icon={data.icon} />
             </a>
           </Link>
         );

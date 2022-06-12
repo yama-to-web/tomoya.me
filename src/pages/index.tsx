@@ -20,16 +20,21 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   } else {
     mvPath = '/mv' + Math.floor(Math.random() * 2) + '.jpg';
   }
-  const mvStyle = {
-    backgroundImage: 'url(' + mvPath + ')',
-  };
+
   return (
     <main>
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div
-        className="flex relative flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-cover after:bg-mask"
-        style={mvStyle}
-      >
+      <div className="flex flex-col justify-center items-center p-5 min-w-fit min-h-screen after:bg-cover after:bg-mask">
+        <div>
+          <Image
+            src={mvPath}
+            width="500"
+            layout="fill"
+            objectFit="cover"
+            height="500"
+            alt="tomoya.me"
+          />
+        </div>
         <div className="z-50">
           <motion.div
             className="mx-auto"
@@ -62,7 +67,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
             }}
           >
             <Nav></Nav>
-            <Sns></Sns>
+            <Sns gap="mx-2"></Sns>
           </motion.div>
         </div>
       </div>
