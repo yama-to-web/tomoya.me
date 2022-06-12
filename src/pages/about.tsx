@@ -125,7 +125,7 @@ const About: NextPage = (props: Props) => {
                         width={60}
                         height={40}
                         layout="responsive"
-                        alt="test_image"
+                        alt="instagram image"
                       />
                     </div>
                   </SwiperSlide>
