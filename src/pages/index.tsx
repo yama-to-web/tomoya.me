@@ -24,17 +24,15 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   return (
     <main>
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div className="flex flex-col justify-center items-center p-5 min-w-fit min-h-screen after:bg-cover after:bg-mask">
-        <div>
-          <Image
-            src={mvPath}
-            width="500"
-            layout="fill"
-            objectFit="cover"
-            height="500"
-            alt="tomoya.me"
-          />
-        </div>
+      <div className="flex flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-fixed after:bg-cover after:bg-mask">
+        <Image
+          src={mvPath}
+          width="500"
+          layout="fill"
+          objectFit="cover"
+          height="550"
+          alt="instagram image"
+        />
         <div className="z-50">
           <motion.div
             className="mx-auto"
