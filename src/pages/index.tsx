@@ -22,7 +22,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   }
 
   return (
-    <main>
+    <main style={{ minHeight: '-webkit-fill-available' }}>
       <CommonMeta pageTitle="Home" pageDescription="" />
       <div className="flex flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-fixed after:bg-cover after:bg-mask">
         <Image
