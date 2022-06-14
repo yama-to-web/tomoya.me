@@ -22,11 +22,11 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   }
 
   return (
-    <main>
+    <main className="relative">
       <CommonMeta pageTitle="Home" pageDescription="" />
       <div
         className="-z-10 w-screen min-h-screen bg-fixed after:bg-cover after:bg-mask"
-        style={{ minHeight: '-webkit-fill-available' }}
+        // style={{ minHeight: '-webkit-fill-available' }}
       >
         <Image
           src={mvPath}
@@ -36,7 +36,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
           alt="instagram image"
         />
       </div>
-      <div className="flex flex-col justify-center items-center p-5 h-screen">
+      <div className="flex absolute top-1/2 flex-col justify-center items-center p-5 -translate-y-2/4">
         <div className="z-50">
           <motion.div
             className="mx-auto"
