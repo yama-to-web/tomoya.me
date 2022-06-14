@@ -22,17 +22,21 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   }
 
   return (
-    <main style={{ minHeight: '-webkit-fill-available' }}>
+    <main>
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div className="flex flex-col justify-center items-center p-5 min-w-fit min-h-screen bg-fixed after:bg-cover after:bg-mask">
+      <div
+        className="-z-10 w-screen min-h-screen bg-fixed after:bg-cover after:bg-mask"
+        style={{ minHeight: '-webkit-fill-available' }}
+      >
         <Image
           src={mvPath}
-          width="500"
           layout="fill"
           objectFit="cover"
-          height="550"
+          objectPosition="center"
           alt="instagram image"
         />
+      </div>
+      <div className="flex flex-col justify-center items-center p-5 h-screen">
         <div className="z-50">
           <motion.div
             className="mx-auto"
@@ -65,7 +69,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
             }}
           >
             <Nav></Nav>
-            <Sns gap="mx-2"></Sns>
+            <Sns gap="mx-1"></Sns>
           </motion.div>
         </div>
       </div>
