@@ -22,7 +22,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   }
 
   return (
-    <main className="relative">
+    <main className="flex relative flex-col justify-center items-center">
       <CommonMeta pageTitle="Home" pageDescription="" />
       <div
         className="-z-10 w-screen min-h-screen bg-fixed after:bg-cover after:bg-mask"
@@ -36,7 +36,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
           alt="instagram image"
         />
       </div>
-      <div className="flex absolute top-1/2 flex-col justify-center items-center p-5 -translate-y-2/4">
+      <div className="flex absolute flex-col justify-center items-center p-5">
         <div className="z-50">
           <motion.div
             className="mx-auto"
