@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps, GetServerSideProps } from 'next';
 import Article from '../components/article';
 import CommonMeta from '../components/common_meta';
-import PageLayout from '../components/page_layout';
+import Main from '../components/layouts/main';
 
 type Props = {
   children?: React.ReactNode;
@@ -13,12 +13,12 @@ type ArticleProps = {
   eyecatch: string;
   name: string;
   body: string;
-  likeCount: number;
+  likeCount: Number;
   publishAt: string;
 };
 
 type DisplayArti = {
-  [key: string]: string | number;
+  [key: string]: string | Number;
 };
 
 const Note: NextPage<React.ReactNode> = (props: Props) => {
@@ -38,17 +38,16 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
   }
   return (
     <div>
-      <CommonMeta
-        pageTitle="note"
-        pageDescription="Webエンジニア 藤原智弥のnoteに投稿された最新記事を紹介します。"
-      />
-      <PageLayout title="note">
+      <Main
+        title="note"
+        description="Webエンジニア 藤原智弥のnoteに投稿された最新記事を紹介します。"
+      >
         <div className="lg:max-w-screen-lg">
           <div>
             <p className="text-xs leading-6">Work, Programing, Outdoor etc...</p>
             <p className="mb-6 text-xs leading-6">note記事サイトに遷移します。</p>
           </div>
-          <div className="flex flex-wrap gap-3 justify-center items-start max-w-5xl">
+          <div className="container grid grid-cols-1 gap-5 mx-auto sm:grid-cols-2 md:grid-cols-3">
             {articles.map((article: ArticleProps, index: number) => {
               if (article) {
                 return (
@@ -66,7 +65,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
             })}
           </div>
         </div>
-      </PageLayout>
+      </Main>
     </div>
   );
 };

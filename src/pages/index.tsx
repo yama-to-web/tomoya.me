@@ -24,10 +24,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   return (
     <main className="flex relative flex-col justify-center items-center">
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div
-        className="-z-10 w-screen min-h-screen bg-fixed after:bg-cover after:bg-mask"
-        // style={{ minHeight: '-webkit-fill-available' }}
-      >
+      <div className="-z-10 w-screen min-h-screen bg-fixed after:bg-cover after:bg-mask">
         <Image
           src={mvPath}
           layout="fill"

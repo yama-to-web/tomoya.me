@@ -24,7 +24,21 @@ const config = {
         vendor: '情報処理推進機構(IPA)',
       },
     ],
-  }
+  },
+  links: [
+    {
+      content: 'ABOUT',
+      path: '/about',
+    },
+    {
+      content: 'NOTE',
+      path: '/note',
+    },
+    {
+      content: 'BLOG',
+      path: '/blog',
+    },
+  ]
 }
 
 module.exports = config

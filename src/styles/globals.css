@@ -8,6 +8,7 @@
     @apply leading-relaxed tracking-wider;
   }
 }
+
 @layer components {
   .bg-mask {
     content: "";
@@ -36,4 +37,15 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+/**
+* microCMS ブログ目次
+*/
+#micro_cms_article .h2 {
+  margin-left: 1.5rem;
+}
+
+#micro_cms_article .h3 {
+  margin-left: 3rem;
 }

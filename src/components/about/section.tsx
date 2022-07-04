@@ -13,15 +13,27 @@ const Section = ({ children, title }: Props) => {
         opacity: 0,
         scale: 0.99,
       }}
-      animate={{
-        opacity: 1,
-        scale: 1,
-        transition: {
-          duration: 1.2,
-        },
-      }}
+      whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+      viewport={{ once: true }}
     >
-      <h4 className="mb-10 g:max-w-screen-lg text-3xl font-thin tracking-wide">{title}</h4>
+      <motion.h4
+        className="mb-10 g:max-w-screen-lg text-3xl font-thin tracking-wide"
+        initial={{
+          opacity: 0,
+          y: '100%',
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.8,
+            delay: 1,
+            ease: 'easeInOut',
+          },
+        }}
+      >
+        {title}
+      </motion.h4>
       <div className="lg:max-w-screen-lg">{children}</div>
     </motion.section>
   );

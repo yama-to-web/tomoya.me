@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { slide as Menu } from 'react-burger-menu';
 import Sns from '../components/sns';
+import { links } from '../constants/profile_data';
 
 export default function Header() {
   const route = useRouter().pathname;
@@ -57,19 +58,8 @@ export default function Header() {
     },
   };
 
-  const links = [
-    {
-      content: 'ABOUT',
-      path: '/about',
-    },
-    {
-      content: 'NOTE',
-      path: '/note',
-    },
-  ];
-
   return (
-    <header className="flex fixed inset-0 top-0 z-10 px-4 mx-auto w-full max-w-screen-xl h-16 lg:px-8 lg:h-20">
+    <header className="flex sticky inset-0 top-0 z-10 px-4 mx-auto w-full max-w-screen-xl h-16 lg:px-8 lg:h-20">
       <div className="flex flex-row items-center w-full">
         <Link href="/">
           <a className="flex items-center">

@@ -1,13 +1,13 @@
 import '../styles/globals.css';
 import '../styles/reset.scss';
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
 import * as fs from 'fs';
 import { motion } from 'framer-motion';
 import type { GetStaticProps } from 'next';
 import type { AppProps } from 'next/app';
 import rp from 'request-promise';
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
 
 type InstaImg = {
   [key: string]: string;

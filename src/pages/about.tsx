@@ -4,8 +4,7 @@ import Image from 'next/image';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Section from '../components/about/section';
-import CommonMeta from '../components/common_meta';
-import PageLayout from '../components/page_layout';
+import Main from '../components/layouts/main';
 import { products, certification } from '../constants/profile_data';
 
 SwiperCore.use([Pagination, Navigation]);
@@ -20,11 +19,7 @@ const About: NextPage = (props: Props) => {
 
   return (
     <div>
-      <CommonMeta
-        pageTitle="ABOUT"
-        pageDescription="Webエンジニア 藤原智弥の自己紹介ページです。"
-      />
-      <PageLayout title="ABOUT">
+      <Main title="ABOUT" description="Webエンジニア 藤原智弥の自己紹介ページです。">
         <Section title="INTRODUCTION">
           <div className="flex flex-col gap-y-8 justify-between items-start sm:flex-row">
             <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)]">
@@ -134,7 +129,7 @@ const About: NextPage = (props: Props) => {
             </Swiper>
           </div>
         </Section>
-      </PageLayout>
+      </Main>
     </div>
   );
 };
