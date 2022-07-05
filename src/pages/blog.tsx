@@ -28,7 +28,7 @@ const Blog = ({ articles }: Props) => {
   return (
     <div>
       <Main title="BLOG" description="Webエンジニア 藤原智弥のBLOG">
-        {!articles.length && <div className="text-3xl text-gray-500">COMING SOON...</div>}
+        {!articles.length && <div className="text-2xl text-gray-500">COMING SOON...</div>}
         <div className="container grid grid-cols-1 gap-5 p-10 mx-auto sm:grid-cols-1 md:grid-cols-3">
           {articles.map((article) => (
             <motion.div

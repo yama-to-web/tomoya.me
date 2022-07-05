@@ -68,6 +68,9 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
             <Nav></Nav>
             <Sns gap="mx-1"></Sns>
           </motion.div>
+          <p className="mt-3 text-xs text-white">
+            This background image is grabbed from my latest instagram post automatically.
+          </p>
         </div>
       </div>
     </main>
