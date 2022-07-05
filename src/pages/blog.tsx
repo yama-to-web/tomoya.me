@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import type { NextPage, GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Main from '../components/layouts/main';
 import { client } from '../libs/client';

@@ -1,6 +1,5 @@
-import type { NextPage, GetStaticProps, GetServerSideProps } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import Article from '../components/article';
-import CommonMeta from '../components/common_meta';
 import Main from '../components/layouts/main';
 
 type Props = {
