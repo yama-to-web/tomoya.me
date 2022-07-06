@@ -1,5 +1,4 @@
 import '@fortawesome/fontawesome-svg-core/styles.css';
-// import '../../styles/Blog.module.scss';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { load } from 'cheerio';
@@ -7,7 +6,7 @@ import type { MicroCMSQueries } from 'microcms-js-sdk';
 import { GetServerSideProps } from 'next';
 import { Link as ScLink } from 'react-scroll';
 import Main from '../../components/layouts/blog/main';
-import { client } from '../../libs/client';
+import { client } from '../../lib/client';
 
 type Props = {
   article: Article;

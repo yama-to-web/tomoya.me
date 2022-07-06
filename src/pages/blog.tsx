@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Main from '../components/layouts/main';
-import { client } from '../libs/client';
+import { client } from '../lib/client';
 
 type Props = {
   articles: Array<Article>;
@@ -24,7 +24,6 @@ type Article = {
 };
 
 const Blog = ({ articles }: Props) => {
-  console.log(articles.length);
   return (
     <div>
       <Main title="BLOG" description="Webエンジニア 藤原智弥のBLOG">
@@ -71,7 +70,6 @@ const Blog = ({ articles }: Props) => {
   );
 };
 
-// データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps: GetStaticProps = async () => {
   const data = await client.get({ endpoint: 'blogs' });
 

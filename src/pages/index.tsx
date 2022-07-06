@@ -1,14 +1,20 @@
-import { readdirSync } from 'fs';
+import * as fs from 'fs';
 import { motion } from 'framer-motion';
 import type { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
+import rp from 'request-promise';
 import CommonMeta from '../components/common_meta';
 import Nav from '../components/nav';
 import Sns from '../components/sns';
+import { loadInstaPosts } from '../lib/fetch-posts';
 
 type Props = {
   children?: React.ReactNode;
   images?: Array<string>;
+};
+
+type InstaImg = {
+  [key: string]: string;
 };
 
 const Home: NextPage<React.ReactNode> = (props: Props) => {
@@ -78,10 +84,24 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const images = readdirSync('./public/instagram');
+  const posts = await loadInstaPosts();
+  const postImages = posts.media.data.map((img: InstaImg) => {
+    return img.media_url.replace(/^[^.]*/, 'https://scontent-nrt1-1');
+  }, {});
+
+  if (postImages) {
+    // イメージファイル作成
+    postImages.map((url: string, index: number) => {
+      const file = fs.createWriteStream(`./public/instagram/${index}.jpg`);
+      rp(url).pipe(file);
+    });
+  }
+  // イメージ読み込み
+  const images = fs.readdirSync('./public/instagram');
 
   return {
     props: { images },
   };
 };
+
 export default Home;

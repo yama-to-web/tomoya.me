@@ -3,17 +3,14 @@ import '../styles/reset.scss';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
-import * as fs from 'fs';
 import { motion } from 'framer-motion';
-import type { GetStaticProps } from 'next';
 import type { AppProps } from 'next/app';
-import rp from 'request-promise';
-
-type InstaImg = {
-  [key: string]: string;
-};
+import GoogleAnalytics from '../components/GoogleAnalytics';
+import usePageView from '../hooks/usePageView';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
+  usePageView(); // GA PCイベント監視
+
   return (
     <motion.div
       key={router.route}
@@ -31,31 +28,10 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         },
       }}
     >
+      <GoogleAnalytics />
       <Component {...pageProps} />
     </motion.div>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(
-    `https://graph.facebook.com/v14.0/17841450072012853?fields=media.limit(5){media_url,media_type}&access_token=${process.env.INSTA_GRAPH_API_KEY}`,
-  );
-
-  const posts = await res.json();
-  let images = posts.media.data.map((img: InstaImg) => {
-    return img.media_url.replace(/^[^.]*/, 'https://scontent-nrt1-1');
-  }, {});
-
-  if (images) {
-    images.map((url: string, index: number) => {
-      const file = fs.createWriteStream(`./public/instagram/${index}.jpg`);
-      rp(url).pipe(file);
-    });
-  }
-
-  return {
-    props: { images },
-  };
-};
 
 export default MyApp;

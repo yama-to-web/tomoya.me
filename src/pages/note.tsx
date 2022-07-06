@@ -1,6 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Article from '../components/article';
 import Main from '../components/layouts/main';
+import { loadNotePosts } from '../lib/fetch-posts';
 
 type Props = {
   children?: React.ReactNode;
@@ -70,8 +71,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch('https://note.com/api/v2/creators/yama_to_web/contents?kind=note&page=1');
-  const posts = await res.json();
+  const posts = await loadNotePosts();
   const allowedKeys = ['name', 'likeCount', 'publishAt', 'eyecatch', 'body', 'noteUrl'];
   let contents = posts.data.contents;
   let articles = contents.map((article: DisplayArti) => {
