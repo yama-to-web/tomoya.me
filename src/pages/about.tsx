@@ -1,21 +1,29 @@
 import { readdirSync } from 'fs';
+import * as fs from 'fs';
+
 import type { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
+import rp from 'request-promise';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Section from '../components/about/section';
 import Main from '../components/layouts/main';
 import { products, certification } from '../constants/profile_data';
+import { loadInstaPosts } from '../lib/fetch-posts';
 
 SwiperCore.use([Pagination, Navigation]);
 
 type Props = {
   children?: React.ReactNode;
   images?: Array<string>;
+  permalinks?: Array<string>;
 };
-
+type InstaImg = {
+  [key: string]: string;
+};
 const About: NextPage = (props: Props) => {
   const instaImgs = props.images;
+  const permalinks = props.permalinks ?? [];
 
   return (
     <div>
@@ -97,36 +105,67 @@ const About: NextPage = (props: Props) => {
         </Section>
         <Section>
           <h4 className="mb-10 w-full text-2xl text-center">Instagram</h4>
-          <div className="m-auto w-80 lg:w-full">
-            <Swiper
-              slidesPerView={1}
-              // pagination={{
-              //   clickable: true,
-              // }}
-              loop={false}
-              breakpoints={{
-                1024: {
-                  slidesPerView: 3,
-                  navigation: true,
-                },
-              }}
-            >
-              {instaImgs?.map((src, index: number) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <div className="m-auto w-80">
+          <div className="m-auto w-80">
+            <div className="relative">
+              <Swiper
+                className="absolute left-1/2 w-screen -translate-x-1/2 md:hidden"
+                slidesPerView={1.3}
+                // pagination={{
+                //   clickable: true,
+                // }}
+                loop={true}
+                centeredSlides={true}
+                breakpoints={{
+                  1024: {
+                    slidesPerView: 3,
+                    navigation: true,
+                  },
+                }}
+              >
+                {instaImgs?.map((src, index: number) => {
+                  return (
+                    <SwiperSlide key={index}>
+                      <a
+                        href={permalinks[index]}
+                        key={index}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Image
+                          src={`/instagram/${index}.jpg`}
+                          width={60}
+                          height={40}
+                          layout="responsive"
+                          alt="instagram image"
+                        />
+                      </a>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </div>
+            <div className="hidden md:block">
+              <div className="grid grid-cols-3 gap-1">
+                {instaImgs?.map((src, index: number) => {
+                  return (
+                    <a
+                      href={permalinks[index]}
+                      key={index}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Image
                         src={`/instagram/${index}.jpg`}
-                        width={60}
-                        height={40}
+                        width={300}
+                        height={200}
                         layout="responsive"
                         alt="instagram image"
                       />
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </Section>
       </Main>
@@ -134,12 +173,36 @@ const About: NextPage = (props: Props) => {
   );
 };
 
+// export const getStaticProps: GetStaticProps = async () => {
+//   const images = readdirSync('./public/instagram');
+
+//   return {
+//     props: { images },
+//   };
+// };
+
 export const getStaticProps: GetStaticProps = async () => {
-  const images = readdirSync('./public/instagram');
+  const posts = await loadInstaPosts();
+  const postImages = posts.media.data.map((img: InstaImg) => {
+    return img.media_url.replace(/^[^.]*/, 'https://scontent-nrt1-1');
+  }, {});
+  const permalinks = posts.media.data.map((img: InstaImg) => {
+    return img.permalink;
+  }, {});
+
+  if (postImages) {
+    // イメージファイル作成
+    postImages.map((url: string, index: number) => {
+      const file = fs.createWriteStream(`./public/instagram/${index}.jpg`);
+      rp(url).pipe(file);
+    });
+  }
+  // イメージ読み込み
+  const images = fs.readdirSync('./public/instagram');
+  console.log(permalinks);
 
   return {
-    props: { images },
+    props: { images, permalinks },
   };
 };
-
 export default About;
