@@ -1,4 +1,4 @@
-import Sns from './sns';
+import Sns from './Sns';
 
 const Footer = () => {
   return (

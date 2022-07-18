@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
-import Main from '../components/layouts/main';
+import Main from '../components/layouts/Main';
 import { client } from '../lib/client';
 
 type Props = {

@@ -1,6 +1,6 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Article from '../components/Article';
-import Main from '../components/layouts/main';
+import Main from '../components/layouts/Main';
 import { loadNotePosts } from '../lib/fetch-posts';
 
 type Props = {

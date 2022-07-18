@@ -5,7 +5,7 @@ import { load } from 'cheerio';
 import type { MicroCMSQueries } from 'microcms-js-sdk';
 import { GetServerSideProps } from 'next';
 import { Link as ScLink } from 'react-scroll';
-import Main from '../../components/layouts/blog/main';
+import Main from '../../components/layouts/blog/Main';
 import { client } from '../../lib/client';
 
 type Props = {
@@ -34,6 +34,7 @@ type Article = {
     },
   ];
 };
+
 export default function Article({ article }: Props) {
   return (
     <Main title={article.title}>
