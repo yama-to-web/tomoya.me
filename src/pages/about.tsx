@@ -4,7 +4,7 @@ import Image from 'next/image';
 import rp from 'request-promise';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Section from '../components/about/section';
+import Section from '../components/about/Section';
 import Main from '../components/layouts/Main';
 import { products, certification } from '../constants/profile-data';
 import { loadInstaPosts } from '../lib/fetch-posts';
