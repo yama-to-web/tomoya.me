@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { slide as Menu } from 'react-burger-menu';
-import Sns from '../components/sns';
-import { links } from '../constants/profile_data';
+import { links } from '../constants/profile-data';
+import Sns from './Sns';
 
 export default function Header() {
   const route = useRouter().pathname;

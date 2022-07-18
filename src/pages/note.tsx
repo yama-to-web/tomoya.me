@@ -1,5 +1,5 @@
 import type { NextPage, GetStaticProps } from 'next';
-import Article from '../components/article';
+import Article from '../components/Article';
 import Main from '../components/layouts/main';
 import { loadNotePosts } from '../lib/fetch-posts';
 

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import CommonMeta from '../common_meta';
-import Footer from '../footer';
-import Header from '../header';
+import CommonMeta from '../CommonMeta';
+import Footer from '../Footer';
+import Header from '../Header';
 
 type Props = {
   children?: React.ReactNode;

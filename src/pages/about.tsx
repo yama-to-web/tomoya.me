@@ -1,14 +1,12 @@
-import { readdirSync } from 'fs';
 import * as fs from 'fs';
-
 import type { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
 import rp from 'request-promise';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Section from '../components/about/section';
-import Main from '../components/layouts/main';
-import { products, certification } from '../constants/profile_data';
+import Main from '../components/layouts/Main';
+import { products, certification } from '../constants/profile-data';
 import { loadInstaPosts } from '../lib/fetch-posts';
 
 SwiperCore.use([Pagination, Navigation]);
@@ -21,10 +19,10 @@ type Props = {
 type InstaImg = {
   [key: string]: string;
 };
+
 const About: NextPage = (props: Props) => {
   const instaImgs = props.images;
   const permalinks = props.permalinks ?? [];
-
   return (
     <div>
       <Main title="ABOUT" description="Webエンジニア 藤原智弥の自己紹介ページです。">
@@ -63,26 +61,36 @@ const About: NextPage = (props: Props) => {
           <ul className="pl-1">
             {products.items.map((data) => {
               return (
-                <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
-                  <p className="text-xxs text-gray-500">{data.category}</p>
-                  <p className="mb-3 text-xl leading-4">
-                    {data.name}
-                    <span className="before:px-2 pl-1 text-xs before:content-['-']">
-                      {data.explanation}
-                    </span>
-                  </p>
-                  <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
-                    {data.tags.map((tag) => {
-                      return (
-                        <li
-                          className="py-0.5 px-1 before:content-['#'] bg-slate-200 rounded-lg"
-                          key={tag}
-                        >
-                          {tag}
-                        </li>
-                      );
-                    })}
-                  </ul>
+                <li
+                  className="py-2 border-b-2 border-b-gray-100 md:flex md:flex-row"
+                  key={data.name}
+                >
+                  <div className="mr-5">
+                    <Image
+                      src={data.thumnail}
+                      width={300}
+                      height={200}
+                      layout="fixed"
+                      alt={data.name}
+                    ></Image>
+                  </div>
+                  <div>
+                    <p className="text-xxs text-gray-500">{data.category}</p>
+                    <p className="mb-3 text-2xl leading-4">{data.name}</p>
+                    <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
+                      {data.tags.map((tag) => {
+                        return (
+                          <li
+                            className="py-0.5 px-1 before:content-['#'] bg-slate-200 rounded-lg"
+                            key={tag}
+                          >
+                            {tag}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                    <p className="pl-2 mt-5 text-xs whitespace-pre-wrap">{data.explanation}</p>
+                  </div>
                 </li>
               );
             })}
@@ -105,16 +113,20 @@ const About: NextPage = (props: Props) => {
         </Section>
         <Section>
           <h4 className="mb-10 w-full text-2xl text-center">Instagram</h4>
-          <div className="m-auto w-80">
+          <div className="m-auto w-80 md:w-10/12">
+            {/* SP カルーセル */}
             <div className="relative">
               <Swiper
                 className="absolute left-1/2 w-screen -translate-x-1/2 md:hidden"
                 slidesPerView={1.3}
-                // pagination={{
-                //   clickable: true,
-                // }}
+                pagination={{
+                  clickable: true,
+                  bulletClass: 'swiper-pagination-bullet',
+                  bulletActiveClass: `swiper-pagination-bullet-active`,
+                }}
                 loop={true}
                 centeredSlides={true}
+                effect="fade"
                 breakpoints={{
                   1024: {
                     slidesPerView: 3,
@@ -134,7 +146,7 @@ const About: NextPage = (props: Props) => {
                         <Image
                           src={`/instagram/${index}.jpg`}
                           width={60}
-                          height={40}
+                          height={50}
                           layout="responsive"
                           alt="instagram image"
                         />
@@ -144,6 +156,7 @@ const About: NextPage = (props: Props) => {
                 })}
               </Swiper>
             </div>
+            {/* PC */}
             <div className="hidden md:block">
               <div className="grid grid-cols-3 gap-1">
                 {instaImgs?.map((src, index: number) => {
@@ -157,7 +170,7 @@ const About: NextPage = (props: Props) => {
                       <Image
                         src={`/instagram/${index}.jpg`}
                         width={300}
-                        height={200}
+                        height={300}
                         layout="responsive"
                         alt="instagram image"
                       />
@@ -172,14 +185,6 @@ const About: NextPage = (props: Props) => {
     </div>
   );
 };
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const images = readdirSync('./public/instagram');
-
-//   return {
-//     props: { images },
-//   };
-// };
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await loadInstaPosts();
@@ -199,7 +204,6 @@ export const getStaticProps: GetStaticProps = async () => {
   }
   // イメージ読み込み
   const images = fs.readdirSync('./public/instagram');
-  console.log(permalinks);
 
   return {
     props: { images, permalinks },

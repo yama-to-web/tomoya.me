@@ -2,19 +2,13 @@ import * as fs from 'fs';
 import { motion } from 'framer-motion';
 import type { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
-import rp from 'request-promise';
-import CommonMeta from '../components/common_meta';
-import Nav from '../components/nav';
-import Sns from '../components/sns';
-import { loadInstaPosts } from '../lib/fetch-posts';
+import CommonMeta from '../components/CommonMeta';
+import Nav from '../components/Nav';
+import Sns from '../components/Sns';
 
 type Props = {
   children?: React.ReactNode;
   images?: Array<string>;
-};
-
-type InstaImg = {
-  [key: string]: string;
 };
 
 const Home: NextPage<React.ReactNode> = (props: Props) => {
@@ -82,31 +76,6 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
     </main>
   );
 };
-
-// export const getStaticProps: GetStaticProps = async () => {
-//   const posts = await loadInstaPosts();
-//   const postImages = posts.media.data.map((img: InstaImg) => {
-//     return img.media_url.replace(/^[^.]*/, 'https://scontent-nrt1-1');
-//   }, {});
-
-//   const permalinks = posts.media.data.map((img: InstaImg) => {
-//     return img.permalinks;
-//   }, {});
-
-//   if (postImages) {
-//     // イメージファイル作成
-//     postImages.map((url: string, index: number) => {
-//       const file = fs.createWriteStream(`./public/instagram/${index}.jpg`);
-//       rp(url).pipe(file);
-//     });
-//   }
-//   // イメージ読み込み
-//   const images = fs.readdirSync('./public/instagram');
-
-//   return {
-//     props: { images, permalinks },
-//   };
-// };
 
 export const getStaticProps: GetStaticProps = async () => {
   const images = fs.readdirSync('./public/instagram');
