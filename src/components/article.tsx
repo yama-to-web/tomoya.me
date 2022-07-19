@@ -1,7 +1,6 @@
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 type Props = {
   key: number;

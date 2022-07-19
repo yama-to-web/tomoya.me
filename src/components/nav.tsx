@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { links } from '../constants/profile-data';
 
-export default function Nav() {
+const Nav = () => {
   return (
     <nav className="flex flex-col font-semibold lg:flex-row">
       {links.map((data, index) => {
@@ -13,4 +13,6 @@ export default function Nav() {
       })}
     </nav>
   );
-}
+};
+
+export default Nav;

@@ -3,7 +3,7 @@ export async function loadInstaPosts() {
     `https://graph.facebook.com/v14.0/17841450072012853?fields=media.limit(6){media_url,media_type,permalink}&access_token=${process.env.INSTA_GRAPH_API_KEY}`,
   );
   const data = await res.json();
-  console.log(data.media.data);
+
   return data;
 }
 

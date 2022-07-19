@@ -9,7 +9,7 @@ type Props = {
   description: string;
 };
 
-const Page = ({ children, title, description }: Props) => {
+const Main = ({ children, title, description }: Props) => {
   return (
     <>
       <CommonMeta pageTitle={title} pageDescription={description} />
@@ -44,4 +44,4 @@ const Page = ({ children, title, description }: Props) => {
   );
 };
 
-export default Page;
+export default Main;

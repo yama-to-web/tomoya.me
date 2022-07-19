@@ -5,7 +5,7 @@ import { slide as Menu } from 'react-burger-menu';
 import { links } from '../constants/profile-data';
 import Sns from './Sns';
 
-export default function Header() {
+const Header = () => {
   const route = useRouter().pathname;
   // ハンバーガーメニューCSS
   const styles = {
@@ -129,4 +129,6 @@ export default function Header() {
       </Menu>
     </header>
   );
-}
+};
+
+export default Header;
