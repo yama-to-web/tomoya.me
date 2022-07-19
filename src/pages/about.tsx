@@ -77,7 +77,7 @@ const About: NextPage = (props: Props) => {
                   <div>
                     <p className="text-xxs text-gray-500">{data.category}</p>
                     <p className="mb-3 text-2xl leading-4">{data.name}</p>
-                    <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
+                    <ul className="flex flex-wrap gap-1 text-xxs font-semibold text-slate-500">
                       {data.tags.map((tag) => {
                         return (
                           <li
@@ -89,7 +89,9 @@ const About: NextPage = (props: Props) => {
                         );
                       })}
                     </ul>
-                    <p className="pl-2 mt-5 text-xs whitespace-pre-wrap">{data.explanation}</p>
+                    <p className="p-2 mt-5 text-xs whitespace-pre-wrap bg-gray-50 rounded-md">
+                      {data.explanation}
+                    </p>
                   </div>
                 </li>
               );
@@ -170,7 +172,7 @@ const About: NextPage = (props: Props) => {
                       <Image
                         src={`/instagram/${index}.jpg`}
                         width={300}
-                        height={300}
+                        height={250}
                         layout="responsive"
                         alt="instagram image"
                       />
@@ -179,6 +181,16 @@ const About: NextPage = (props: Props) => {
                 })}
               </div>
             </div>
+            <p className="my-10 w-full text-sm tracking-widest text-center text-gray-500 hover:text-gray-400">
+              <a
+                className="border-b border-b-gray-600"
+                href="https://www.instagram.com/yama_to_web/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SEE MORE
+              </a>
+            </p>
           </div>
         </Section>
       </Main>
