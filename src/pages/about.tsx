@@ -67,7 +67,7 @@ const About: NextPage = (props: Props) => {
                 >
                   <div className="mr-5">
                     <Image
-                      src={data.thumnail}
+                      src={`/products/${data.thumnail}`}
                       width={300}
                       height={200}
                       layout="fixed"
