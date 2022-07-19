@@ -6,7 +6,7 @@ const config = {
         name: 'tomoya.me',
         category: 'Webサイト',
         thumnail: 'tomoya.me.png',
-        explanation: `わたくし藤原のポートフォリオサイト。\n仕事や趣味、様々な私についてのコンテンツを充実させるべく、日々まったり更新中・・・`,
+        explanation: `自身のポートフォリオサイト。\n仕事や趣味、様々な私についてのコンテンツを充実させるべく、日々まったり更新中・・・`,
         tags: ['HTML/JS/CSS', 'Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'MicroCMS', 'SSG', 'Figma'],
       },
     ],

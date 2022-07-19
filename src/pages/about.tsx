@@ -75,8 +75,11 @@ const About: NextPage = (props: Props) => {
                     ></Image>
                   </div>
                   <div>
-                    <p className="text-xxs text-gray-500">{data.category}</p>
-                    <p className="mb-3 text-2xl leading-4">{data.name}</p>
+                    <p className="text-xs text-gray-500">{data.category}</p>
+                    <p className="mb-4 text-3xl leading-6">{data.name}</p>
+                    <p className="p-2 mb-4 ml-1 text-xs whitespace-pre-wrap bg-gray-50 border-l border-gray-300">
+                      {data.explanation}
+                    </p>
                     <ul className="flex flex-wrap gap-1 text-xxs font-semibold text-slate-500">
                       {data.tags.map((tag) => {
                         return (
@@ -89,9 +92,6 @@ const About: NextPage = (props: Props) => {
                         );
                       })}
                     </ul>
-                    <p className="p-2 mt-5 text-xs whitespace-pre-wrap bg-gray-50 rounded-md">
-                      {data.explanation}
-                    </p>
                   </div>
                 </li>
               );
