@@ -1,28 +1,21 @@
-import * as fs from 'fs';
-import type { NextPage, GetStaticProps } from 'next';
+import type { NextPage, GetServerSideProps } from 'next';
 import Image from 'next/image';
-import rp from 'request-promise';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Section from '../components/about/Section';
 import Main from '../components/layouts/Main';
 import { products, certification } from '../constants/profile-data';
 import { loadInstaPosts } from '../lib/fetch-posts';
+import type { InstaImg } from '../types/index';
 
 SwiperCore.use([Pagination, Navigation]);
 
 type Props = {
   children?: React.ReactNode;
-  images?: Array<string>;
-  permalinks?: Array<string>;
-};
-type InstaImg = {
-  [key: string]: string;
+  images?: Array<InstaImg>;
 };
 
 const About: NextPage = (props: Props) => {
-  const instaImgs = props.images;
-  const permalinks = props.permalinks ?? [];
   return (
     <div>
       <Main title="ABOUT" description="Webエンジニア 藤原智弥の自己紹介ページです。">
@@ -136,17 +129,12 @@ const About: NextPage = (props: Props) => {
                   },
                 }}
               >
-                {instaImgs?.map((src, index: number) => {
+                {props.images?.map((data, index) => {
                   return (
-                    <SwiperSlide key={index}>
-                      <a
-                        href={permalinks[index]}
-                        key={index}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                    <SwiperSlide key={data.id}>
+                      <a href={data.permalink} target="_blank" rel="noopener noreferrer">
                         <Image
-                          src={`/instagram/${index}.jpg`}
+                          src={data.media_url}
                           width={60}
                           height={50}
                           layout="responsive"
@@ -161,16 +149,16 @@ const About: NextPage = (props: Props) => {
             {/* PC */}
             <div className="hidden md:block">
               <div className="grid grid-cols-3 gap-1">
-                {instaImgs?.map((src, index: number) => {
+                {props.images?.map((data) => {
                   return (
                     <a
-                      href={permalinks[index]}
-                      key={index}
+                      href={data.permalink}
+                      key={data.id}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Image
-                        src={`/instagram/${index}.jpg`}
+                        src={data.media_url}
                         width={300}
                         height={250}
                         layout="responsive"
@@ -198,27 +186,11 @@ const About: NextPage = (props: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const posts = await loadInstaPosts();
-  const postImages = posts.media.data.map((img: InstaImg) => {
-    return img.media_url.replace(/^[^.]*/, 'https://scontent-nrt1-1');
-  }, {});
-  const permalinks = posts.media.data.map((img: InstaImg) => {
-    return img.permalink;
-  }, {});
-
-  if (postImages) {
-    // イメージファイル作成
-    postImages.map((url: string, index: number) => {
-      const file = fs.createWriteStream(`./public/instagram/${index}.jpg`);
-      rp(url).pipe(file);
-    });
-  }
-  // イメージ読み込み
-  const images = fs.readdirSync('./public/instagram');
+export const getServerSideProps: GetServerSideProps = async () => {
+  const images = await loadInstaPosts();
 
   return {
-    props: { images, permalinks },
+    props: { images },
   };
 };
 export default About;

@@ -1,14 +1,15 @@
-import * as fs from 'fs';
 import { motion } from 'framer-motion';
-import type { NextPage, GetStaticProps } from 'next';
+import type { NextPage, GetServerSideProps } from 'next';
 import Image from 'next/image';
 import CommonMeta from '../components/CommonMeta';
 import Nav from '../components/Nav';
 import Sns from '../components/Sns';
+import { loadInstaPosts } from '../lib/fetch-posts';
+import type { InstaImg } from '../types/index';
 
 type Props = {
   children?: React.ReactNode;
-  images?: Array<string>;
+  images?: Array<InstaImg>;
 };
 
 const Home: NextPage<React.ReactNode> = (props: Props) => {
@@ -16,7 +17,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   let mvPath;
 
   if (instaImgs) {
-    mvPath = `/instagram/${instaImgs[Math.floor(Math.random() * instaImgs.length)]}`;
+    mvPath = instaImgs[Math.floor(Math.random() * instaImgs.length)].media_url;
   } else {
     mvPath = '/mv' + Math.floor(Math.random() * 2) + '.jpg';
   }
@@ -24,7 +25,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   return (
     <main className="flex relative flex-col justify-center items-center">
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div className="-z-10 w-screen min-h-screen bg-fixed after:bg-cover after:bg-mask">
+      <div className="z-0 w-screen min-h-screen bg-fixed after:bg-cover after:bg-mask">
         <Image
           src={mvPath}
           layout="fill"
@@ -77,8 +78,8 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const images = fs.readdirSync('./public/instagram');
+export const getServerSideProps: GetServerSideProps = async () => {
+  const images = await loadInstaPosts(3);
 
   return {
     props: { images },
