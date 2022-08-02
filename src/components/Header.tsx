@@ -67,7 +67,7 @@ const Header = () => {
               <Image src="/icon.png" alt="icon" width={30} height={30} layout="responsive" />
             </div>
             <div className="flex flex-row items-center text-xxs text-black lg:flex-col-reverse">
-              <h1 className="font-semibold tracking-widest">TOMOYA FUJIWARA</h1>
+              <span className="font-semibold tracking-widest">TOMOYA FUJIWARA</span>
               <span className="mx-1 lg:hidden">|</span>
               <h2>tomoya.me</h2>
             </div>

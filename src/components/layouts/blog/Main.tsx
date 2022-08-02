@@ -16,7 +16,7 @@ const Main = ({ children, title, description }: Props) => {
       <div className="flex flex-col items-center">
         <Header />
         <motion.main
-          className="flex flex-col flex-1 items-center min-h-screen sm:px-5 lg:max-w-screen-lg"
+          className="flex flex-col flex-1 items-center min-h-screen sm:px-5 lg:max-w-screen-md"
           initial="pageInitial"
           animate="pageAnimate"
           variants={{

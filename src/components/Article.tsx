@@ -31,7 +31,7 @@ const Article = (props: Props) => {
     >
       <a className="no-underline" href={props.noteUrl} rel="noreferrer">
         <div className="float-right w-24">
-          <img src={props.eyecatch} width={1280} height={670} alt="" />
+          <img src={props.eyecatch ?? '/no_image.png'} width={1280} height={670} alt="" />
         </div>
         <div className="px-1.5 pt-3.5">
           <p className="overflow-hidden mb-2 text-sm font-semibold tracking-wide text-gray-700">

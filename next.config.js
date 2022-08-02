@@ -6,7 +6,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
   },
   images: {
-    domains: ['assets.st-note.com', 'scontent-nrt1-1.cdninstagram.com'],
+    domains: ['assets.st-note.com', 'scontent-nrt1-1.cdninstagram.com', 'images.microcms-assets.io'],
   },
 }
 

@@ -8,7 +8,7 @@ type Props = {
 const Section = ({ children, title }: Props) => {
   return (
     <motion.section
-      className="mb-40 w-full max-w-full"
+      className="mb-52 w-full max-w-full"
       initial={{
         opacity: 0,
         scale: 0.99,

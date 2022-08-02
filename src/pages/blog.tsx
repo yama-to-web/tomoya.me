@@ -49,7 +49,7 @@ const Blog = ({ articles }: Props) => {
                       },
                     }}
                     className="w-full"
-                    src={article.eyecatch.url}
+                    src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
                     alt="test"
                   />
                   <div className="py-4 px-6">{article.title}</div>

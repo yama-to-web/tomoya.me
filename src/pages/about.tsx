@@ -19,6 +19,9 @@ const About: NextPage = (props: Props) => {
   return (
     <div>
       <Main title="ABOUT" description="Webエンジニア 藤原智弥の自己紹介ページです。">
+        {/*
+          自己紹介
+        */}
         <Section title="INTRODUCTION">
           <div className="flex flex-col gap-y-8 justify-between items-start sm:flex-row">
             <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)]">
@@ -38,18 +41,18 @@ const About: NextPage = (props: Props) => {
                 <br />
                 2019年〜現在までフロントエンジニアとして商品比較サイトの開発に携わる
                 <br />
-                <br />
                 フルスタックエンジニアを目指し日々邁進中
                 <br />
-                <br />
                 趣味はアウトドア、週末は野山に飛び出します
-                <br />
                 <br />
                 新しくてワクワクするようなプロダクトに興味があります
               </div>
             </div>
           </div>
         </Section>
+        {/*
+          プロダクト
+         */}
         <Section title={products.name}>
           <ul className="pl-1">
             {products.items.map((data) => {
@@ -91,21 +94,27 @@ const About: NextPage = (props: Props) => {
             })}
           </ul>
         </Section>
+        {/*
+          資格
+         */}
         <Section title={certification.name}>
           <ul className="pl-1">
             {certification.items.map((data) => {
               return (
                 <li className="py-2 border-b-2 border-b-gray-100" key={data.name}>
-                  <p className="text-xs text-gray-500">{data.date}</p>
-                  <p className="text-sm leading-6">
+                  <p className="text-sm text-gray-500">{data.date}</p>
+                  <p className="text-base leading-6">
                     {data.name}
-                    <span className="pl-1 text-xxs before:content-['-']"> {data.vendor}</span>
+                    <span className="pl-1 text-xs before:content-['-']"> {data.vendor}</span>
                   </p>
                 </li>
               );
             })}
           </ul>
         </Section>
+        {/*
+          Instagram
+         */}
         <Section>
           <h4 className="mb-10 w-full text-2xl text-center">Instagram</h4>
           <div className="m-auto w-80 md:w-10/12">
