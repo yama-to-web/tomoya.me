@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { links } from '../constants/profile-data';
+import { links } from 'constants/profile-data';
 
 const Nav = () => {
   return (

@@ -1,7 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next';
-import Article from '../components/Article';
-import Main from '../components/layouts/Main';
-import { loadNotePosts } from '../lib/fetch-posts';
+import Article from 'components/Article';
+import Main from 'components/layouts/Main';
+import { loadNotePosts } from 'lib/fetch-posts';
 
 type Props = {
   children?: React.ReactNode;
@@ -44,8 +44,10 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
       >
         <div className="lg:max-w-screen-lg">
           <div>
-            <p className="text-xs leading-6">Work, Programing, Outdoor etc...</p>
-            <p className="mb-6 text-xs leading-6">note記事サイトに遷移します。</p>
+            <p className="text-xs leading-6">
+              仕事や趣味で気になったこと、気づいたことなどを書き綴ったゆる〜いブログです。
+            </p>
+            <p className="mb-6 text-xs leading-6">noteの記事ページに遷移します。</p>
           </div>
           <div className="container grid grid-cols-1 gap-5 mx-auto sm:grid-cols-2 md:grid-cols-3">
             {articles.map((article: ArticleProps, index: number) => {
@@ -58,7 +60,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
                     name={article.name}
                     body={article.body}
                     likeCount={article.likeCount}
-                    publishAt={moment(article.publishAt).format('YYYY-MM-DD HH:mm')}
+                    publishAt={moment(article.publishAt).format('YYYY.MM.DD ddd')}
                   />
                 );
               }

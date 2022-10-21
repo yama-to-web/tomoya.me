@@ -1,8 +1,10 @@
+import { faTag } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
-import Main from '../components/layouts/Main';
-import { client } from '../lib/client';
+import Main from 'components/layouts/Main';
+import { client } from 'lib/client';
 
 type Props = {
   articles: Array<Article>;
@@ -14,13 +16,20 @@ type Article = {
   publishedAt: string;
   revisedAt: string;
   title: string;
-  content: string;
+  body: string;
   eyecatch: {
     url: string;
     height: number;
     width: number;
   };
-  tags: string;
+  tags: [string];
+  toc: [
+    {
+      text: string;
+      id: string;
+      name: string;
+    },
+  ];
 };
 
 const Blog = ({ articles }: Props) => {
@@ -31,7 +40,7 @@ const Blog = ({ articles }: Props) => {
         <div className="container grid grid-cols-1 gap-5 p-10 mx-auto sm:grid-cols-1 md:grid-cols-3">
           {articles.map((article) => (
             <motion.div
-              className="overflow-hidden rounded shadow-lg"
+              className="overflow-hidden rounded-lg shadow-lg"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
               viewport={{ once: true }}
@@ -39,25 +48,39 @@ const Blog = ({ articles }: Props) => {
             >
               <Link href={`/blog/${article.id}`} passHref>
                 <a>
-                  <motion.img
-                    whileHover={{
-                      position: 'relative',
-                      zIndex: 1,
-                      scale: [1, 1.05],
-                      transition: {
-                        duration: 0.2,
-                      },
-                    }}
-                    className="w-full"
-                    src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
-                    alt="test"
-                  />
-                  <div className="py-4 px-6">{article.title}</div>
-                  <div className="px-6 pt-4 pb-2">
-                    {article.tags && (
-                      <span className="inline-block py-1 px-2 mr-2 mb-2 text-xs font-semibold text-gray-700 before:content-['#'] bg-gray-200 rounded-full">
-                        {article.tags}
-                      </span>
+                  <div className="overflow-hidden">
+                    <motion.img
+                      whileHover={{
+                        position: 'relative',
+                        zIndex: 1,
+                        scale: [1, 1.2],
+                        transition: {
+                          duration: 0.5,
+                        },
+                      }}
+                      width="300"
+                      height="200"
+                      className="w-full"
+                      src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
+                      alt={`${article.title}のイメージ`}
+                    />
+                  </div>
+                  <div className="p-4">
+                    <div className="mb-4 text-sm">{article.title}</div>
+                    {article.tags.length > 0 && (
+                      <ul className="flex justify-start items-center">
+                        {article.tags.map((tag) => {
+                          return (
+                            <li
+                              className="px-1 mr-1 text-xxs font-semibold text-teal-500 rounded-xl border border-teal-500"
+                              key={tag}
+                            >
+                              <FontAwesomeIcon size="sm" icon={faTag} />
+                              {tag}
+                            </li>
+                          );
+                        })}
+                      </ul>
                     )}
                   </div>
                 </a>

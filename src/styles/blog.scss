@@ -1,0 +1,43 @@
+/**
+* microCMS
+*/
+#micro_cms_article {
+  font-family: 'Hiragino Sans';
+
+  // 目次
+  #toc {
+    .h3 {
+      margin-left: 1rem;
+      font-size: 0.9em;
+
+      &::before {
+        margin: 0 0.1rem;
+        content: '-';
+      }
+    }
+
+    li:has(.active) {
+      background-color: rgb(232 232 232);
+    }
+  }
+
+  // 見出し
+  h2 {
+    padding-bottom: 0.5rem;
+    border-bottom: 4px solid #ddd;
+  }
+
+  // リンク
+  .prose a {
+    color: #485fc7;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  // 太字
+  .prose strong {
+    font-style: normal;
+    font-weight: bold;
+    background: linear-gradient(transparent 75%, #b2ffb2 75%);
+  }
+}

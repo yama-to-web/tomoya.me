@@ -2,11 +2,11 @@ import type { NextPage, GetServerSideProps } from 'next';
 import Image from 'next/image';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import Section from '../components/about/Section';
-import Main from '../components/layouts/Main';
-import { products, certification } from '../constants/profile-data';
-import { loadInstaPosts } from '../lib/fetch-posts';
-import type { InstaImg } from '../types/index';
+import Section from 'components/about/Section';
+import Main from 'components/layouts/Main';
+import { products, certification } from 'constants/profile-data';
+import { loadInstaPosts } from 'lib/fetch-posts';
+import type { InstaImg } from 'types/index';
 
 SwiperCore.use([Pagination, Navigation]);
 
@@ -20,8 +20,8 @@ const About: NextPage = (props: Props) => {
     <div>
       <Main title="ABOUT" description="Webエンジニア 藤原智弥の自己紹介ページです。">
         {/*
-          自己紹介
-        */}
+         * 自己紹介
+         */}
         <Section title="INTRODUCTION">
           <div className="flex flex-col gap-y-8 justify-between items-start sm:flex-row">
             <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)]">
@@ -51,7 +51,7 @@ const About: NextPage = (props: Props) => {
           </div>
         </Section>
         {/*
-          プロダクト
+         * プロダクト
          */}
         <Section title={products.name}>
           <ul className="pl-1">
@@ -95,7 +95,7 @@ const About: NextPage = (props: Props) => {
           </ul>
         </Section>
         {/*
-          資格
+         * 資格
          */}
         <Section title={certification.name}>
           <ul className="pl-1">
@@ -113,7 +113,7 @@ const About: NextPage = (props: Props) => {
           </ul>
         </Section>
         {/*
-          Instagram
+         * Instagram
          */}
         <Section>
           <h4 className="mb-10 w-full text-2xl text-center">Instagram</h4>
@@ -123,11 +123,11 @@ const About: NextPage = (props: Props) => {
               <Swiper
                 className="absolute left-1/2 w-screen -translate-x-1/2 md:hidden"
                 slidesPerView={1.3}
-                pagination={{
-                  clickable: true,
-                  bulletClass: 'swiper-pagination-bullet',
-                  bulletActiveClass: `swiper-pagination-bullet-active`,
-                }}
+                // pagination={{
+                //   clickable: true,
+                //   bulletClass: 'swiper-pagination-bullet',
+                //   bulletActiveClass: `swiper-pagination-bullet-active`,
+                // }}
                 loop={true}
                 centeredSlides={true}
                 effect="fade"

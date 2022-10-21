@@ -1,12 +1,13 @@
-import '../styles/globals.css';
-import '../styles/reset.scss';
+import 'styles/globals.scss';
+import 'styles/reset.scss';
+import 'styles/blog.scss';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import { motion } from 'framer-motion';
 import type { AppProps } from 'next/app';
-import GoogleAnalytics from '../components/GoogleAnalytics';
-import usePageView from '../hooks/usePageView';
+import GoogleAnalytics from 'components/GoogleAnalytics';
+import usePageView from 'hooks/usePageView';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
   usePageView(); // GA PCイベント監視

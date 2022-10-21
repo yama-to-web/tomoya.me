@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import type { NextPage, GetServerSideProps } from 'next';
 import Image from 'next/image';
-import CommonMeta from '../components/CommonMeta';
-import Nav from '../components/Nav';
-import Sns from '../components/Sns';
-import { loadInstaPosts } from '../lib/fetch-posts';
-import type { InstaImg } from '../types/index';
+import CommonMeta from 'components/CommonMeta';
+import Nav from 'components/Nav';
+import Sns from 'components/Sns';
+import { loadInstaPosts } from 'lib/fetch-posts';
+import type { InstaImg } from 'types/index';
 
 type Props = {
   children?: React.ReactNode;

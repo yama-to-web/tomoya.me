@@ -47,7 +47,7 @@ const Article = (props: Props) => {
           </div>
           <div className="leading-4">{props.likeCount}</div>
         </div>
-        <div className="float-right text-xs">{props.publishAt}</div>
+        <div className="float-right text-xs text-slate-400">{props.publishAt}</div>
       </a>
     </motion.div>
   );

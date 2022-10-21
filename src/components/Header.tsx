@@ -2,10 +2,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { slide as Menu } from 'react-burger-menu';
-import { links } from '../constants/profile-data';
-import Sns from './Sns';
+import Sns from 'components/Sns';
+import { links } from 'constants/profile-data';
 
-const Header = () => {
+type headerProps = {
+  isActive?: boolean;
+};
+
+const Header = (props: headerProps) => {
+  const isActive =
+    typeof props.isActive == 'undefined'
+      ? ''
+      : props.isActive
+      ? ' opacity-100 duration-1000'
+      : ' opacity-0 duration-500';
   const route = useRouter().pathname;
   // ハンバーガーメニューCSS
   const styles = {
@@ -59,7 +69,10 @@ const Header = () => {
   };
 
   return (
-    <header className="flex sticky inset-0 top-0 z-10 px-4 mx-auto w-full max-w-screen-xl h-16 lg:px-8 lg:h-20">
+    <header
+      id="fixed_header"
+      className={`flex sticky inset-0 top-0 z-10 px-4 mx-auto w-full max-w-screen-xl h-16 lg:px-8 lg:h-20${isActive}`}
+    >
       <div className="flex flex-row items-center w-full">
         <Link href="/">
           <a className="flex items-center">
