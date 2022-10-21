@@ -1,3 +1,4 @@
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
@@ -43,7 +44,7 @@ const Article = (props: Props) => {
         </div>
         <div className="flex items-center px-4 mt-4 text-sm text-pink-400">
           <div className="mr-1 w-3.5">
-            <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon icon={faHeart as IconProp} />
           </div>
           <div className="leading-4">{props.likeCount}</div>
         </div>

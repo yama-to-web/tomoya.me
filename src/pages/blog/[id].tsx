@@ -1,3 +1,4 @@
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
@@ -89,7 +90,7 @@ export default function Article({ article }: Props) {
                       className="py-1 px-2 mr-1 text-xs font-semibold text-teal-500 rounded-xl border border-teal-500"
                       key={tag}
                     >
-                      <FontAwesomeIcon size="sm" icon={faTag} />
+                      <FontAwesomeIcon size="sm" icon={faTag as IconProp} />
                       {tag}
                     </li>
                   );
@@ -100,7 +101,7 @@ export default function Article({ article }: Props) {
               <FontAwesomeIcon
                 size="xs"
                 style={{ marginRight: '0.2rem' }}
-                icon={faClock}
+                icon={faClock as IconProp}
                 color={'gray'}
               />
               <span className="text-xs text-gray-400">

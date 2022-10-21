@@ -1,3 +1,4 @@
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
@@ -75,7 +76,7 @@ const Blog = ({ articles }: Props) => {
                               className="px-1 mr-1 text-xxs font-semibold text-teal-500 rounded-xl border border-teal-500"
                               key={tag}
                             >
-                              <FontAwesomeIcon size="sm" icon={faTag} />
+                              <FontAwesomeIcon size="sm" icon={faTag as IconProp} />
                               {tag}
                             </li>
                           );

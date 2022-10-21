@@ -1,4 +1,4 @@
-import type { SizeProp } from '@fortawesome/fontawesome-svg-core';
+import type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
@@ -29,7 +29,7 @@ const Sns = ({ gap = 'mx-2.5', size = 'lg' }: { gap?: string; size?: SizeProp })
         return (
           <Link href={data.url} key={data.id}>
             <a className={`${gap} w-6`}>
-              <FontAwesomeIcon size={size} icon={data.icon} />
+              <FontAwesomeIcon size={size} icon={data.icon as IconProp} />
             </a>
           </Link>
         );
