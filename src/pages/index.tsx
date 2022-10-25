@@ -23,9 +23,9 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   }
 
   return (
-    <main className="flex relative flex-col justify-center items-center">
+    <main className="relative flex flex-col items-center justify-center">
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div className="z-0 w-screen min-h-screen bg-fixed after:bg-cover after:bg-mask">
+      <div className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover">
         <Image
           src={mvPath}
           layout="fill"
@@ -34,7 +34,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
           alt="instagram image"
         />
       </div>
-      <div className="flex absolute flex-col justify-center items-center p-5">
+      <div className="absolute flex flex-col items-center justify-center p-5">
         <div className="z-50">
           <motion.div
             className="mx-auto"
@@ -53,7 +53,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
             <Image src="/title.png" width="500" height="100" alt="tomoya.me" />
           </motion.div>
           <motion.div
-            className="flex flex-col justify-center items-start mt-8 text-white lg: lg:flex-row lg:justify-between lg:items-center"
+            className="lg: mt-8 flex flex-col items-start justify-center text-white lg:flex-row lg:items-center lg:justify-between"
             initial={{
               opacity: 0,
               y: 30,

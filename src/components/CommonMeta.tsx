@@ -11,8 +11,9 @@ type Props = {
 const CommonMeta = ({ pageTitle, pageDescription, pagePath, pageImage }: Props) => {
   const router = useRouter();
   const domain = 'tomoya.me';
-  const defaultTitle = 'Tomoya Fujiwara（藤原 智弥）Portfolio Site';
-  const defaultDescription = 'Tomoya Fujiwara（藤原 智弥）Portfolio Site';
+  const defaultTitle = 'tomoya.me';
+  const defaultDescription =
+    'WEBエンジニア　Tomoya Fujiwara（藤原 智弥）のポートフォリオサイトです。This site is portfolio of Japan-based Web Engineer Tomoya Fujiwara';
   const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle;
   const description = pageDescription ? pageDescription : defaultDescription;
   const url = pagePath ? pagePath : router.asPath;
@@ -34,12 +35,12 @@ const CommonMeta = ({ pageTitle, pageDescription, pagePath, pageImage }: Props) 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:domain" content={domain} />
       <meta name="twitter:title" content={title} />
       <meta
         name="twitter:description"
-        content="WEBエンジニアTomoya Fujiwara（藤原 智弥）のポートフォリオサイトです。This site is portfolio of Japan-based Web Engineer Tomoya Fujiwara"
+        content="WEBエンジニア　Tomoya Fujiwara（藤原 智弥）のポートフォリオサイトです。This site is portfolio of Japan-based Web Engineer Tomoya Fujiwara"
       />
       <meta name="google-site-verification" content="W-6eEjc2_Sg7Wb0-Ky_uME_ZGe1LR9amK8hEJ2NNimw" />
     </Head>
