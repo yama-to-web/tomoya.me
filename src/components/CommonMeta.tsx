@@ -5,9 +5,10 @@ type Props = {
   pageTitle?: string;
   pageDescription?: string;
   pagePath?: string;
+  pageImage?: string;
 };
 
-const CommonMeta = ({ pageTitle, pageDescription, pagePath }: Props) => {
+const CommonMeta = ({ pageTitle, pageDescription, pagePath, pageImage }: Props) => {
   const router = useRouter();
   const domain = 'tomoya.me';
   const defaultTitle = 'Tomoya Fujiwara（藤原 智弥）Portfolio Site';
@@ -15,6 +16,7 @@ const CommonMeta = ({ pageTitle, pageDescription, pagePath }: Props) => {
   const title = pageTitle ? `${pageTitle} | ${defaultTitle}` : defaultTitle;
   const description = pageDescription ? pageDescription : defaultDescription;
   const url = pagePath ? pagePath : router.asPath;
+  const image = pageImage ? pageImage : 'https://' + domain + '/title.png';
 
   return (
     <Head>
@@ -31,7 +33,7 @@ const CommonMeta = ({ pageTitle, pageDescription, pagePath }: Props) => {
       <meta property="og:site_name" content={defaultTitle} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={'https://' + domain + url + '/title.png'} />
+      <meta property="og:image" content={image} />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:domain" content={domain} />
       <meta name="twitter:title" content={title} />

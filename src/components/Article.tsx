@@ -2,6 +2,7 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 type Props = {
   key: number;
@@ -32,7 +33,7 @@ const Article = (props: Props) => {
     >
       <a className="no-underline" href={props.noteUrl} rel="noreferrer">
         <div className="float-right w-24">
-          <img src={props.eyecatch ?? '/no_image.png'} width={1280} height={670} alt="" />
+          <Image src={props.eyecatch ?? '/no_image.png'} width={1280} height={670} alt="" />
         </div>
         <div className="px-1.5 pt-3.5">
           <p className="overflow-hidden mb-2 text-sm font-semibold tracking-wide text-gray-700">

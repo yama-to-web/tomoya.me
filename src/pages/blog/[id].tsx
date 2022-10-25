@@ -1,5 +1,4 @@
 import type { IconProp } from '@fortawesome/fontawesome-svg-core';
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,39 +9,19 @@ import moment from 'moment';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { Link as ScLink } from 'react-scroll';
+import BreadCrumb from 'components/BreadCrumb';
 import Main from 'components/layouts/blog/Main';
 import { client } from 'lib/client';
+import type { ArticleType } from 'types/index';
 import 'highlight.js/styles/tokyo-night-dark.css';
 
 type Props = {
-  article: Article;
-};
-type Article = {
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  revisedAt: string;
-  title: string;
-  body: string;
-  eyecatch: {
-    url: string;
-    height: number;
-    width: number;
-  };
-  tags: [string];
-  toc: [
-    {
-      text: string;
-      id: string;
-      name: string;
-    },
-  ];
+  article: ArticleType;
 };
 
 export default function Article({ article }: Props) {
   return (
-    <Main title={article.title}>
+    <Main article={article}>
       {/* TOC */}
       {article.toc.length > 0 && (
         <div
@@ -71,49 +50,62 @@ export default function Article({ article }: Props) {
           </ul>
         </div>
       )}
-      <div className="mx-auto">
-        <div className="overflow-hidden max-w-6xl sm:rounded">
-          <Image
-            width={3000}
-            height={1500}
-            className="object-cover w-full h-full shadow-sm"
-            src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
-            alt={`${article.title}のイメージ`}
-          />
-          <div className="px-5 mt-16">
-            <h1 className="mb-8 text-3xl font-semibold xl:text-4xl">{article.title}</h1>
-            {article.tags.length > 0 && (
-              <ul className="flex justify-start items-center mt-4">
-                {article.tags.map((tag) => {
-                  return (
-                    <li
-                      className="py-1 px-2 mr-1 text-xs font-semibold text-teal-500 rounded-xl border border-teal-500"
-                      key={tag}
-                    >
-                      <FontAwesomeIcon size="sm" icon={faTag as IconProp} />
-                      {tag}
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
-            <div className="flex items-center my-2">
-              <FontAwesomeIcon
-                size="xs"
-                style={{ marginRight: '0.2rem' }}
-                icon={faClock as IconProp}
-                color={'gray'}
-              />
-              <span className="text-xs text-gray-400">
-                {moment(article.createdAt).format('YYYY.MM.DD')}
-              </span>
-            </div>
-            {/* 本文 */}
-            <div
-              className="mt-20 rounded prose"
-              dangerouslySetInnerHTML={{ __html: `${article.body}` }}
+      <div className="overflow-hidden max-w-6xl">
+        <BreadCrumb
+          lists={[
+            {
+              name: 'Home',
+              path: '/',
+            },
+            {
+              name: 'Blog',
+              path: '/blog',
+            },
+            {
+              name: article.title,
+            },
+          ]}
+        />
+        <Image
+          width={3000}
+          height={1500}
+          className="object-cover w-full h-full shadow-sm"
+          src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
+          alt={`${article.title}のイメージ`}
+        />
+        <div className="px-5 mt-8 sm:mt-16">
+          <h1 className="mb-8 text-3xl font-semibold xl:text-4xl">{article.title}</h1>
+          {article.tags.length > 0 && (
+            <ul className="flex justify-start items-center mt-4">
+              {article.tags.map((tag) => {
+                return (
+                  <li
+                    className="py-1 px-2 mr-1 text-xs font-semibold text-teal-500 rounded-xl border border-teal-500"
+                    key={tag}
+                  >
+                    <FontAwesomeIcon size="sm" icon={faTag as IconProp} />
+                    {tag}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+          <div className="flex items-center my-2">
+            <FontAwesomeIcon
+              size="xs"
+              style={{ marginRight: '0.2rem' }}
+              icon={faClock as IconProp}
+              color={'gray'}
             />
+            <span className="text-xs text-gray-400">
+              {moment(article.createdAt).format('YYYY.MM.DD')}
+            </span>
           </div>
+          {/* 本文 */}
+          <div
+            className="mt-20 rounded prose"
+            dangerouslySetInnerHTML={{ __html: `${article.body}` }}
+          />
         </div>
       </div>
     </Main>
@@ -132,7 +124,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     contentId: idExceptArray,
     queries: queries,
   });
-  console.log(articles);
 
   const $ = load(articles.body);
   const headings = $('h1, h2, h3').toArray();
