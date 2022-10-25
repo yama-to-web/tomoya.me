@@ -26,13 +26,13 @@ export default function Article({ article }: Props) {
       {article.toc.length > 0 && (
         <div
           id="toc"
-          className="hidden fixed top-1/4 left-[calc(50%_-_768px)] ml-20 max-w-sm font-extralight text-slate-500 rounded-lg xl:block"
+          className="fixed top-1/4 left-[calc(50%_-_768px)] ml-20 hidden max-w-sm rounded-lg font-extralight text-slate-500 xl:block"
         >
-          <h4 className="py-3 mb-3 text-slate-500">目次</h4>
+          <h4 className="mb-3 py-3 text-slate-500">目次</h4>
           <ul>
             {article.toc.map((data, index) => {
               return (
-                <li key={index} className={`text-sm text-gray-400 leading-7 ${data.name}`}>
+                <li key={index} className={`text-sm leading-7 text-gray-400 ${data.name}`}>
                   <ScLink
                     activeClass="active"
                     to={data.id}
@@ -50,7 +50,8 @@ export default function Article({ article }: Props) {
           </ul>
         </div>
       )}
-      <div className="overflow-hidden max-w-6xl">
+      <div className="max-w-6xl overflow-hidden">
+        {/* パンくず */}
         <BreadCrumb
           lists={[
             {
@@ -66,21 +67,24 @@ export default function Article({ article }: Props) {
             },
           ]}
         />
+        {/* サムネイル */}
         <Image
           width={3000}
           height={1500}
-          className="object-cover w-full h-full shadow-sm"
+          className="h-full w-full object-cover shadow-sm lg:rounded-2xl"
           src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
           alt={`${article.title}のイメージ`}
         />
-        <div className="px-5 mt-8 sm:mt-16">
+        <div className="mt-8 px-5 sm:mt-16">
+          {/* タイトル */}
           <h1 className="mb-8 text-3xl font-semibold xl:text-4xl">{article.title}</h1>
+          {/* タグ */}
           {article.tags.length > 0 && (
-            <ul className="flex justify-start items-center mt-4">
+            <ul className="mt-4 flex items-center justify-start">
               {article.tags.map((tag) => {
                 return (
                   <li
-                    className="py-1 px-2 mr-1 text-xs font-semibold text-teal-500 rounded-xl border border-teal-500"
+                    className="mr-1 rounded-xl border border-teal-500 py-1 px-2 text-xs font-semibold text-teal-500"
                     key={tag}
                   >
                     <FontAwesomeIcon size="sm" icon={faTag as IconProp} />
@@ -90,7 +94,8 @@ export default function Article({ article }: Props) {
               })}
             </ul>
           )}
-          <div className="flex items-center my-2">
+          {/* 公開日 */}
+          <div className="my-2 flex items-center">
             <FontAwesomeIcon
               size="xs"
               style={{ marginRight: '0.2rem' }}
@@ -103,7 +108,7 @@ export default function Article({ article }: Props) {
           </div>
           {/* 本文 */}
           <div
-            className="mt-20 rounded prose"
+            className="prose mt-20 rounded"
             dangerouslySetInnerHTML={{ __html: `${article.body}` }}
           />
         </div>

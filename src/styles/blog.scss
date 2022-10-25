@@ -23,8 +23,39 @@
 
   // 見出し
   h2 {
-    padding-bottom: 0.5rem;
-    border-bottom: 4px solid #ddd;
+    position: relative;
+    padding-bottom: 0.35rem;
+    border-bottom: 0.15rem solid #ddd;
+  }
+
+  h2::before {
+    position: absolute;
+    top: 0;
+    left: -1rem;
+    display: inline-block;
+    width: 0.5rem;
+    height: 100%;
+    content: '';
+    background: linear-gradient(0deg, rgb(103 230 179) 0%, rgb(103 230 179) 50%, rgb(103 230 179) 50%, rgb(103 230 179) 100%);
+
+    // border-radius: 5px;
+  }
+
+  h3 {
+    position: relative;
+    margin-left: 1rem;
+  }
+
+  h3::before {
+    position: absolute;
+    top: 0;
+    left: -1rem;
+    display: inline-block;
+    width: 0.4rem;
+    height: 100%;
+    content: '';
+    background: linear-gradient(0deg, rgb(187 145 239) 0%, rgb(187 145 239) 50%, rgb(187 145 239) 50%, rgb(187 145 239) 100%);
+    border-radius: 5px;
   }
 
   // リンク
@@ -43,6 +74,9 @@
 
   // 太字
   .prose blockquote {
+    padding: 1rem;
     color: rgb(117 117 117);
+    border-left-width: 0;
+    border-radius: 0.5rem;
   }
 }

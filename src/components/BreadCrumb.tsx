@@ -12,7 +12,7 @@ type Props = {
 
 const BreadCrumb = ({ lists }: Props) => {
   return (
-    <ol className="flex p-2 text-xxs text-gray-500 sm:text-sm" aria-label="breadcrumb">
+    <ol className="flex p-3 text-xxs text-gray-500 sm:text-sm" aria-label="breadcrumb">
       {lists.map(({ name = 'Home', path = '/' }, index) => (
         <li key={index}>
           {lists.length - 1 !== index ? (

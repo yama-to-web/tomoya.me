@@ -43,15 +43,16 @@ const Blog = ({ articles }: Props) => {
         <div className="container grid grid-cols-1 gap-5 mx-auto sm:grid-cols-1 sm:p-10 md:grid-cols-3">
           {articles.map((article) => (
             <motion.div
-              className="overflow-hidden shadow-lg"
+              className="overflow-hidden rounded-lg shadow-lg"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
               viewport={{ once: true }}
               key={article.id}
             >
               <Link href={`/blog/${article.id}`} passHref>
-                <a className="">
-                  <div className="overflow-hidden">
+                <a>
+                  {/* サムネイル */}
+                  <div className="flex overflow-hidden items-center h-44">
                     <motion.img
                       whileHover={{
                         position: 'relative',
@@ -68,8 +69,23 @@ const Blog = ({ articles }: Props) => {
                       alt={`${article.title}のイメージ`}
                     />
                   </div>
-                  <div className="p-4">
-                    <div className="mb-4 text-lg font-bold">{article.title}</div>
+                  {/* Card Body */}
+                  <div className="p-3">
+                    {/* 公開日 */}
+                    <div className="flex items-center mb-1 text-gray-400">
+                      <FontAwesomeIcon
+                        size="xs"
+                        style={{ marginRight: '0.2rem' }}
+                        icon={faClock as IconProp}
+                      />
+                      <span className="text-xs">
+                        {moment(article.createdAt).format('YYYY.MM.DD')}
+                      </span>
+                    </div>
+                    {/* 記事タイトル */}
+                    <div className="mb-4 text-base font-semibold text-gray-500">
+                      {article.title}
+                    </div>
                     {article.tags.length > 0 && (
                       <ul className="flex justify-start items-center">
                         {article.tags.map((tag) => {
@@ -85,17 +101,6 @@ const Blog = ({ articles }: Props) => {
                         })}
                       </ul>
                     )}
-                    <div className="flex items-center my-2 text-gray-400">
-                      <FontAwesomeIcon
-                        size="xs"
-                        style={{ marginRight: '0.2rem' }}
-                        icon={faClock as IconProp}
-                        color={'gray'}
-                      />
-                      <span className="text-xs">
-                        {moment(article.createdAt).format('YYYY.MM.DD')}
-                      </span>
-                    </div>
                   </div>
                 </a>
               </Link>
