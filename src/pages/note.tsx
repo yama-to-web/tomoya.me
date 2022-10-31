@@ -49,7 +49,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
             </p>
             <p className="mb-6 text-xs leading-6">noteの記事ページに遷移します。</p>
           </div>
-          <div className="container grid grid-cols-1 gap-5 mx-auto sm:grid-cols-2 md:grid-cols-3">
+          <div className="container mx-auto grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3">
             {articles.map((article: ArticleProps, index: number) => {
               if (article) {
                 return (

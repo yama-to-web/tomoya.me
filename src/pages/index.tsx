@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import type { NextPage, GetServerSideProps } from 'next';
+import type { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
 import CommonMeta from 'components/CommonMeta';
 import Nav from 'components/Nav';
@@ -28,9 +28,9 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
       <div className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover">
         <Image
           src={mvPath}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
+          fill={true}
+          object-fit="cover"
+          object-position="center"
           alt="instagram image"
         />
       </div>
@@ -78,7 +78,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const images = await loadInstaPosts(3);
 
   return {

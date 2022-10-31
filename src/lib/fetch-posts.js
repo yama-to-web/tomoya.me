@@ -5,7 +5,7 @@ export async function loadInstaPosts(limit = 6) {
   let data = await res.json();
   if (data) {
     data = data.media.data.map((img) => {
-      img.media_url = img.media_url.replace(/^[^.]*/, 'https://scontent-nrt1-1');
+      // img.media_url = img.media_url.replace(/^[^.]*/, 'https://scontent-nrt1-1');
       return img;
     }, {});
   }

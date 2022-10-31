@@ -6,7 +6,20 @@ const nextConfig = {
     includePaths: [path.join(__dirname, 'styles')],
   },
   images: {
-    domains: ['assets.st-note.com', 'scontent-nrt1-1.cdninstagram.com', 'images.microcms-assets.io'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.st-note.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.cdninstagram.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.microcms-assets.io',
+      },
+    ],
   },
 }
 

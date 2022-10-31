@@ -3,6 +3,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type Props = {
   key: number;
@@ -17,7 +18,7 @@ type Props = {
 const Article = (props: Props) => {
   return (
     <motion.div
-      className="overflow-hidden p-2.5 w-full max-h-64 bg-white rounded border-0 border-gray-100 shadow shadow-gray-200 sm:max-w-xs"
+      className="max-h-64 w-full overflow-hidden rounded border-0 border-gray-100 bg-white p-2.5 shadow shadow-gray-200 sm:max-w-xs"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
       viewport={{ once: true }}
@@ -31,26 +32,26 @@ const Article = (props: Props) => {
         },
       }}
     >
-      <a className="no-underline" href={props.noteUrl} rel="noreferrer">
+      <Link className="no-underline" href={props.noteUrl} rel="noreferrer" passHref>
         <div className="float-right w-24">
           <Image src={props.eyecatch ?? '/no_image.png'} width={1280} height={670} alt="" />
         </div>
         <div className="px-1.5 pt-3.5">
-          <p className="overflow-hidden mb-2 text-sm font-semibold tracking-wide text-gray-700">
+          <p className="mb-2 overflow-hidden text-sm font-semibold tracking-wide text-gray-700">
             {props.name}
           </p>
-          <p className="float-left overflow-hidden my-1 w-full h-16 text-xs leading-5 text-gray-500 break-all">
+          <p className="float-left my-1 h-16 w-full overflow-hidden break-all text-xs leading-5 text-gray-500">
             {props.body}
           </p>
         </div>
-        <div className="flex items-center px-4 mt-4 text-sm text-pink-400">
+        <div className="mt-4 flex items-center px-4 text-sm text-pink-400">
           <div className="mr-1 w-3.5">
             <FontAwesomeIcon icon={faHeart as IconProp} />
           </div>
           <div className="leading-4">{props.likeCount}</div>
         </div>
         <div className="float-right text-xs text-slate-400">{props.publishAt}</div>
-      </a>
+      </Link>
     </motion.div>
   );
 };

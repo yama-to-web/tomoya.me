@@ -10,7 +10,6 @@
   "plugins": ["tailwindcss"],
   "ignorePatterns": ["tailwind.config.js", "node_modules/*"],
   "rules": {
-    // importの順番をルール化
     "import/order": [
       "error",
       {
@@ -18,6 +17,15 @@
           "order": "asc"
         }
       }
-    ]
+    ],
+    "import/resolver": {
+      "typescript": {}
+    },
+    "import/no-unresolved": "off"
+  },
+  "settings": {
+    "tailwindcss": {
+      "groupByResponsive": true
+    }
   }
 }
