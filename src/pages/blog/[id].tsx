@@ -8,7 +8,7 @@ import type { MicroCMSQueries } from 'microcms-js-sdk';
 import moment from 'moment';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
-import { Link as ScLink } from 'react-scroll';
+import { Link as ScLink } from 'react-scroll/modules';
 import BreadCrumb from 'components/BreadCrumb';
 import Main from 'components/layouts/blog/Main';
 import { client } from 'lib/client';
@@ -36,8 +36,8 @@ export default function Article({ article }: Props) {
                   <ScLink
                     activeClass="active"
                     to={data.id}
-                    spy={true}
-                    smooth={true}
+                    spy
+                    smooth
                     offset={-80}
                     duration={500}
                     className="px-2 hover:cursor-pointer"

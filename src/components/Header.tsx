@@ -43,7 +43,7 @@ const Header = (props: headerProps) => {
     },
     bmMenuWrap: {
       position: 'fixed',
-      height: '100%',
+      height: '100vh',
     },
     bmMenu: {
       background: '#000',
@@ -71,7 +71,7 @@ const Header = (props: headerProps) => {
   return (
     <header
       id="fixed_header"
-      className={`sticky inset-0 top-0 z-10 mx-auto flex h-16 w-full max-w-screen-xl px-4 lg:h-20 lg:px-8${isActive}`}
+      className={`fixed inset-0 top-0 z-10 mx-auto flex h-16 w-full max-w-screen-xl px-4 lg:h-20 lg:px-8${isActive}`}
     >
       <div className="flex w-full flex-row items-center">
         <Link href="/" className="flex items-center" passHref>
@@ -91,7 +91,7 @@ const Header = (props: headerProps) => {
                 href={data.path}
                 key={data.content}
                 className={
-                  'p-3 my-1 hover:text-gray-400 duration-300' +
+                  'my-1 p-3 duration-300 hover:text-gray-400' +
                   (route == data.path ? ' pointer-events-none line-through' : '')
                 }
               >
@@ -105,9 +105,7 @@ const Header = (props: headerProps) => {
         right
         styles={styles}
         width={300}
-        customBurgerIcon={
-          <Image src="/icon.png" alt="icon" width={30} height={30} priority={true} />
-        }
+        customBurgerIcon={<Image src="/icon.png" alt="icon" width={30} height={30} priority />}
         burgerButtonClassName="lg:hidden"
       >
         <div className="m-auto ml-0 flex flex-col items-start text-lg font-thin text-white">
@@ -117,7 +115,7 @@ const Header = (props: headerProps) => {
                 href={data.path}
                 key={data.content}
                 className={
-                  'p-3 my-1 hover:text-gray-400 duration-300' +
+                  'my-1 p-3 duration-300 hover:text-gray-400' +
                   (route == data.path ? ' pointer-events-none line-through' : '')
                 }
               >

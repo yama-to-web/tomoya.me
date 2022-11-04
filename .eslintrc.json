@@ -2,13 +2,18 @@
   "extends": [
     "next",
     "next/core-web-vitals",
-    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
     "plugin:import/recommended",
     "plugin:import/warnings",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "prettier"
   ],
-  "plugins": ["tailwindcss"],
-  "ignorePatterns": ["tailwind.config.js", "node_modules/*"],
+  "plugins": ["react", "@typescript-eslint", "tailwindcss"],
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": ["tailwind.config.js", "next.config.js", "node_modules/*"],
   "rules": {
     "import/order": [
       "error",
@@ -18,14 +23,16 @@
         }
       }
     ],
-    "import/resolver": {
-      "typescript": {}
-    },
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off"
   },
   "settings": {
+    "import/resolver": {
+      "typescript": {}
+    },
     "tailwindcss": {
-      "groupByResponsive": true
+      "whitelist": ["bg-mask"]
     }
   }
 }

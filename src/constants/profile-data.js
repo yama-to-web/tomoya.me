@@ -7,7 +7,17 @@ const config = {
         category: 'Webサイト',
         thumnail: 'tomoya.me.png',
         explanation: `当ポートフォリオサイト。\n以前から興味のあったNext.js TypeScript TailwindCSSを使い、自身の学習も兼ねてゼロから自分で作成しました！\n今後もブログ記事などのコンテンツ拡張も予定しております。\nお気軽にお立ち寄りいただけると幸いです。`,
-        tags: ['HTML/JS/CSS', 'Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel', 'MicroCMS', 'SSG', 'Figma'],
+        tags: [
+          'HTML/JS/CSS',
+          'Next.js',
+          'React',
+          'TypeScript',
+          'Tailwind CSS',
+          'Vercel',
+          'MicroCMS',
+          'SSG',
+          'Figma',
+        ],
       },
     ],
   },
@@ -52,8 +62,8 @@ const config = {
     {
       id: 'github',
       url: 'https://github.com/yama-to-web',
-    }
-  ]
-}
+    },
+  ],
+};
 
-module.exports = config
+module.exports = config;

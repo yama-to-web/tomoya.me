@@ -4,14 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        'xxs': '.625rem'
-      }
+        xxs: '.625rem',
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-}
+  plugins: [require('@tailwindcss/typography')],
+};

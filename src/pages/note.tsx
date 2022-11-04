@@ -1,3 +1,4 @@
+import moment from 'moment';
 import type { NextPage, GetStaticProps } from 'next';
 import Article from 'components/Article';
 import Main from 'components/layouts/Main';
@@ -13,16 +14,15 @@ type ArticleProps = {
   eyecatch: string;
   name: string;
   body: string;
-  likeCount: Number;
+  likeCount: number;
   publishAt: string;
 };
 
 type DisplayArti = {
-  [key: string]: string | Number;
+  [key: string]: string | number;
 };
 
 const Note: NextPage<React.ReactNode> = (props: Props) => {
-  const moment = require('moment');
   let articles = props.articles;
   if (!articles) {
     articles = [
@@ -75,8 +75,8 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await loadNotePosts();
   const allowedKeys = ['name', 'likeCount', 'publishAt', 'eyecatch', 'body', 'noteUrl'];
-  let contents = posts.data.contents;
-  let articles = contents.map((article: DisplayArti) => {
+  const contents = posts.data.contents;
+  const articles = contents.map((article: DisplayArti) => {
     const filteredArti = Object.keys(article)
       .filter((key) => allowedKeys.includes(key))
       .reduce((obj: DisplayArti, key: string) => {

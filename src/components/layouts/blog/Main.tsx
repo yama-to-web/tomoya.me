@@ -24,7 +24,7 @@ const Main = ({ children, article }: Props) => {
         <Header isActive={isHeaderActive} />
         <motion.main
           id="micro_cms_article"
-          className="flex flex-row flex-1 items-center mx-auto min-h-screen sm:px-5 lg:max-w-screen-md"
+          className="mx-auto mt-16 flex min-h-screen flex-1 flex-row items-center sm:px-5 lg:max-w-screen-md"
           initial="pageInitial"
           animate="pageAnimate"
           variants={{

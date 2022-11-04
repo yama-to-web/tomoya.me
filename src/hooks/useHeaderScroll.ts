@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
  * @return {boolean} 表示、非表示のbool値を返却する
  */
 const useHeaderScroll = (activePoint: number): boolean => {
-  const [isHeaderActive, setIsHeaderActive] = useState<boolean>(false);
+  const [isHeaderActive, setIsHeaderActive] = useState<boolean>(true);
 
   useEffect(() => {
     let headerHeight = 0;
@@ -17,11 +17,7 @@ const useHeaderScroll = (activePoint: number): boolean => {
     const scrollWindow = () => {
       let scroll = 0;
       scroll = window.scrollY;
-      if (headerHeight > scroll || scroll <= scrollPoint) {
-        setIsHeaderActive(true);
-      } else {
-        setIsHeaderActive(false);
-      }
+      setIsHeaderActive(headerHeight > scroll || scroll <= scrollPoint);
       scrollPoint = scroll;
     };
     window.addEventListener('scroll', scrollWindow);

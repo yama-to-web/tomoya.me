@@ -15,11 +15,11 @@ const Main = ({ children, title, description }: Props) => {
       <CommonMeta pageTitle={title} pageDescription={description} />
       <div className="flex flex-col items-center">
         <Header />
-        <section className="flex items-start px-5 mt-24 w-full h-40 text-3xl lg:max-w-screen-lg">
+        <section className="mt-24 flex h-40 w-full items-start px-5 text-3xl lg:max-w-screen-lg">
           <h3 className="text-lg font-bold">{title}</h3>
         </section>
         <motion.main
-          className="flex flex-col flex-1 items-center px-5 min-h-screen lg:max-w-screen-lg"
+          className="flex min-h-screen flex-1 flex-col items-center px-5 lg:max-w-screen-lg"
           initial="pageInitial"
           animate="pageAnimate"
           variants={{

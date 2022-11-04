@@ -1,4 +1,4 @@
-import type { IconParams, IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
+import type { IconProp, SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { faTwitter, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';

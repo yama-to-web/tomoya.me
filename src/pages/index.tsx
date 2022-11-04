@@ -28,7 +28,7 @@ const Home: NextPage<React.ReactNode> = (props: Props) => {
       <div className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover">
         <Image
           src={mvPath}
-          fill={true}
+          fill
           object-fit="cover"
           object-position="center"
           alt="instagram image"

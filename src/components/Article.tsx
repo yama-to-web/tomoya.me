@@ -11,7 +11,7 @@ type Props = {
   eyecatch: string;
   name: string;
   body: string;
-  likeCount: Number;
+  likeCount: number;
   publishAt: string;
 };
 

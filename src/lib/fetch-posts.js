@@ -3,13 +3,13 @@ export async function loadInstaPosts(limit = 6) {
     `https://graph.facebook.com/v14.0/17841450072012853?fields=media.limit(${limit}){media_url,permalink}&access_token=${process.env.INSTA_GRAPH_API_KEY}`,
   );
   let data = await res.json();
+  let ImgData = [];
   if (data) {
-    data = data.media.data.map((img) => {
-      // img.media_url = img.media_url.replace(/^[^.]*/, 'https://scontent-nrt1-1');
+    ImgData = data.media.data.map((img) => {
       return img;
     }, {});
   }
-  return data;
+  return ImgData;
 }
 
 export async function loadNotePosts() {

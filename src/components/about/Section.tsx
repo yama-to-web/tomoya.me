@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 type Props = {
   children?: React.ReactNode;
-  title?: String;
+  title?: string;
 };
 
 const Section = ({ children, title }: Props) => {
@@ -17,7 +17,7 @@ const Section = ({ children, title }: Props) => {
       viewport={{ once: true }}
     >
       <motion.h4
-        className="mb-10 g:max-w-screen-lg text-3xl font-thin tracking-wide"
+        className="mb-10 text-3xl font-thin tracking-wide lg:max-w-screen-lg"
         initial={{
           opacity: 0,
           y: '100%',

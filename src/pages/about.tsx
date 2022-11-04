@@ -1,11 +1,11 @@
-import type { NextPage, GetStaticProps } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import SwiperCore, { Pagination, Navigation } from 'swiper';
+import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Section from 'components/about/Section';
 import Main from 'components/layouts/Main';
-import { products, certification } from 'constants/profile-data';
+import { certification, products } from 'constants/profile-data';
 import { loadInstaPosts } from 'lib/fetch-posts';
 import type { InstaImg } from 'types/index';
 
@@ -116,17 +116,17 @@ const About: NextPage = (props: Props) => {
         <h4 className="mb-10 w-full text-center text-2xl">Instagram</h4>
         <div className="m-auto w-full">
           {/* SP カルーセル */}
-          <div className="w-screen -mx-5">
+          <div className="-mx-5 w-screen">
             <Swiper
               className="w-full md:hidden"
               slidesPerView={1.3}
-              loop={true}
-              centeredSlides={true}
+              loop
+              centeredSlides
               effect="fade"
             >
               {props.images?.map((data, index) => {
                 return (
-                  <SwiperSlide key={data.id}>
+                  <SwiperSlide key={index}>
                     <Link
                       className="inline-block h-60 sm:h-80"
                       href={data.permalink}
@@ -134,12 +134,7 @@ const About: NextPage = (props: Props) => {
                       rel="noopener noreferrer"
                       passHref
                     >
-                      <Image
-                        src={data.media_url}
-                        fill={true}
-                        object-fit="contain"
-                        alt="instagram image"
-                      />
+                      <Image src={data.media_url} fill object-fit="contain" alt="instagram image" />
                     </Link>
                   </SwiperSlide>
                 );
@@ -159,12 +154,7 @@ const About: NextPage = (props: Props) => {
                     rel="noopener noreferrer"
                     passHref
                   >
-                    <Image
-                      src={data.media_url}
-                      fill={true}
-                      object-fit="cover"
-                      alt="instagram image"
-                    />
+                    <Image src={data.media_url} fill object-fit="cover" alt="instagram image" />
                   </Link>
                 );
               })}
