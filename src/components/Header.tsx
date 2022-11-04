@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { slide as Menu } from 'react-burger-menu';
+import { slide as Menu, State } from 'react-burger-menu';
 import Sns from 'components/Sns';
 import { links } from 'constants/profile-data';
 
@@ -16,6 +16,21 @@ const Header = (props: headerProps) => {
       : props.isActive
       ? ' opacity-100 duration-1000'
       : ' opacity-0 duration-500';
+  // バーガーメニュー 開閉時のスクロール制御
+  const isMenuOpen = (state: State) => {
+    if (state.isOpen) {
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = 'auto';
+      };
+    }
+
+    document.body.style.overflow = 'scroll';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  };
+
   const route = useRouter().pathname;
   // ハンバーガーメニューCSS
   const styles = {
@@ -107,6 +122,7 @@ const Header = (props: headerProps) => {
         width={300}
         customBurgerIcon={<Image src="/icon.png" alt="icon" width={30} height={30} priority />}
         burgerButtonClassName="lg:hidden"
+        onStateChange={isMenuOpen}
       >
         <div className="m-auto ml-0 flex flex-col items-start text-lg font-thin text-white">
           {links.map((data) => {

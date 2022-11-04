@@ -6,7 +6,7 @@ import { load } from 'cheerio';
 import hljs from 'highlight.js';
 import type { MicroCMSQueries } from 'microcms-js-sdk';
 import moment from 'moment';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import Image from 'next/image';
 import { Link as ScLink } from 'react-scroll/modules';
 import BreadCrumb from 'components/BreadCrumb';
@@ -117,7 +117,7 @@ export default function Article({ article }: Props) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   const id = ctx.params?.id;
   const idExceptArray = id instanceof Array ? id[0] : id;
   const queries: MicroCMSQueries = {
