@@ -12,11 +12,10 @@ import type { InstaImg } from 'types/index';
 SwiperCore.use([Pagination, Navigation]);
 
 type Props = {
-  children?: React.ReactNode;
   images?: Array<InstaImg>;
 };
 
-const About: NextPage = (props: Props) => {
+const About: NextPage<Props> = (props: Props) => {
   return (
     <Main title="ABOUT" description="Webエンジニア 藤原智弥の自己紹介ページです。">
       {/*

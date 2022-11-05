@@ -4,10 +4,10 @@ import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import moment from 'moment';
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import Main from 'components/layouts/Main';
-import { client } from 'lib/client';
+import { microcms } from 'lib/client';
 
 type Props = {
   articles: Array<Article>;
@@ -35,7 +35,7 @@ type Article = {
   ];
 };
 
-const Blog = ({ articles }: Props) => {
+const Blog: NextPage<Props> = ({ articles }: Props) => {
   return (
     <Main title="BLOG" description="Webエンジニア 藤原智弥のBLOG">
       {!articles.length && <div className="text-2xl text-gray-500">COMING SOON...</div>}
@@ -106,7 +106,7 @@ const Blog = ({ articles }: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.get({ endpoint: 'blogs' });
+  const data = await microcms.get({ endpoint: 'blogs' });
 
   return {
     props: {

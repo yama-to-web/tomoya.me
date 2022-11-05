@@ -6,12 +6,12 @@ import { load } from 'cheerio';
 import hljs from 'highlight.js';
 import type { MicroCMSQueries } from 'microcms-js-sdk';
 import moment from 'moment';
-import { GetStaticProps } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import { Link as ScLink } from 'react-scroll/modules';
 import BreadCrumb from 'components/BreadCrumb';
 import Main from 'components/layouts/blog/Main';
-import { client } from 'lib/client';
+import { microcms } from 'lib/client';
 import type { ArticleType } from 'types/index';
 import 'highlight.js/styles/tokyo-night-dark.css';
 
@@ -19,7 +19,7 @@ type Props = {
   article: ArticleType;
 };
 
-export default function Article({ article }: Props) {
+const Article: NextPage<Props> = ({ article }: Props) => {
   return (
     <Main article={article}>
       {/* TOC */}
@@ -115,16 +115,22 @@ export default function Article({ article }: Props) {
       </div>
     </Main>
   );
-}
+};
+
+export default Article;
+
+export const getStaticPaths = async () => {
+  const data = await microcms.get({ endpoint: 'blogs', queries: { limit: 9999 } });
+
+  const paths = data.contents.map((content: { id: string }) => `/blog/${content.id}`);
+  return { paths, fallback: false };
+};
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const id = ctx.params?.id;
   const idExceptArray = id instanceof Array ? id[0] : id;
-  const queries: MicroCMSQueries = {
-    draftKey: ctx.query?.draftKey as string,
-    filters: ctx.query?.filters as string,
-  };
-  const articles = await client.get({
+  const queries = ctx.previewData as MicroCMSQueries;
+  const articles = await microcms.get({
     endpoint: 'blogs',
     contentId: idExceptArray,
     queries: queries,
@@ -133,8 +139,10 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const $ = load(articles.body);
   const headings = $('h1, h2, h3').toArray();
   // 目次
+  console.log(headings);
+
   const toc = headings.map((item) => ({
-    text: (item.children[0] as any).data,
+    text: (item.children[0] as { data: string }).data,
     id: item.attribs.id,
     name: item.name,
   }));
