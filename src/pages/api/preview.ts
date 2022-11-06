@@ -1,28 +1,23 @@
-import type { MicroCMSContentId } from 'microcms-js-sdk';
-import type { NextApiResponse } from 'next';
+import type { MicroCMSQueries } from 'microcms-js-sdk';
+import type { NextApiRequest, NextApiResponse } from 'next';
 import { microcms } from 'lib/client';
 
-type Props = {
-  query: QueryType;
-  res: NextApiResponse;
-};
 type QueryType = {
-  id: MicroCMSContentId;
+  id: string;
   draftKey: string;
 };
 
-const preview = async ({ query, res }: Props) => {
-  if (!query?.id && !query?.draftKey) {
-    return res.status(404).end();
+const preview = async (req: NextApiRequest, res: NextApiResponse) => {
+  const query = req.query as QueryType;
+  if (!query.id || !query.draftKey) {
+    return res?.status(404).end();
   }
-  const id = query?.id;
-  const idExceptArray = id instanceof Array ? id[0] : id;
-  const queries = {
-    draftKey: query?.draftKey,
+  const queries: MicroCMSQueries = {
+    draftKey: query.draftKey,
   };
   const content = await microcms.get({
     endpoint: 'blogs',
-    contentId: idExceptArray,
+    contentId: query.id,
     queries: queries,
   });
 

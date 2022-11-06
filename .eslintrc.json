@@ -13,7 +13,7 @@
   ],
   "plugins": ["react", "@typescript-eslint", "tailwindcss"],
   "parser": "@typescript-eslint/parser",
-  "ignorePatterns": ["tailwind.config.js", "next.config.js", "node_modules/*"],
+  "ignorePatterns": ["*.config.js", "node_modules/*"],
   "rules": {
     "import/order": [
       "error",
