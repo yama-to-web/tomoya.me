@@ -139,8 +139,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const $ = load(articles.body);
   const headings = $('h1, h2, h3').toArray();
   // 目次
-  console.log(headings);
-
   const toc = headings.map((item) => ({
     text: (item.children[0] as { data: string }).data,
     id: item.attribs.id,

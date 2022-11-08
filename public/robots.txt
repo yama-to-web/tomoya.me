@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://tomoya.me
+
+# Sitemaps
+Sitemap: https://tomoya.me/sitemap.xml

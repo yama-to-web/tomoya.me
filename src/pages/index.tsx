@@ -8,11 +8,10 @@ import { loadInstaPosts } from 'lib/fetch-posts';
 import type { InstaImg } from 'types/index';
 
 type Props = {
-  children?: React.ReactNode;
   images?: Array<InstaImg>;
 };
 
-const Home: NextPage<React.ReactNode> = (props: Props) => {
+const Home: NextPage<Props> = (props: Props) => {
   const instaImgs = props.images;
   let mvPath;
 

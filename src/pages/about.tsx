@@ -24,7 +24,7 @@ const About: NextPage<Props> = (props: Props) => {
       <Section title="INTRODUCTION">
         <div className="flex flex-col items-start justify-between gap-y-8 sm:flex-row">
           <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)]">
-            <Image src="/profile.png" width="592" height="592" alt="tomoya.me" />
+            <Image src="/profile.png" width="592" height="592" alt="Tomoya FujiwaraのProfile画像" />
           </div>
           <div className="w-full sm:w-[calc(50%_-_1rem)] sm:min-w-[calc(50%_-_1rem)] lg:py-10">
             <div className="mb-10">
