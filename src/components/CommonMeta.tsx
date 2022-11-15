@@ -23,7 +23,7 @@ const CommonMeta: NextPage<Props> = ({
     'WEBエンジニア　Tomoya Fujiwara（藤原 智弥）のポートフォリオサイトです。This site is portfolio of Japan-based Web Engineer Tomoya Fujiwara';
   const title = pageTitle ? `${pageTitle} | ${siteName}` : siteName;
   const description = pageDescription ? pageDescription : defaultDescription;
-  const url = pagePath ? pagePath : router.asPath;
+  const url = process.env.NEXT_PUBLIC_SITE_URL + (pagePath ? pagePath : router.asPath);
   const image = pageImage ? pageImage : process.env.NEXT_PUBLIC_SITE_URL + '/title.png';
 
   return (
@@ -34,9 +34,10 @@ const CommonMeta: NextPage<Props> = ({
         name="viewport"
         content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
       />
+      <link rel="canonical" href={url} />
       <meta name="author" content="Tomoya Fujiwara" />
       <meta property="description" content={description} />
-      <meta property="og:url" content={process.env.NEXT_PUBLIC_SITE_URL + url} />
+      <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:title" content={title} />
