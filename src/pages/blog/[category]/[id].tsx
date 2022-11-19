@@ -6,7 +6,7 @@ import { load } from 'cheerio';
 import hljs from 'highlight.js';
 import type { MicroCMSQueries } from 'microcms-js-sdk';
 import moment from 'moment';
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
 import { Link as ScLink } from 'react-scroll/modules';
 import BreadCrumb from 'components/BreadCrumb';
@@ -17,20 +17,27 @@ import 'highlight.js/styles/tokyo-night-dark.css';
 
 type Props = {
   article: ArticleType;
+  toc: [
+    {
+      text: string;
+      id: string;
+      name: string;
+    },
+  ];
 };
 
-const Article: NextPage<Props> = ({ article }: Props) => {
+const Article: NextPage<Props> = ({ article, toc }: Props) => {
   return (
     <Main article={article}>
       {/* TOC */}
-      {article.toc.length > 0 && (
-        <div
+      {toc.length > 0 && (
+        <aside
           id="toc"
           className="fixed top-1/4 left-[calc(50%_-_768px)] ml-20 hidden max-w-sm rounded-lg font-extralight text-slate-500 xl:block"
         >
           <h4 className="mb-3 py-3 text-slate-500">目次</h4>
           <ul>
-            {article.toc.map((data, index) => {
+            {toc.map((data, index) => {
               return (
                 <li key={index} className={`text-sm leading-7 text-gray-400 ${data.name}`}>
                   <ScLink
@@ -48,19 +55,19 @@ const Article: NextPage<Props> = ({ article }: Props) => {
               );
             })}
           </ul>
-        </div>
+        </aside>
       )}
       <div className="max-w-6xl overflow-hidden">
         {/* パンくず */}
         <BreadCrumb
           lists={[
             {
-              name: 'Home',
-              path: '/',
-            },
-            {
               name: 'Blog',
               path: '/blog',
+            },
+            {
+              name: article.category,
+              path: '/blog/' + article.category,
             },
             {
               name: article.title,
@@ -119,10 +126,15 @@ const Article: NextPage<Props> = ({ article }: Props) => {
 
 export default Article;
 
-export const getStaticPaths = async () => {
-  const data = await microcms.get({ endpoint: 'blogs', queries: { limit: 9999 } });
-
-  const paths = data.contents.map((content: { id: string }) => `/blog/${content.id}`);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const data = await microcms.get({
+    endpoint: 'blogs',
+    queries: { limit: 9999 },
+  });
+  const paths = data.contents.map(
+    (content: { id: string; category: string }) =>
+      `/blog/${content.category ? content.category[0] + '/' : ''}${content.id}`,
+  );
   return { paths, fallback: false };
 };
 
@@ -145,7 +157,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     name: item.name,
   }));
 
-  articles['toc'] = toc;
   // コードハイライト
   $('pre code').each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text());
@@ -157,6 +168,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       article: articles,
+      toc: toc,
     },
   };
 };

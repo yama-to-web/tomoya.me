@@ -6,17 +6,24 @@ import Header from 'components/Header';
 type Props = {
   children?: React.ReactNode;
   title: string;
+  subtitle?: string;
   description: string;
 };
 
-const Main = ({ children, title, description }: Props) => {
+const Main = ({ children, title, subtitle, description }: Props) => {
   return (
     <>
-      <CommonMeta pageTitle={title} pageDescription={description} />
+      <CommonMeta
+        pageTitle={title + (subtitle ? ': ' + subtitle : '')}
+        pageDescription={description}
+      />
       <div className="flex flex-col items-center">
         <Header />
         <section className="mt-24 flex h-40 w-full items-start px-5 text-3xl lg:max-w-screen-lg">
-          <h3 className="text-lg font-bold">{title}</h3>
+          <h3 className="text-lg font-bold">
+            {title}
+            {subtitle && <span className="text-lg font-bold"> ＞ {subtitle}</span>}
+          </h3>
         </section>
         <motion.main
           className="flex min-h-screen flex-1 flex-col items-center px-5 lg:max-w-screen-lg"

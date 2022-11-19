@@ -26,7 +26,9 @@ const preview = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   res.setPreviewData(queries);
-  res.writeHead(307, { Location: `/blog/${content.id}` });
+  res.writeHead(307, {
+    Location: `/blog/${content.category ? content.category[0] + '/' : ''}${content.id}`,
+  });
   res.end('Preview mode enabled');
 };
 

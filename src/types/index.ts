@@ -10,7 +10,9 @@ export type ArticleType = {
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
+  category: string;
   title: string;
+  description?: string;
   body: string;
   eyecatch: {
     url: string;
@@ -18,11 +20,4 @@ export type ArticleType = {
     width: number;
   };
   tags: [string];
-  toc: [
-    {
-      text: string;
-      id: string;
-      name: string;
-    },
-  ];
 };

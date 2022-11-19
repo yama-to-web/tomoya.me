@@ -55,7 +55,7 @@ const Main = ({ children, article }: Props) => {
     <>
       <CommonMeta
         pageTitle={article.title}
-        pageDescription={article.title}
+        pageDescription={article.description}
         pageImage={article.eyecatch.url}
         jsonLd={JSON.stringify(jsonLd)}
       />

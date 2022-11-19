@@ -6,22 +6,23 @@ import { motion } from 'framer-motion';
 import moment from 'moment';
 import type { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
+import BreadCrumb from 'components/BreadCrumb';
 import Main from 'components/layouts/Main';
 import { microcms } from 'lib/client';
 import type { ArticleType } from 'types/index';
 
 type Props = {
   articles: Array<ArticleType>;
+  category: string;
 };
 
-const Blog: NextPage<Props> = ({ articles }: Props) => {
+const Blog: NextPage<Props> = ({ articles, category }: Props) => {
   return (
-    <Main title="BLOG" description="Webエンジニア 藤原智弥のBLOG">
-      {!articles.length && <div className="text-2xl text-gray-500">COMING SOON...</div>}
+    <Main title="BLOG" subtitle={category} description="Webエンジニア 藤原智弥のBLOG">
       <div className="container mx-auto grid grid-cols-1 gap-5 sm:grid-cols-1 sm:p-10 md:grid-cols-3">
         {articles.map((article) => (
           <Link
-            href={`/blog/${article.category ? article.category + '/' : ''}${article.id}`}
+            href={`/blog/${category + '/' + article.id}`}
             className=""
             key={article.id}
             passHref
@@ -83,14 +84,33 @@ const Blog: NextPage<Props> = ({ articles }: Props) => {
     </Main>
   );
 };
+export const getStaticPaths = async () => {
+  const data = await microcms.get({
+    endpoint: 'blogs',
+    queries: { fields: 'category', limit: 9999 },
+  });
+  let paths = data.contents.map((content: { id: string; category: string }) => {
+    return `/blog/${content.category ? content.category[0] : ''}`;
+  });
+  // 重複削除
+  paths = Array.from(new Set(paths));
 
-export const getStaticProps: GetStaticProps = async () => {
-  const data = await microcms.get({ endpoint: 'blogs' });
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+  const category = ctx.params?.category;
+  const data = await microcms.get({
+    endpoint: 'blogs',
+    queries: { filters: `category[contains]${category}` },
+  });
 
   return {
     props: {
       articles: data.contents,
+      category: category,
     },
+    notFound: !data.contents.length,
   };
 };
 

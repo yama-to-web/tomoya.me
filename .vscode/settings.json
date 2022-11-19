@@ -9,7 +9,10 @@
     "source.fixAll": true
   },
   // vscode-stylelint のアップデート対応
-  "stylelint.validate": ["css", "scss"],
+  "stylelint.validate": [
+    "css",
+    "scss"
+  ],
   // css, scss ファイルは Stylelint でフォーマットするため、Pretteir によるフォーマットを回避
   "[css]": {
     "editor.formatOnSave": false
@@ -20,5 +23,7 @@
   // VS Code の CSS, SCSS の Lint オフ
   // Stylelint とのバッティング回避
   "css.validate": false,
-  "scss.validate": false
+  "scss.validate": false,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
