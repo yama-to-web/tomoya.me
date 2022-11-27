@@ -67,12 +67,12 @@ const About: NextPage<Props> = (props: Props) => {
                   ></Image>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">{data.category}</p>
+                  <p className="py-1 text-xs text-gray-500">{data.category}</p>
                   <p className="mb-4 text-3xl leading-6">{data.name}</p>
                   <p className="mb-4 ml-1 whitespace-pre-wrap border-l border-gray-300 bg-gray-50 p-2 text-xs">
                     {data.explanation}
                   </p>
-                  <ul className="flex flex-wrap gap-1 text-xxs font-semibold text-slate-500">
+                  <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
                     {data.tags.map((tag) => {
                       return (
                         <li

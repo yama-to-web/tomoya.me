@@ -32,7 +32,7 @@
       "typescript": {}
     },
     "tailwindcss": {
-      "whitelist": ["bg-mask"]
+      "whitelist": ["bg-mask", "hidden-scrollbar"]
     }
   }
 }

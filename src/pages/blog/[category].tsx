@@ -18,7 +18,20 @@ type Props = {
 
 const Blog: NextPage<Props> = ({ articles, category }: Props) => {
   return (
-    <Main title="BLOG" subtitle={category} description="Webエンジニア 藤原智弥のBLOG">
+    <Main title={'【' + category + '】の記事一覧'} description="Webエンジニア 藤原智弥のBLOG">
+      {/* パンくず */}
+      <BreadCrumb
+        lists={[
+          {
+            name: 'Blog',
+            path: '/blog',
+          },
+          {
+            name: category,
+            path: '/blog/' + category,
+          },
+        ]}
+      />
       <div className="container mx-auto grid grid-cols-1 gap-5 sm:grid-cols-1 sm:p-10 md:grid-cols-3">
         {articles.map((article) => (
           <Link
@@ -68,9 +81,8 @@ const Blog: NextPage<Props> = ({ articles, category }: Props) => {
                   <ul className="flex items-center justify-start">
                     {article.tags.map((tag) => {
                       return (
-                        <li className="mr-1 px-1 text-xxs font-semibold text-teal-500" key={tag}>
-                          <FontAwesomeIcon size="sm" icon={faTag as IconProp} />
-                          {tag}
+                        <li className="mr-1 pr-1 text-xxs font-semibold text-teal-600" key={tag}>
+                          #{tag}
                         </li>
                       );
                     })}

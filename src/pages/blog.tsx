@@ -67,9 +67,8 @@ const Blog: NextPage<Props> = ({ articles }: Props) => {
                   <ul className="flex items-center justify-start">
                     {article.tags.map((tag) => {
                       return (
-                        <li className="mr-1 px-1 text-xxs font-semibold text-teal-500" key={tag}>
-                          <FontAwesomeIcon size="sm" icon={faTag as IconProp} />
-                          {tag}
+                        <li className="mr-1 pr-1 text-xxs font-semibold text-teal-600" key={tag}>
+                          #{tag}
                         </li>
                       );
                     })}

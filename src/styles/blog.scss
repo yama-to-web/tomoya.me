@@ -15,68 +15,65 @@
         content: '-';
       }
     }
-
-    li:has(.active) {
-      background-color: rgb(232 232 232);
-    }
   }
 
   // 見出し
   h2 {
     position: relative;
     padding-bottom: 0.35rem;
+    margin-left: 0.5rem;
     border-bottom: 0.15rem solid #ddd;
-  }
 
-  h2::before {
-    position: absolute;
-    top: 0;
-    left: -1rem;
-    display: inline-block;
-    width: 0.5rem;
-    height: 100%;
-    content: '';
-    background: linear-gradient(0deg, rgb(103 230 179) 0%, rgb(103 230 179) 50%, rgb(103 230 179) 50%, rgb(103 230 179) 100%);
-
-    // border-radius: 5px;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: -1rem;
+      display: inline-block;
+      width: 0.5rem;
+      height: 100%;
+      content: '';
+      background: linear-gradient(0deg, rgb(103 230 179) 0%, rgb(103 230 179) 50%, rgb(103 230 179) 50%, rgb(103 230 179) 100%);
+    }
   }
 
   h3 {
     position: relative;
     margin-left: 1rem;
-  }
 
-  h3::before {
-    position: absolute;
-    top: 0;
-    left: -1rem;
-    display: inline-block;
-    width: 0.4rem;
-    height: 100%;
-    content: '';
-    background: linear-gradient(0deg, rgb(187 145 239) 0%, rgb(187 145 239) 50%, rgb(187 145 239) 50%, rgb(187 145 239) 100%);
-    border-radius: 5px;
+    &::before {
+      position: absolute;
+      top: 0;
+      left: -1rem;
+      display: inline-block;
+      width: 0.4rem;
+      height: 100%;
+      content: '';
+      background: linear-gradient(0deg, rgb(187 145 239) 0%, rgb(187 145 239) 50%, rgb(187 145 239) 50%, rgb(187 145 239) 100%);
+      border-radius: 5px;
+    }
   }
 
   // リンク
-  .prose a {
-    color: #485fc7;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  .prose {
+    a {
+      color: #485fc7;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-  // 太字
-  .prose strong {
-    font-style: normal;
-    font-weight: bold;
-    background: linear-gradient(transparent 75%, #b2ffb2 75%);
-  }
+    // 太字
+    strong {
+      font-style: normal;
+      font-weight: bold;
+      background: linear-gradient(transparent 75%, #b2ffb2 75%);
+    }
 
-  // 太字
-  .prose blockquote {
-    padding: 1rem;
-    color: rgb(117 117 117);
-    border-left-width: 0;
-    border-radius: 0.5rem;
+    // 引用
+    blockquote {
+      padding: 1rem;
+      color: rgb(117 117 117);
+      border-left-width: 0;
+      border-radius: 0.5rem;
+    }
   }
 }

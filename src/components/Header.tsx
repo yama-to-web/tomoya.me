@@ -5,11 +5,11 @@ import { slide as Menu, State } from 'react-burger-menu';
 import Sns from 'components/Sns';
 import { links } from 'constants/profile-data';
 
-type headerProps = {
+type Props = {
   isActive?: boolean;
 };
 
-const Header = (props: headerProps) => {
+const Header = (props: Props) => {
   const isActive =
     typeof props.isActive == 'undefined'
       ? ''
@@ -63,7 +63,6 @@ const Header = (props: headerProps) => {
     bmMenu: {
       background: '#000',
       padding: '2em 1.5em 0',
-      fontSize: '1.15em',
     },
     bmMorphShape: {
       fill: '#373a47',
@@ -86,9 +85,9 @@ const Header = (props: headerProps) => {
   return (
     <header
       id="fixed_header"
-      className={`fixed inset-0 top-0 z-10 mx-auto flex h-16 w-full max-w-screen-xl px-4 lg:h-20 lg:px-8${isActive}`}
+      className={`fixed inset-0 top-0 z-10 mx-auto flex h-16 w-full max-w-screen-2xl px-4 lg:h-20 lg:px-8${isActive}`}
     >
-      <div className="flex w-full flex-row items-center">
+      <nav className="flex w-full flex-row items-center">
         <Link href="/" className="flex items-center" passHref>
           <div className="mx-1 hidden h-9 w-9 lg:block">
             <Image src="/icon.png" alt="icon" width={30} height={30} />
@@ -99,23 +98,26 @@ const Header = (props: headerProps) => {
             <h2>tomoya.me</h2>
           </div>
         </Link>
-        <div className="ml-auto hidden text-sm font-bold text-black lg:flex">
+        <ul className="ml-auto hidden text-black lg:flex">
           {links.map((data) => {
             return (
-              <Link
-                href={data.path}
+              <li
                 key={data.content}
                 className={
-                  'my-1 p-3 duration-300 hover:text-gray-400' +
-                  (route == data.path ? ' pointer-events-none line-through' : '')
+                  'relative p-4' +
+                  (route == data.path
+                    ? ' pointer-events-none text-lg font-bold before:absolute before:bottom-0 before:left-0 before:right-0 before:m-auto before:h-px before:w-2/3 before:bg-black'
+                    : '')
                 }
               >
-                {data.content}
-              </Link>
+                <Link href={data.path} className={'duration-300 hover:text-gray-400'}>
+                  {data.content}
+                </Link>
+              </li>
             );
           })}
-        </div>
-      </div>
+        </ul>
+      </nav>
       <Menu
         right
         styles={styles}
@@ -124,7 +126,7 @@ const Header = (props: headerProps) => {
         burgerButtonClassName="lg:hidden"
         onStateChange={isMenuOpen}
       >
-        <div className="m-auto ml-0 flex flex-col items-start text-lg font-thin text-white">
+        <div className="m-auto ml-0 flex flex-col items-start font-thin text-white">
           {links.map((data) => {
             return (
               <Link
@@ -132,7 +134,7 @@ const Header = (props: headerProps) => {
                 key={data.content}
                 className={
                   'my-1 p-3 duration-300 hover:text-gray-400' +
-                  (route == data.path ? ' pointer-events-none line-through' : '')
+                  (route == data.path ? ' pointer-events-none text-lg font-bold' : '')
                 }
               >
                 {data.content}

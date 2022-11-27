@@ -63,7 +63,7 @@ const Main = ({ children, article }: Props) => {
         <Header isActive={isHeaderActive} />
         <motion.main
           id="micro_cms_article"
-          className="mx-auto mt-16 flex min-h-screen flex-1 flex-row items-center sm:px-5 lg:max-w-screen-md"
+          className="mx-auto mt-14 flex min-h-screen w-full flex-1 items-start sm:px-5 lg:mt-20 lg:max-w-screen-2xl"
           initial="pageInitial"
           animate="pageAnimate"
           variants={{
