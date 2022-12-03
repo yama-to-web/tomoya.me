@@ -7,13 +7,14 @@ import type { MicroCMSQueries } from 'microcms-js-sdk';
 import moment from 'moment';
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
-import { useState } from 'react';
-import { Link as ScLink } from 'react-scroll/modules';
 import BreadCrumb from 'components/BreadCrumb';
-import Main from 'components/layouts/blog/Main';
+import Main from 'components/blog/Main';
+import ShareBtn from 'components/blog/ShareBtn';
+import Toc from 'components/blog/Toc';
 import { microcms } from 'lib/client';
 import type { ArticleType } from 'types/index';
 import 'highlight.js/styles/tokyo-night-dark.css';
+
 type Props = {
   article: ArticleType;
   toc: [
@@ -26,43 +27,11 @@ type Props = {
 };
 
 const Article: NextPage<Props> = ({ article, toc }: Props) => {
-  const [isActiveScroll, setIsActiveScroll] = useState<string>('');
-
   return (
     <Main article={article}>
       {/* TOC */}
-      {toc.length > 0 && (
-        <aside
-          id="toc"
-          className="sticky top-1/4 hidden w-full max-w-sm font-extralight text-slate-500 xl:block"
-        >
-          <h4 className="mb-3 py-3 text-slate-500">目次</h4>
-          <ul className="pr-10">
-            {toc.map((data, index) => {
-              return (
-                <li
-                  key={index}
-                  className={`text-sm leading-7 text-gray-400 ${data.name}${
-                    isActiveScroll === data.id ? ' active font-bold text-gray-600' : ''
-                  }`}
-                >
-                  <ScLink
-                    to={data.id}
-                    spy
-                    smooth
-                    offset={-100}
-                    duration={400}
-                    onSetActive={(id) => setIsActiveScroll(id)}
-                    className="px-2 hover:cursor-pointer"
-                  >
-                    {data.text}
-                  </ScLink>
-                </li>
-              );
-            })}
-          </ul>
-        </aside>
-      )}
+      {toc.length > 0 && <Toc toc={toc} />}
+      {/* コンテンツ */}
       <div className="overflow-hidden lg:max-w-6xl">
         {/* パンくず */}
         <BreadCrumb
@@ -105,6 +74,10 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
               {moment(article.createdAt).format('YYYY.MM.DD')}
             </span>
           </div>
+          {/* シェアボタン */}
+          <div className="flex justify-end">
+            <ShareBtn article={article} />
+          </div>
           {/* 本文 */}
           <div
             className="prose mb-32 mt-16 rounded sm:mt-20"
@@ -125,6 +98,12 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
               })}
             </ul>
           )}
+          <div className="my-5 flex justify-center sm:justify-end">
+            <div className="flex flex-col items-center gap-2">
+              <p>この記事をシェアする</p>
+              <ShareBtn article={article} />
+            </div>
+          </div>
         </div>
       </div>
     </Main>

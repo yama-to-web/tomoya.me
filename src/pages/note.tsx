@@ -1,7 +1,7 @@
 import moment from 'moment';
 import type { NextPage, GetStaticProps } from 'next';
-import Article from 'components/Article';
-import Main from 'components/layouts/Main';
+import Main from 'components/Main';
+import Article from 'components/note/Article';
 import { loadNotePosts } from 'lib/fetch-posts';
 
 type Props = {
