@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps = async () => {
   });
   const gadget = await microcms.get({
     endpoint: 'blogs',
-    queries: { filters: 'category[contains]other' },
+    queries: { filters: 'category[contains]gadget' },
   });
   const other = await microcms.get({
     endpoint: 'blogs',
