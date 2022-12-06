@@ -8,6 +8,7 @@ import moment from 'moment';
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
 import BreadCrumb from 'components/BreadCrumb';
+import Tags from 'components/Tags';
 import Main from 'components/blog/Main';
 import ShareBtn from 'components/blog/ShareBtn';
 import Toc from 'components/blog/Toc';
@@ -32,7 +33,7 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
       {/* TOC */}
       {toc.length > 0 && <Toc toc={toc} />}
       {/* コンテンツ */}
-      <div className="overflow-hidden lg:max-w-6xl">
+      <div className="w-full max-w-3xl overflow-hidden">
         {/* パンくず */}
         <BreadCrumb
           lists={[
@@ -50,11 +51,11 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
           ]}
         />
         {/* サムネイル */}
-        <div className="lg:h-[400px] lg:w-[800px]">
+        <div className="w-full max-w-3xl lg:h-[400px]">
           <Image
             width={1500}
             height={1000}
-            className="h-full w-full max-w-6xl object-cover text-center shadow-sm lg:rounded-2xl"
+            className="h-full w-full object-cover text-center shadow-sm lg:rounded-2xl"
             src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
             alt={`${article.title}のイメージ`}
           />
@@ -84,25 +85,12 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
             dangerouslySetInnerHTML={{ __html: `${article.body}` }}
           />
           {/* タグ */}
-          {article.tags.length > 0 && (
-            <ul className="flex items-center justify-start">
-              {article.tags.map((tag) => {
-                return (
-                  <li
-                    className="mr-1 rounded-md border border-teal-600 py-1 px-2 text-xs font-semibold text-teal-600"
-                    key={tag}
-                  >
-                    #{tag}
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-          <div className="my-5 flex justify-center sm:justify-end">
-            <div className="flex flex-col items-center gap-2">
-              <p>この記事をシェアする</p>
-              <ShareBtn article={article} />
-            </div>
+          <Tags tags={article.tags} border />
+          <div className="my-5 grid place-content-center place-items-center gap-2 sm:place-content-end">
+            <p className="text-xs text-gray-500 before:content-['＼'] after:content-['／']">
+              この記事をシェアする
+            </p>
+            <ShareBtn article={article} />
           </div>
         </div>
       </div>

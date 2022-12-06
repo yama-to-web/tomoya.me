@@ -34,7 +34,7 @@ const Section = ({ children, title }: Props) => {
           },
         }}
         viewport={{ once: true }}
-        className="lg:max-w-screen-lg"
+        className="sm:p-2 lg:max-w-screen-lg"
       >
         {children}
       </motion.div>

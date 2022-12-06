@@ -5,6 +5,7 @@ import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Main from 'components/Main';
 import Section from 'components/Section';
+import Tags from 'components/Tags';
 import { certification, products } from 'constants/profile-data';
 import { loadInstaPosts } from 'lib/fetch-posts';
 import type { InstaImg } from 'types/index';
@@ -53,16 +54,19 @@ const About: NextPage<Props> = (props: Props) => {
        * プロダクト
        */}
       <Section title={products.name}>
-        <ul className="pl-1">
+        <ul className="">
           {products.items.map((data) => {
             return (
-              <li className="border-b-2 border-b-gray-100 py-2 md:flex md:flex-row" key={data.name}>
-                <div className="mr-5">
+              <li
+                className="flex flex-col gap-5 border-b-2 border-b-gray-100 md:flex-row md:items-center"
+                key={data.name}
+              >
+                <div className="h-80">
                   <Image
                     src={`/products/${data.thumnail}`}
                     width={300}
                     height={200}
-                    object-position="fixed"
+                    className="h-full w-full object-contain"
                     alt={data.name}
                   ></Image>
                 </div>
@@ -72,18 +76,7 @@ const About: NextPage<Props> = (props: Props) => {
                   <p className="mb-4 ml-1 whitespace-pre-wrap border-l border-gray-300 bg-gray-50 p-2 text-xs">
                     {data.explanation}
                   </p>
-                  <ul className="flex flex-wrap gap-1 text-xs font-semibold text-slate-500">
-                    {data.tags.map((tag) => {
-                      return (
-                        <li
-                          className="rounded-lg bg-slate-200 py-0.5 px-1 before:content-['#']"
-                          key={tag}
-                        >
-                          {tag}
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <Tags tags={data.tags} border />
                 </div>
               </li>
             );
@@ -133,7 +126,12 @@ const About: NextPage<Props> = (props: Props) => {
                       rel="noopener noreferrer"
                       passHref
                     >
-                      <Image src={data.media_url} fill object-fit="contain" alt="instagram image" />
+                      <Image
+                        src={data.media_url}
+                        fill
+                        className="object-cover"
+                        alt="instagram image"
+                      />
                     </Link>
                   </SwiperSlide>
                 );
@@ -166,7 +164,7 @@ const About: NextPage<Props> = (props: Props) => {
             rel="noopener noreferrer"
             passHref
           >
-            <p className="my-10 w-full text-center text-sm tracking-widest text-gray-500 hover:text-gray-400">
+            <p className="my-10 w-full text-center text-sm tracking-widest text-gray-500 underline hover:text-gray-400">
               SEE MORE
             </p>
           </Link>

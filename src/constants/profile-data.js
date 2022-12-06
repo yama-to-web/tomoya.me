@@ -41,10 +41,10 @@ const config = {
       content: 'ABOUT',
       path: '/about',
     },
-    {
-      content: 'NOTE',
-      path: '/note',
-    },
+    // {
+    //   content: 'NOTE',
+    //   path: '/note',
+    // },
     {
       content: 'BLOG',
       path: '/blog',

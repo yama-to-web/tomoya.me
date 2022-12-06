@@ -17,10 +17,10 @@ const ShareBtn = ({ toc }: Props) => {
   return (
     <aside
       id="toc"
-      className="sticky top-1/4 hidden w-full max-w-sm font-extralight text-slate-500 xl:block"
+      className="sticky top-1/4 hidden h-fit w-full max-w-sm font-extralight text-slate-500 xl:block"
     >
       <h4 className="mb-3 py-3 text-slate-500">目次</h4>
-      <ul className="pr-10">
+      <ul>
         {toc.map((data, index) => {
           return (
             <li

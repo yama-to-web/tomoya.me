@@ -9,6 +9,9 @@ module.exports = {
       fontSize: {
         xxs: '.625rem',
       },
+      gridTemplateColumns: {
+        'article-xl': '1fr 3fr 1fr',
+      }
     },
   },
   variants: {
