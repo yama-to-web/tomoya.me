@@ -37,15 +37,15 @@ const Blog: NextPage<Props> = ({ articles }: Props) => {
 export const getStaticProps: GetStaticProps = async () => {
   const engineering = await microcms.get({
     endpoint: 'blogs',
-    queries: { filters: 'category[contains]engineering' },
+    queries: { filters: 'category[contains]engineering', limit: 6 },
   });
   const gadget = await microcms.get({
     endpoint: 'blogs',
-    queries: { filters: 'category[contains]gadget' },
+    queries: { filters: 'category[contains]gadget', limit: 6 },
   });
   const other = await microcms.get({
     endpoint: 'blogs',
-    queries: { filters: 'category[contains]other' },
+    queries: { filters: 'category[contains]other', limit: 6 },
   });
 
   return {

@@ -27,7 +27,7 @@ const ArticleCard = ({ article }: Props) => {
         viewport={{ once: true }}
       >
         {/* サムネイル */}
-        <div className="flex items-center overflow-hidden">
+        <div className="flex items-center overflow-hidden rounded-md">
           <motion.img
             whileHover={{
               position: 'relative',
@@ -39,7 +39,7 @@ const ArticleCard = ({ article }: Props) => {
             }}
             width="300"
             height="200"
-            className="h-44 w-full rounded-md object-cover object-center"
+            className="h-44 w-full object-cover object-center"
             src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
             alt={`${article.title}のイメージ`}
           />

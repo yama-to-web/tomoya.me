@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from 'next';
+import Link from 'next/link';
 import Main from 'components/Main';
 import ArticleCard from 'components/blog/ArticleCard';
 import { microcms } from 'lib/client';
@@ -12,7 +13,10 @@ type Props = {
 const Blog: NextPage<Props> = ({ articles, category }: Props) => {
   return (
     <Main title={'#' + category} description="Webエンジニア 藤原智弥のBLOG">
-      <div className="container mx-auto grid grid-cols-1 gap-5 sm:grid-cols-1 sm:p-10 md:grid-cols-3">
+      <Link href={'/blog'} className="mr-auto -mt-10 mb-10 text-sky-600">
+        記事一覧
+      </Link>
+      <div className="container grid grid-cols-1 gap-5 sm:p-2 md:grid-cols-3">
         {articles.map((article, index) => (
           <ArticleCard article={article} key={index} />
         ))}
@@ -38,7 +42,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const category = ctx.params?.category;
   const data = await microcms.get({
     endpoint: 'blogs',
-    queries: { filters: `category[contains]${category}` },
+    queries: { filters: `category[contains]${category}`, limit: 12 },
   });
 
   return {

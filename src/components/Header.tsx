@@ -142,7 +142,7 @@ const Header = (props: Props) => {
             );
           })}
         </div>
-        <div className="mt-auto mb-8 flex w-full items-center justify-between border-t border-gray-600/40 font-thin text-white">
+        <div className="mt-auto mb-14 flex w-full items-center justify-between border-t border-gray-600/40 font-thin text-white">
           <Sns gap="mx-1"></Sns>
           <p className="text-xxs">©2020 TOMOYA FUJIWARA</p>
         </div>
