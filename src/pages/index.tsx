@@ -25,13 +25,7 @@ const Home: NextPage<Props> = (props: Props) => {
     <main className="relative flex flex-col items-center justify-center">
       <CommonMeta pageTitle="Home" pageDescription="" />
       <div className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover">
-        <Image
-          src={mvPath}
-          fill
-          object-fit="cover"
-          object-position="center"
-          alt="instagram image"
-        />
+        <Image src={mvPath} fill alt="instagram image" className="object-cover" />
       </div>
       <div className="absolute flex flex-col items-center justify-center p-5">
         <div className="z-50">

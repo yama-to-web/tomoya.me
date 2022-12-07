@@ -20,7 +20,8 @@ const ArticleCard = ({ article }: Props) => {
       passHref
     >
       <motion.div
-        className="overflow-hidden rounded-lg shadow-lg"
+        className="overflow-hidden border-b pb-4"
+        // className="overflow-hidden rounded-lg shadow-lg"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
         viewport={{ once: true }}
@@ -38,26 +39,26 @@ const ArticleCard = ({ article }: Props) => {
             }}
             width="300"
             height="200"
-            className="h-44 w-full object-cover object-center"
+            className="h-44 w-full rounded-md object-cover object-center"
             src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
             alt={`${article.title}のイメージ`}
           />
         </div>
         {/* Card Body */}
         <div className="p-3">
+          {/* 記事タイトル */}
+          <div className="mb-4 text-lg font-bold text-gray-700">{article.title}</div>
+          {/* タグ */}
+          <Tags tags={article.tags} size="sm" />
           {/* 公開日 */}
-          <div className="mb-1 flex items-center text-gray-400">
+          <div className="mt-1 flex items-center font-semibold text-gray-500">
             <FontAwesomeIcon
               size="xs"
               style={{ marginRight: '0.2rem' }}
               icon={faClock as IconProp}
             />
-            <span className="text-xs">{moment(article.createdAt).format('YYYY.MM.DD')}</span>
+            <span className="text-sm">{moment(article.createdAt).format('YYYY.MM.DD')}</span>
           </div>
-          {/* 記事タイトル */}
-          <div className="mb-4 text-base font-semibold text-gray-500">{article.title}</div>
-          {/* タグ */}
-          <Tags tags={article.tags} />
         </div>
       </motion.div>
     </Link>

@@ -9,23 +9,21 @@ type Props = {
       name: string;
     },
   ];
+  setActive?: boolean;
 };
 
-const ShareBtn = ({ toc }: Props) => {
+const Toc = ({ toc, setActive = false }: Props) => {
   const [isActiveScroll, setIsActiveScroll] = useState<string>('');
 
   return (
-    <aside
-      id="toc"
-      className="sticky top-1/4 hidden h-fit w-full max-w-sm font-extralight text-slate-500 xl:block"
-    >
-      <h4 className="mb-3 py-3 text-slate-500">目次</h4>
+    <div id="toc">
+      <h4 className="mb-3 text-gray-600">目次</h4>
       <ul>
         {toc.map((data, index) => {
           return (
             <li
               key={index}
-              className={`text-sm leading-7 text-gray-400 ${data.name}${
+              className={`text-sm leading-7 text-gray-500 ${data.name}${
                 isActiveScroll === data.id ? ' active font-bold text-gray-600' : ''
               }`}
             >
@@ -35,7 +33,7 @@ const ShareBtn = ({ toc }: Props) => {
                 smooth
                 offset={-100}
                 duration={400}
-                onSetActive={(id) => setIsActiveScroll(id)}
+                onSetActive={(id) => (setActive ? setIsActiveScroll(id) : '')}
                 className="px-2 hover:cursor-pointer"
               >
                 {data.text}
@@ -44,8 +42,8 @@ const ShareBtn = ({ toc }: Props) => {
           );
         })}
       </ul>
-    </aside>
+    </div>
   );
 };
 
-export default ShareBtn;
+export default Toc;

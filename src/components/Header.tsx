@@ -62,7 +62,7 @@ const Header = (props: Props) => {
     },
     bmMenu: {
       background: '#000',
-      padding: '2em 1.5em 0',
+      padding: '0 1.5em',
     },
     bmMorphShape: {
       fill: '#373a47',

@@ -7,12 +7,40 @@
   // 目次
   #toc {
     .h3 {
+      display: flex;
+      align-items: center;
       margin-left: 1rem;
-      font-size: 0.9em;
+      font-size: 0.8rem;
 
       &::before {
         margin: 0 0.1rem;
         content: '-';
+      }
+    }
+
+    .h3.active {
+      &::before {
+        color: rgb(187 145 239);
+        content: '-';
+      }
+    }
+
+    .h2 {
+      display: flex;
+      align-items: center;
+
+      &::before {
+        display: inline;
+        margin: 0 0.1rem;
+        font-size: 0.5em;
+        content: '○';
+      }
+    }
+
+    .h2.active {
+      &::before {
+        color: rgb(103 230 179);
+        content: '●';
       }
     }
   }

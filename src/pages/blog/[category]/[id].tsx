@@ -30,10 +30,22 @@ type Props = {
 const Article: NextPage<Props> = ({ article, toc }: Props) => {
   return (
     <Main article={article}>
-      {/* TOC */}
-      {toc.length > 0 && <Toc toc={toc} />}
+      {/* 目次（PC） */}
+      <aside className="sticky top-1/4 hidden h-fit w-full max-w-sm font-extralight text-slate-500 xl:block">
+        {toc.length > 0 && <Toc toc={toc} setActive />}
+      </aside>
       {/* コンテンツ */}
       <div className="w-full max-w-3xl overflow-hidden">
+        {/* サムネイル */}
+        <div className="mb-2 w-full max-w-3xl lg:h-[400px]">
+          <Image
+            width={1500}
+            height={1000}
+            className="h-full w-full object-cover text-center shadow-sm lg:rounded-2xl"
+            src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
+            alt={`${article.title}のイメージ`}
+          />
+        </div>
         {/* パンくず */}
         <BreadCrumb
           lists={[
@@ -45,24 +57,12 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
               name: article.category,
               path: '/blog/' + article.category,
             },
-            {
-              name: article.title,
-            },
           ]}
         />
-        {/* サムネイル */}
-        <div className="w-full max-w-3xl lg:h-[400px]">
-          <Image
-            width={1500}
-            height={1000}
-            className="h-full w-full object-cover text-center shadow-sm lg:rounded-2xl"
-            src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
-            alt={`${article.title}のイメージ`}
-          />
-        </div>
-        <div className="mt-8 px-4 sm:mt-16">
+        <div className="mt-3 px-4">
           {/* タイトル */}
-          <h1 className="mb-2 text-2xl font-semibold xl:text-3xl">{article.title}</h1>
+          <h1 className="my-5 text-2xl font-semibold xl:text-3xl">{article.title}</h1>
+          <Tags tags={article.tags} border />
           {/* 公開日 */}
           <div className="my-2 flex items-center">
             <FontAwesomeIcon
@@ -79,16 +79,22 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
           <div className="flex justify-end">
             <ShareBtn article={article} />
           </div>
+          {/* 目次（SP） */}
+          {toc.length > 0 && (
+            <div className="mt-5 rounded-lg bg-gray-100 p-5 xl:hidden">
+              <Toc toc={toc} />
+            </div>
+          )}
           {/* 本文 */}
           <div
-            className="prose mb-32 mt-16 rounded sm:mt-20"
+            className="prose mb-32 mt-10 rounded"
             dangerouslySetInnerHTML={{ __html: `${article.body}` }}
           />
           {/* タグ */}
           <Tags tags={article.tags} border />
-          <div className="my-5 grid place-content-center place-items-center gap-2 sm:place-content-end">
-            <p className="text-xs text-gray-500 before:content-['＼'] after:content-['／']">
-              この記事をシェアする
+          <div className="mt-10 grid place-content-center place-items-center gap-2 sm:place-content-end">
+            <p className="text-xs text-gray-500 before:mr-1 before:content-['＼'] after:ml-1 after:content-['／']">
+              記事をシェアする
             </p>
             <ShareBtn article={article} />
           </div>
