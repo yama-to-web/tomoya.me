@@ -10,18 +10,20 @@
       display: flex;
       align-items: center;
       margin-left: 1rem;
-      font-size: 0.8rem;
+      font-size: 0.8em;
 
       &::before {
-        margin: 0 0.1rem;
-        content: '-';
+        width: 0.45em;
+        height: 0.45em;
+        content: '';
+        background-color: #c5c5c5;
+        border-radius: 100%;
       }
     }
 
     .h3.active {
       &::before {
-        color: rgb(187 145 239);
-        content: '-';
+        background-color: rgb(187 145 239);
       }
     }
 
@@ -30,17 +32,17 @@
       align-items: center;
 
       &::before {
-        display: inline;
-        margin: 0 0.1rem;
-        font-size: 0.5em;
-        content: '○';
+        width: 0.5em;
+        height: 0.5em;
+        content: '';
+        background-color: #c5c5c5;
+        border-radius: 100%;
       }
     }
 
     .h2.active {
       &::before {
-        color: rgb(103 230 179);
-        content: '●';
+        background-color: rgb(103 230 179);
       }
     }
   }

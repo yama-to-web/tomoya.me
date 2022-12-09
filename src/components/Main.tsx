@@ -19,7 +19,7 @@ const Main = ({ children, title, subtitle, description }: Props) => {
       />
       <Header />
       <div className="flex flex-col items-center">
-        <section className="mt-40 flex h-20 w-full items-start px-5 text-3xl sm:h-40 lg:max-w-screen-lg">
+        <section className="mt-40 flex h-24 w-full items-start px-5 text-3xl sm:h-40 lg:max-w-screen-lg">
           <h3 className="text-lg font-bold">
             {title}
             {subtitle && <span className="text-lg font-bold"> ＞ {subtitle}</span>}

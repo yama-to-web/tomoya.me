@@ -13,9 +13,9 @@ type Props = {
 const Blog: NextPage<Props> = ({ articles }: Props) => {
   return (
     <Main title="BLOG" description="Webエンジニア 藤原智弥のBLOG">
-      <Section title={'posts list'}>
+      <Section title={'POSTS LIST'}>
         {!articles.length ? (
-          <div className="grid h-80 place-items-center text-center text-2xl text-gray-500">
+          <div className="grid h-80 place-items-center text-center text-2xl text-gray-400">
             COMING SOON...
           </div>
         ) : (

@@ -7,6 +7,7 @@ import type { MicroCMSQueries } from 'microcms-js-sdk';
 import moment from 'moment';
 import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
+import Link from 'next/link';
 import BreadCrumb from 'components/BreadCrumb';
 import Tags from 'components/Tags';
 import Main from 'components/blog/Main';
@@ -62,7 +63,15 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
         <div className="mt-3 px-4">
           {/* タイトル */}
           <h1 className="my-5 text-2xl font-semibold xl:text-3xl">{article.title}</h1>
-          <Tags tags={article.tags} border />
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Link
+              href={`/blog/${article.category}`}
+              className="w-fit rounded bg-violet-400 py-1 px-1.5 text-xs text-white"
+            >
+              {article.category[0].toUpperCase()}
+            </Link>
+            <Tags tags={article.tags} />
+          </div>
           {/* 公開日 */}
           <div className="my-2 flex items-center">
             <FontAwesomeIcon

@@ -54,7 +54,7 @@ const About: NextPage<Props> = (props: Props) => {
        * プロダクト
        */}
       <Section title={products.name}>
-        <ul className="">
+        <ul>
           {products.items.map((data) => {
             return (
               <li

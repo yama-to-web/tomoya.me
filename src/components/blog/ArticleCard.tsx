@@ -45,13 +45,11 @@ const ArticleCard = ({ article }: Props) => {
           />
         </div>
         {/* Card Body */}
-        <div className="flex-1 p-3">
+        <div className="flex-1 p-2">
           {/* カテゴリ */}
-          <Link href={`blog/${article.category[0]}`}>
-            <div className="mb-2 w-fit rounded-sm border border-violet-400 px-1 text-xs text-violet-400">
-              {article.category[0].toUpperCase()}
-            </div>
-          </Link>
+          <div className="mb-1.5 w-fit rounded bg-violet-400	py-0.5 px-1 text-xxs font-semibold tracking-widest text-white">
+            {article.category[0].toUpperCase()}
+          </div>
           {/* 記事タイトル */}
           <div className="mb-4 text-lg font-bold text-gray-700 sm:text-xl">{article.title}</div>
           {/* タグ */}

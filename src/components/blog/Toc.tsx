@@ -17,7 +17,7 @@ const Toc = ({ toc, setActive = false }: Props) => {
 
   return (
     <div id="toc">
-      <h4 className="mb-3 text-gray-600">目次</h4>
+      <h4 className="mb-3 text-gray-700">目次</h4>
       <ul>
         {toc.map((data, index) => {
           return (
