@@ -53,18 +53,18 @@
 
     // 見出し
     h2 {
-      @apply relative pb-1 pl-2 border-b border-gray-200;
+      @apply relative pb-0.5 pl-3 border-b border-gray-200;
 
       &::before {
-        @apply absolute inline-block top-0 -left-4 w-2 h-full content-[''] bg-teal-400;
+        @apply absolute inline-block top-[0.07rem] -left-2 w-2 h-full content-[''] bg-teal-400;
       }
     }
 
     h3 {
-      @apply relative ml-4;
+      @apply relative ml-4 pl-3;
 
       &::before {
-        @apply absolute inline-block top-0 -left-4 w-1.5 h-full content-[''] bg-violet-400 rounded;
+        @apply absolute inline-block top-0 -left-2 w-1.5 h-full content-[''] bg-violet-400 rounded;
       }
     }
 
