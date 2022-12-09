@@ -13,7 +13,7 @@ type Props = {
 const Blog: NextPage<Props> = ({ articles, category }: Props) => {
   return (
     <Main title={'#' + category.toUpperCase()} description="Webエンジニア 藤原智弥のBLOG">
-      <Link href={'/blog'} className="mr-auto -mt-10 mb-10 text-sky-600">
+      <Link href={'/blog'} className="mr-auto -mt-10 mb-10 text-sky-500">
         記事一覧
       </Link>
       <div className="container mx-auto grid grid-cols-1 gap-5 sm:grid-cols-1">

@@ -64,12 +64,14 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
           {/* タイトル */}
           <h1 className="my-5 text-2xl font-semibold xl:text-3xl">{article.title}</h1>
           <div className="flex flex-col gap-2 sm:flex-row">
+            {/* カテゴリ */}
             <Link
               href={`/blog/${article.category}`}
-              className="w-fit rounded bg-violet-400 py-1 px-1.5 text-xs text-white"
+              className="w-fit rounded bg-violet-400/80 py-1 px-1.5 text-xxs text-white"
             >
               {article.category[0].toUpperCase()}
             </Link>
+            {/* タグ */}
             <Tags tags={article.tags} />
           </div>
           {/* 公開日 */}

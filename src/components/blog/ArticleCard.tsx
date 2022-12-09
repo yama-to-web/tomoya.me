@@ -47,7 +47,9 @@ const ArticleCard = ({ article }: Props) => {
         {/* Card Body */}
         <div className="flex-1 p-2">
           {/* カテゴリ */}
-          <div className="mb-1.5 w-fit rounded bg-violet-400	py-0.5 px-1 text-xxs font-semibold tracking-widest text-white">
+          {/* bg-violet-400/90 */}
+          {/* bg-orange-300/90 */}
+          <div className="mb-1.5 w-fit rounded bg-violet-400/80 py-1 px-1.5 text-xxs font-semibold tracking-widest text-white">
             {article.category[0].toUpperCase()}
           </div>
           {/* 記事タイトル */}

@@ -19,7 +19,7 @@ const BreadCrumb = ({ lists }: Props) => {
       >
         {lists.map(({ name = 'Home', path = '/' }, index) => (
           <li key={index} className="">
-            <Link href={path} className="font-semibold text-blue-600/70">
+            <Link href={path} className="font-semibold text-blue-500">
               {name}
             </Link>
             {lists.length - 1 !== index && (

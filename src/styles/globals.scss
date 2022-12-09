@@ -5,14 +5,85 @@
 @tailwind utilities;
 
 @layer base {
+  html,
   body {
-    @apply leading-relaxed tracking-wider;
+    @apply font-serif font-['muli'];
+    @apply leading-relaxed tracking-wider p-0 m-0 text-[#333] bg-[#f8f8fa];
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  * {
+    @apply box-border;
   }
 }
 
 @layer components {
   .bg-mask {
     @apply absolute top-0 w-full h-full bg-black opacity-5;
+  }
+
+  /**
+* microCMS
+*/
+  #micro_cms_article {
+    @apply font-sans font-['Hiragino'];
+
+    #toc {
+      .h3 {
+        @apply flex items-center ml-4 text-xs my-1.5;
+        @apply before:w-1.5 before:h-1.5 before:content-[''] before:bg-gray-300 before:rounded-full;
+
+        &.active {
+          @apply before:bg-violet-400;
+        }
+      }
+
+      .h2 {
+        @apply flex items-center text-sm my-2;
+        @apply before:w-2 before:h-2 before:content-[''] before:bg-gray-300 before:rounded-full;
+
+        &.active {
+          @apply before:bg-teal-400;
+        }
+      }
+    }
+
+    // 見出し
+    h2 {
+      @apply relative pb-1 pl-2 border-b border-gray-200;
+
+      &::before {
+        @apply absolute inline-block top-0 -left-4 w-2 h-full content-[''] bg-teal-400;
+      }
+    }
+
+    h3 {
+      @apply relative ml-4;
+
+      &::before {
+        @apply absolute inline-block top-0 -left-4 w-1.5 h-full content-[''] bg-violet-400 rounded;
+      }
+    }
+
+    // リンク
+    .prose {
+      a {
+        @apply text-blue-500 no-underline cursor-pointer;
+      }
+
+      // 太字
+      strong {
+        @apply font-bold bg-gradient-to-b from-transparent via-transparent to-teal-200;
+      }
+
+      // 引用
+      blockquote {
+        @apply text-gray-500 text-sm border-l-0 rounded-lg;
+      }
+    }
   }
 }
 
@@ -26,22 +97,4 @@
     /* Chrome, Safari 対応 */
     display: none;
   }
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: muli, sans-serif;
-  color: #333;
-  background-color: rgb(248 248 250);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }

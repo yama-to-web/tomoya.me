@@ -1,6 +1,5 @@
 import 'styles/globals.scss';
 import 'styles/reset.scss';
-import 'styles/blog.scss';
 import 'swiper/scss';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
