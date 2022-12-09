@@ -17,16 +17,16 @@ const Main = ({ children, title, subtitle, description }: Props) => {
         pageTitle={title + (subtitle ? ': ' + subtitle : '')}
         pageDescription={description}
       />
+      <Header />
       <div className="flex flex-col items-center">
-        <Header />
-        <section className="mt-24 flex h-40 w-full items-start px-5 text-3xl lg:max-w-screen-lg">
+        <section className="mt-40 flex h-20 w-full items-start px-5 text-3xl sm:h-40 lg:max-w-screen-lg">
           <h3 className="text-lg font-bold">
             {title}
             {subtitle && <span className="text-lg font-bold"> ＞ {subtitle}</span>}
           </h3>
         </section>
         <motion.main
-          className="flex min-h-screen flex-1 flex-col items-center px-5 lg:max-w-screen-lg"
+          className="flex min-h-screen w-full flex-1 flex-col items-center px-5 lg:max-w-screen-lg"
           initial="pageInitial"
           animate="pageAnimate"
           variants={{
@@ -45,8 +45,8 @@ const Main = ({ children, title, subtitle, description }: Props) => {
         >
           {children}
         </motion.main>
-        <Footer />
       </div>
+      <Footer />
     </>
   );
 };

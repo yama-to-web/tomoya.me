@@ -15,19 +15,19 @@ const ArticleCard = ({ article }: Props) => {
   return (
     <Link
       href={`/blog/${article.category ? article.category + '/' : ''}${article.id}`}
-      className="max-w-sm"
+      className="max-w-sm sm:max-w-4xl"
       key={article.id}
       passHref
     >
       <motion.div
-        className="overflow-hidden border-b pb-4"
+        className="overflow-hidden border-b pb-4 sm:flex sm:border-0"
         // className="overflow-hidden rounded-lg shadow-lg"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
         viewport={{ once: true }}
       >
         {/* サムネイル */}
-        <div className="flex items-center overflow-hidden rounded-md">
+        <div className="overflow-hidden rounded-md sm:mr-5 sm:w-80">
           <motion.img
             whileHover={{
               position: 'relative',
@@ -45,9 +45,15 @@ const ArticleCard = ({ article }: Props) => {
           />
         </div>
         {/* Card Body */}
-        <div className="p-3">
+        <div className="flex-1 p-3">
+          {/* カテゴリ */}
+          <Link href={`blog/${article.category[0]}`}>
+            <div className="mb-2 w-fit rounded-sm border border-violet-400 px-1 text-xs text-violet-400">
+              {article.category[0].toUpperCase()}
+            </div>
+          </Link>
           {/* 記事タイトル */}
-          <div className="mb-4 text-lg font-bold text-gray-700">{article.title}</div>
+          <div className="mb-4 text-lg font-bold text-gray-700 sm:text-xl">{article.title}</div>
           {/* タグ */}
           <Tags tags={article.tags} size="sm" />
           {/* 公開日 */}

@@ -5,7 +5,8 @@ const config = {
       {
         name: 'tomoya.me',
         category: 'Webサイト',
-        thumnail: 'tomoya.me.png',
+        thumnail: 'tomoya.me/about.png',
+        // thumnail: 'tomoya.me/tomoya.me.png',
         explanation: `当ポートフォリオサイト。\n以前から興味のあったNext.js TypeScript TailwindCSSを使い、自身の学習も兼ねてゼロから自分で作成しました！\n今後もブログ記事などのコンテンツ拡張も予定しております。\nお気軽にお立ち寄りいただけると幸いです。`,
         tags: [
           'Next.js',

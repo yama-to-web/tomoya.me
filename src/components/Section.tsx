@@ -7,7 +7,7 @@ type Props = {
 
 const Section = ({ children, title }: Props) => {
   return (
-    <section className="mb-52 w-full max-w-full">
+    <section className="mb-52 w-full">
       <motion.h4
         className="mb-10 text-3xl font-thin tracking-wide lg:max-w-screen-lg"
         initial={{

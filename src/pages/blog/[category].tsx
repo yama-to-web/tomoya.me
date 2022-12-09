@@ -12,11 +12,11 @@ type Props = {
 
 const Blog: NextPage<Props> = ({ articles, category }: Props) => {
   return (
-    <Main title={'#' + category} description="Webエンジニア 藤原智弥のBLOG">
+    <Main title={'#' + category.toUpperCase()} description="Webエンジニア 藤原智弥のBLOG">
       <Link href={'/blog'} className="mr-auto -mt-10 mb-10 text-sky-600">
         記事一覧
       </Link>
-      <div className="container grid grid-cols-1 gap-5 sm:p-2 md:grid-cols-3">
+      <div className="container mx-auto grid grid-cols-1 gap-5 sm:grid-cols-1">
         {articles.map((article, index) => (
           <ArticleCard article={article} key={index} />
         ))}

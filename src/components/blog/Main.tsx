@@ -59,31 +59,29 @@ const Main = ({ children, article }: Props) => {
         pageImage={article.eyecatch.url}
         jsonLd={JSON.stringify(jsonLd)}
       />
-      <div className="flex flex-col items-center">
-        <Header isActive={isHeaderActive} />
-        <motion.main
-          id="micro_cms_article"
-          className="mt-14 grid min-h-screen justify-items-center gap-5 sm:px-5 lg:mt-20 lg:max-w-screen-2xl xl:grid-cols-article-xl"
-          initial="pageInitial"
-          animate="pageAnimate"
-          variants={{
-            pageInitial: {
-              opacity: 0,
-              scale: 0.99,
+      <Header isActive={isHeaderActive} />
+      <motion.main
+        id="micro_cms_article"
+        className="mx-auto mt-14 grid min-h-screen w-full justify-items-center gap-5 sm:px-5 lg:mt-20 lg:max-w-screen-2xl xl:grid-cols-article-xl"
+        initial="pageInitial"
+        animate="pageAnimate"
+        variants={{
+          pageInitial: {
+            opacity: 0,
+            scale: 0.99,
+          },
+          pageAnimate: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+              duration: 1.8,
             },
-            pageAnimate: {
-              opacity: 1,
-              scale: 1,
-              transition: {
-                duration: 1.8,
-              },
-            },
-          }}
-        >
-          {children}
-        </motion.main>
-        <Footer />
-      </div>
+          },
+        }}
+      >
+        {children}
+      </motion.main>
+      <Footer />
     </>
   );
 };
