@@ -14,7 +14,7 @@ const BreadCrumb = ({ lists }: Props) => {
   return (
     <div className="hidden-scrollbar overflow-x-scroll sm:w-full">
       <ul
-        className="flex items-center whitespace-nowrap p-3 text-xs text-gray-500 sm:text-sm"
+        className="flex items-center whitespace-nowrap p-2.5 text-sm text-gray-500"
         aria-label="breadcrumb"
       >
         {lists.map(({ name = 'Home', path = '/' }, index) => (
