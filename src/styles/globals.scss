@@ -61,7 +61,7 @@
     }
 
     h3 {
-      @apply relative ml-4 pl-3;
+      @apply relative ml-4 pl-2;
 
       &::before {
         @apply absolute inline-block top-0 -left-2 w-1.5 h-full content-[''] bg-violet-400 rounded;
@@ -74,14 +74,26 @@
         @apply text-blue-500 no-underline cursor-pointer;
       }
 
+      u {
+        @apply no-underline  bg-gradient-to-b from-transparent via-transparent to-teal-200;
+      }
+
       // 太字
       strong {
-        @apply font-bold bg-gradient-to-b from-transparent via-transparent to-teal-200;
+        @apply font-bold;
       }
 
       // 引用
       blockquote {
-        @apply text-gray-500 text-sm border-l-0 rounded-lg;
+        @apply text-gray-500 text-sm border-l-0 rounded-xl;
+      }
+
+      pre {
+        @apply p-1;
+      }
+
+      img {
+        @apply rounded-md;
       }
     }
   }

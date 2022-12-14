@@ -18,15 +18,15 @@ const Main = ({ children, title, subtitle, description }: Props) => {
         pageDescription={description}
       />
       <Header />
-      <div className="flex flex-col items-center">
-        <section className="mt-40 flex h-24 w-full items-start px-5 text-3xl sm:h-40 lg:max-w-screen-lg">
+      <div className="mx-auto flex flex-col items-center justify-center lg:max-w-screen-xl">
+        <section className="mt-40 flex h-24 w-full items-start px-5 text-3xl sm:h-40">
           <h3 className="text-lg font-bold">
             {title}
-            {subtitle && <span className="text-lg font-bold"> ＞ {subtitle}</span>}
+            {subtitle && <span className="text-lg font-bold">{subtitle}</span>}
           </h3>
         </section>
         <motion.main
-          className="flex min-h-screen w-full flex-1 flex-col items-center px-5 lg:max-w-screen-lg"
+          className="flex min-h-screen w-full flex-1 flex-col items-center px-5"
           initial="pageInitial"
           animate="pageAnimate"
           variants={{

@@ -24,7 +24,7 @@ const About: NextPage<Props> = (props: Props) => {
        */}
       <Section title="INTRODUCTION">
         <div className="flex flex-col items-start justify-between gap-y-8 sm:flex-row">
-          <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)]">
+          <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)] lg:w-[calc(50%_-_10rem)]">
             <Image src="/profile.png" width="592" height="592" alt="Tomoya FujiwaraのProfile画像" />
           </div>
           <div className="w-full sm:w-[calc(50%_-_1rem)] sm:min-w-[calc(50%_-_1rem)] lg:py-10">
@@ -144,7 +144,7 @@ const About: NextPage<Props> = (props: Props) => {
               {props.images?.map((data) => {
                 return (
                   <Link
-                    className="relative h-60 overflow-hidden"
+                    className="relative h-64 overflow-hidden"
                     href={data.permalink}
                     key={data.id}
                     target="_blank"

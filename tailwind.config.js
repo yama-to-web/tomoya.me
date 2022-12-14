@@ -12,7 +12,7 @@ module.exports = {
         }]
       },
       gridTemplateColumns: {
-        'article-xl': '1fr 3fr 1fr',
+        'article-pc': '1fr 3fr 1fr',
       }
     },
   },

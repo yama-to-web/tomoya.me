@@ -10,9 +10,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BreadCrumb from 'components/BreadCrumb';
 import Tags from 'components/Tags';
-import Main from 'components/blog/Main';
 import ShareBtn from 'components/blog/ShareBtn';
 import Toc from 'components/blog/Toc';
+import Main from 'components/blog/article/Main';
 import { microcms } from 'lib/client';
 import type { ArticleType } from 'types/index';
 import 'highlight.js/styles/tokyo-night-dark.css';
@@ -67,12 +67,12 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
             {/* カテゴリ */}
             <Link
               href={`/blog/${article.category}`}
-              className="w-fit rounded bg-violet-400/80 py-1 px-1.5 text-xxs text-white"
+              className="w-fit rounded-xl bg-violet-400/80 py-1 px-2 text-xxs font-semibold tracking-widest text-white"
             >
               {article.category[0].toUpperCase()}
             </Link>
             {/* タグ */}
-            <Tags tags={article.tags} />
+            <Tags tags={article.tags} size="sm" />
           </div>
           {/* 公開日 */}
           <div className="my-2 flex items-center">
@@ -102,7 +102,7 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
             dangerouslySetInnerHTML={{ __html: `${article.body}` }}
           />
           {/* タグ */}
-          <Tags tags={article.tags} border />
+          <Tags tags={article.tags} size="sm" />
           <div className="mt-10 grid place-content-center place-items-center gap-2 sm:place-content-end">
             <p className="text-xs text-gray-500 before:mr-1 before:content-['＼'] after:ml-1 after:content-['／']">
               記事をシェアする

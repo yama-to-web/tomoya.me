@@ -7,9 +7,9 @@ type Props = {
 
 const Section = ({ children, title }: Props) => {
   return (
-    <section className="mb-52 w-full">
+    <section className="mb-52 w-full lg:mb-72 xl:max-w-screen-xl">
       <motion.h4
-        className="mb-10 text-3xl font-thin tracking-wide lg:max-w-screen-lg"
+        className="mb-10 text-3xl font-thin tracking-wide"
         initial={{
           opacity: 0,
           scale: 0.99,
@@ -34,7 +34,7 @@ const Section = ({ children, title }: Props) => {
           },
         }}
         viewport={{ once: true }}
-        className="sm:p-2 lg:max-w-screen-lg"
+        className="w-full sm:p-2"
       >
         {children}
       </motion.div>

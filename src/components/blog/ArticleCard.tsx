@@ -25,21 +25,22 @@ const ArticleCard = ({ article }: Props) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
         viewport={{ once: true }}
+        whileHover={{
+          position: 'relative',
+          zIndex: 1,
+          scale: [1, 1.02],
+          opacity: [1, 0.6],
+          transition: {
+            duration: 0.3,
+          },
+        }}
       >
         {/* サムネイル */}
-        <div className="overflow-hidden rounded-md sm:mr-5 sm:w-80">
+        <div className="overflow-hidden sm:mr-5 sm:w-72">
           <motion.img
-            whileHover={{
-              position: 'relative',
-              zIndex: 1,
-              scale: [1, 1.2],
-              transition: {
-                duration: 0.5,
-              },
-            }}
             width="300"
             height="200"
-            className="h-44 w-full object-cover object-center"
+            className="h-40 w-full object-cover object-center"
             src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
             alt={`${article.title}のイメージ`}
           />
@@ -49,7 +50,7 @@ const ArticleCard = ({ article }: Props) => {
           {/* カテゴリ */}
           {/* bg-violet-400/90 */}
           {/* bg-orange-300/90 */}
-          <div className="mb-1.5 w-fit rounded bg-violet-400/80 py-1 px-1.5 text-xxs font-semibold tracking-widest text-white">
+          <div className="mb-1.5 w-fit rounded-xl bg-violet-400/80 py-1 px-2 text-xxs font-semibold tracking-widest text-white">
             {article.category[0].toUpperCase()}
           </div>
           {/* 記事タイトル */}
