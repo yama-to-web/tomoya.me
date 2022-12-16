@@ -149,7 +149,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   }));
 
   // コードハイライト
-  $('pre code').each((_, elm) => {
+  $('pre code, p code').each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text());
     $(elm).html(result.value);
     $(elm).addClass('hljs');

@@ -20,7 +20,7 @@ const Blog: NextPage<Props> = ({ articles }: Props) => {
               COMING SOON...
             </div>
           ) : (
-            <div className="container mx-auto grid grid-cols-1 gap-5 sm:grid-cols-1">
+            <div className="container mx-auto grid grid-cols-1 place-items-center gap-5 sm:ml-0 sm:grid-cols-1 sm:place-items-start">
               {articles.map((article, index) => (
                 <ArticleCard article={article} key={index} />
               ))}

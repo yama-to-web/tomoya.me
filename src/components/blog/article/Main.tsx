@@ -60,7 +60,7 @@ const Main = ({ children, article }: Props) => {
         jsonLd={JSON.stringify(jsonLd)}
       />
       <Header isActive={isHeaderActive} />
-      <main className="mx-auto mt-14 w-full lg:mt-20 lg:max-w-screen-2xl">
+      <main className="mx-auto mt-20 w-full lg:max-w-screen-2xl">
         <motion.article
           id="micro_cms_article"
           className="grid min-h-screen justify-items-center gap-5 sm:px-5 xl:grid-cols-article-pc"

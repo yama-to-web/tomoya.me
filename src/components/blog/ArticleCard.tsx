@@ -21,7 +21,6 @@ const ArticleCard = ({ article }: Props) => {
     >
       <motion.div
         className="overflow-hidden border-b pb-4 sm:flex sm:border-0"
-        // className="overflow-hidden rounded-lg shadow-lg"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
         viewport={{ once: true }}
@@ -36,7 +35,7 @@ const ArticleCard = ({ article }: Props) => {
         }}
       >
         {/* サムネイル */}
-        <div className="overflow-hidden sm:mr-5 sm:w-72">
+        <div className="overflow-hidden rounded-lg sm:mr-5 sm:w-72">
           <motion.img
             width="300"
             height="200"
@@ -54,11 +53,11 @@ const ArticleCard = ({ article }: Props) => {
             {article.category[0].toUpperCase()}
           </div>
           {/* 記事タイトル */}
-          <div className="mb-4 text-lg font-bold text-gray-700 sm:text-xl">{article.title}</div>
+          <div className="mb-4 text-lg font-bold sm:text-xl">{article.title}</div>
           {/* タグ */}
           <Tags tags={article.tags} size="sm" />
           {/* 公開日 */}
-          <div className="mt-1 flex items-center font-semibold text-gray-500">
+          <div className="mt-1 flex items-center font-semibold text-default/50">
             <FontAwesomeIcon
               size="xs"
               style={{ marginRight: '0.2rem' }}

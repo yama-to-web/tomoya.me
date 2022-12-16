@@ -17,8 +17,8 @@ const Blog: NextPage<Props> = ({ articles, category }: Props) => {
       <Link href={'/blog'} className="mr-auto -mt-10 mb-10 text-sky-500">
         記事一覧
       </Link>
-      <div className="grid w-full gap-5 xl:grid-cols-[3fr_1fr]">
-        <div className="container mx-auto grid grid-cols-1 gap-5 sm:grid-cols-1">
+      <div className="grid w-full gap-40 xl:grid-cols-[3fr_1fr] xl:gap-5">
+        <div className="container mx-auto grid grid-cols-1 place-items-center gap-5 sm:ml-0 sm:grid-cols-1 sm:place-items-start">
           {articles.map((article, index) => (
             <ArticleCard article={article} key={index} />
           ))}

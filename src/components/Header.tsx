@@ -85,20 +85,20 @@ const Header = (props: Props) => {
   return (
     <header
       id="fixed_header"
-      className={`fixed inset-0 top-0 z-10 mx-auto flex h-16 w-full max-w-screen-2xl px-4 lg:h-20 lg:px-8${isActive}`}
+      className={`fixed inset-0 z-10 mx-auto flex h-16 w-full max-w-screen-2xl bg-default/[.5] px-4 lg:h-20 lg:px-8${isActive}`}
     >
       <nav className="flex w-full flex-row items-center">
         <Link href="/" className="flex items-center" passHref>
           <div className="mx-1 hidden h-9 w-9 lg:block">
             <Image src="/icon.png" alt="icon" width={30} height={30} />
           </div>
-          <div className="flex flex-row items-center text-xxs text-black lg:flex-col-reverse">
+          <div className="flex flex-row items-center text-xxs lg:flex-col-reverse">
             <span className="font-semibold tracking-widest">TOMOYA FUJIWARA</span>
             <span className="mx-1 lg:hidden">|</span>
             <h2>tomoya.me</h2>
           </div>
         </Link>
-        <ul className="ml-auto hidden text-black lg:flex">
+        <ul className="ml-auto hidden lg:flex">
           {links.map((data) => {
             return (
               <li

@@ -6,6 +6,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundColor: {
+        'default': '#f8f8fa'
+      },
+      textColor: {
+        'default': '#333'
+      },
       fontSize: {
         xxs: ['.625rem', {
           lineHeight: '0.75rem'

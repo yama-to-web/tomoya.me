@@ -8,7 +8,7 @@
   html,
   body {
     @apply font-serif font-['muli'];
-    @apply leading-relaxed tracking-wider p-0 m-0 text-[#333] bg-[#f8f8fa];
+    @apply leading-relaxed tracking-wider p-0 m-0 text-default bg-default;
   }
 
   a {
@@ -31,6 +31,7 @@
   #micro_cms_article {
     @apply font-sans font-['Hiragino'];
 
+    // 目次
     #toc {
       .h3 {
         @apply flex items-center ml-4 text-xs my-1.5;
@@ -42,7 +43,7 @@
       }
 
       .h2 {
-        @apply flex items-center text-sm my-2;
+        @apply flex items-center text-sm my-2 text-default;
         @apply before:w-2 before:h-2 before:content-[''] before:bg-gray-300 before:rounded-full;
 
         &.active {
@@ -53,10 +54,10 @@
 
     // 見出し
     h2 {
-      @apply relative pb-0.5 pl-3 border-b border-gray-200;
+      @apply relative pb-0.5 pl-3 border-b-2 border-gray-200 text-default;
 
       &::before {
-        @apply absolute inline-block top-[0.07rem] -left-2 w-2 h-full content-[''] bg-teal-400;
+        @apply absolute inline-block top-[0.09rem] -left-2 w-2 h-full content-[''] bg-teal-400;
       }
     }
 
@@ -92,8 +93,12 @@
         @apply p-1;
       }
 
+      p code {
+        @apply before:content-[''] after:content-[''] rounded-sm;
+      }
+
       img {
-        @apply rounded-md;
+        @apply shadow-md shadow-gray-300 my-2;
       }
     }
   }
