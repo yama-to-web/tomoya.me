@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import moment from 'moment';
 import Link from 'next/link';
 import Tags from 'components/Tags';
+import CategoryLabel from 'components/blog/CategoryLabel';
 import type { ArticleType } from 'types/index';
 
 type Props = {
@@ -49,9 +50,7 @@ const ArticleCard = ({ article }: Props) => {
           {/* カテゴリ */}
           {/* bg-violet-400/90 */}
           {/* bg-orange-300/90 */}
-          <div className="mb-1.5 w-fit rounded-xl bg-violet-400/80 py-1 px-2 text-xxs font-semibold tracking-widest text-white">
-            {article.category[0].toUpperCase()}
-          </div>
+          <CategoryLabel category={article.category} />
           {/* 記事タイトル */}
           <div className="mb-4 text-lg font-bold sm:text-xl">{article.title}</div>
           {/* タグ */}

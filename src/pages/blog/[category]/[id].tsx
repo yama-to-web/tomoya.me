@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import BreadCrumb from 'components/BreadCrumb';
 import Tags from 'components/Tags';
+import CategoryLabel from 'components/blog/CategoryLabel';
 import ShareBtn from 'components/blog/ShareBtn';
 import Toc from 'components/blog/Toc';
 import Main from 'components/blog/article/Main';
@@ -55,7 +56,7 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
               path: '/blog',
             },
             {
-              name: article.category,
+              name: article.category[0].charAt(0).toUpperCase() + article.category[0].slice(1),
               path: '/blog/' + article.category,
             },
           ]}
@@ -65,11 +66,8 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
           <h1 className="my-5 text-2xl font-semibold xl:text-3xl">{article.title}</h1>
           <div className="flex flex-col gap-2 sm:flex-row">
             {/* カテゴリ */}
-            <Link
-              href={`/blog/${article.category}`}
-              className="w-fit rounded-xl bg-violet-400/80 py-1 px-2 text-xxs font-semibold tracking-widest text-white"
-            >
-              {article.category[0].toUpperCase()}
+            <Link href={`/blog/${article.category}`}>
+              <CategoryLabel category={article.category} />
             </Link>
             {/* タグ */}
             <Tags tags={article.tags} size="sm" />
