@@ -27,7 +27,7 @@ const Blog: NextPage<Props> = ({ articles }: Props) => {
             </div>
           )}
         </Section>
-        <RightMenu />
+        <RightMenu categories={['tech', 'gadget', 'other']} />
       </div>
     </Main>
   );

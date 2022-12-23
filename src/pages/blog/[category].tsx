@@ -23,7 +23,7 @@ const Blog: NextPage<Props> = ({ articles, category }: Props) => {
             <ArticleCard article={article} key={index} />
           ))}
         </div>
-        <RightMenu />
+        <RightMenu categories={['tech', 'gadget', 'other']} />
       </div>
     </Main>
   );
