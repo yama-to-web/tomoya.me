@@ -7,7 +7,7 @@
 @layer base {
   html,
   body {
-    @apply font-serif font-['muli'];
+    @apply font-muli;
     @apply leading-relaxed tracking-wider p-0 m-0 text-default bg-default;
   }
 
@@ -29,7 +29,7 @@
 * microCMS
 */
   #micro_cms_article {
-    @apply font-sans font-['Hiragino'];
+    @apply font-noto;
 
     // 目次
     #toc {
@@ -86,14 +86,14 @@
 
       // 引用
       blockquote {
-        @apply text-gray-500 text-sm border-l-0 rounded-xl;
+        @apply text-gray-500 bg-gray-200 font-normal text-sm border-l-0 p-4 not-italic;
       }
 
       pre {
         @apply p-1;
       }
 
-      p code {
+      code {
         @apply before:content-[''] after:content-[''] rounded-sm;
       }
 

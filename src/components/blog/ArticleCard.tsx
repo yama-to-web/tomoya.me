@@ -48,8 +48,6 @@ const ArticleCard = ({ article }: Props) => {
         {/* Card Body */}
         <div className="flex-1 p-2">
           {/* カテゴリ */}
-          {/* bg-violet-400/90 */}
-          {/* bg-orange-300/90 */}
           <CategoryLabel category={article.category} />
           {/* 記事タイトル */}
           <div className="mb-4 text-lg font-bold sm:text-xl">{article.title}</div>

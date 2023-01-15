@@ -6,6 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        muli: ['Muli', 'sans-serif'],
+        noto: ['Noto Sans CJK JP', 'sans-serif'],
+      },
       backgroundColor: {
         'default': '#f8f8fa'
       },

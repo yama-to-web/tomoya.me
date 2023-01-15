@@ -96,7 +96,7 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
           )}
           {/* 本文 */}
           <div
-            className="prose mb-32 mt-10 rounded"
+            className="prose mb-32 mt-10 max-w-3xl rounded"
             dangerouslySetInnerHTML={{ __html: `${article.body}` }}
           />
           {/* タグ */}
@@ -147,7 +147,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   }));
 
   // コードハイライト
-  $('pre code, p code').each((_, elm) => {
+  $('code').each((_, elm) => {
     const result = hljs.highlightAuto($(elm).text());
     $(elm).html(result.value);
     $(elm).addClass('hljs');
