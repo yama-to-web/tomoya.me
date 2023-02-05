@@ -32,11 +32,11 @@ const CommonMeta: NextPage<Props> = ({
       <meta charSet="UTF-8" />
       <meta
         name="viewport"
-        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5"
       />
       <link rel="canonical" href={url} />
       <meta name="author" content="Tomoya Fujiwara" />
-      <meta property="description" content={description} />
+      <meta name="description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:type" content="website" />
       <meta property="og:site_name" content={siteName} />

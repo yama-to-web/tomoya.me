@@ -17,7 +17,7 @@ const Toc = ({ toc, setActive = false }: Props) => {
 
   return (
     <div id="toc">
-      <h4 className="mb-3 text-gray-700">目次</h4>
+      <p className="mb-3 text-gray-700">目次</p>
       <ul>
         {toc.map((data, index) => {
           return (
@@ -35,6 +35,7 @@ const Toc = ({ toc, setActive = false }: Props) => {
                 duration={400}
                 onSetActive={(id) => (setActive ? setIsActiveScroll(id) : '')}
                 className="px-2 hover:cursor-pointer"
+                href={'#' + data.id}
               >
                 {data.text}
               </Link>
