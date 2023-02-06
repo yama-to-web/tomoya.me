@@ -41,7 +41,13 @@ const ArticleCard = ({ article }: Props) => {
             width="300"
             height="200"
             className="h-40 w-full object-cover object-center"
-            src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
+            src={
+              article.thumbnail
+                ? article.thumbnail.url
+                : article.eyecatch
+                ? article.eyecatch.url
+                : '/no_image.png'
+            }
             alt={`${article.title}のイメージ`}
           />
         </div>

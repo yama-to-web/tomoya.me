@@ -19,5 +19,10 @@ export type ArticleType = {
     height: number;
     width: number;
   };
+  thumbnail: {
+    url: string;
+    height: number;
+    width: number;
+  };
   tags: [string];
 };
