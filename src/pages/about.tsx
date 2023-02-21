@@ -1,3 +1,7 @@
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Main from 'components/Main';
 import Section from 'components/Section';
 import Tags from 'components/Tags';
-import { certification, products } from 'constants/profile-data';
+import { introduction, certification, products } from 'constants/profile-data';
 import { loadInstaPosts } from 'lib/fetch-posts';
 import type { InstaImg } from 'types/index';
 
@@ -22,19 +26,19 @@ const About: NextPage<Props> = (props: Props) => {
       {/*
        * 自己紹介
        */}
-      <Section title="INTRODUCTION">
+      <Section title={introduction.title}>
         <div className="flex flex-col items-start justify-between gap-y-8 sm:flex-row">
           <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)] lg:w-[calc(50%_-_10rem)]">
             <Image src="/profile.png" width="592" height="592" alt="Tomoya FujiwaraのProfile画像" />
           </div>
           <div className="w-full sm:w-[calc(50%_-_1rem)] sm:min-w-[calc(50%_-_1rem)] lg:py-10">
             <div className="mb-10">
-              <p className="mb-1 text-3xl font-bold tracking-widest">TOMOYA FUJIWARA</p>
-              <p className="text-sm font-semibold italic tracking-wider text-gray-500">
-                WEB ENGINEER
-              </p>
+              <p className="mb-1 text-3xl font-bold tracking-widest">{introduction.name}</p>
             </div>
-            <div className="mt-4 text-xs leading-loose tracking-wider">
+            <div className="mt-4 whitespace-pre-wrap text-sm leading-loose tracking-wider ">
+              {introduction.text}
+            </div>
+            {/* <div className="mt-4 text-xs leading-loose tracking-wider">
               三重県出身 95年生まれ 大阪府在住のWebエンジニア
               <br />
               学生時代は陸上競技に10年間打ち込み、卒業とともに未経験でIT企業に就職
@@ -46,14 +50,14 @@ const About: NextPage<Props> = (props: Props) => {
               趣味はアウトドア、週末は野山に飛び出します
               <br />
               新しくてワクワクするようなプロダクトに興味があります
-            </div>
+            </div> */}
           </div>
         </div>
       </Section>
       {/*
        * プロダクト
        */}
-      <Section title={products.name}>
+      <Section title={products.title}>
         <ul>
           {products.items.map((data) => {
             return (
@@ -73,7 +77,7 @@ const About: NextPage<Props> = (props: Props) => {
                 <div>
                   <p className="py-1 text-xs text-gray-500">{data.category}</p>
                   <p className="mb-4 text-3xl leading-6">{data.name}</p>
-                  <p className="mb-4 ml-1 whitespace-pre-wrap border-l border-gray-300 bg-gray-50 p-2 text-xs">
+                  <p className="mb-4 ml-1 whitespace-pre-wrap border-l border-gray-300 bg-gray-50 p-2 text-sm">
                     {data.explanation}
                   </p>
                   <Tags tags={data.tags} border />
@@ -86,15 +90,26 @@ const About: NextPage<Props> = (props: Props) => {
       {/*
        * 資格
        */}
-      <Section title={certification.name}>
+      <Section title={certification.title}>
         <ul className="pl-1">
           {certification.items.map((data) => {
             return (
               <li className="border-b-2 border-b-gray-100 py-2" key={data.name}>
                 <p className="text-sm text-gray-500">{data.date}</p>
+
                 <p className="text-base leading-6">
                   {data.name}
                   <span className="pl-1 text-xs before:content-['-']"> {data.vendor}</span>
+                  {data.vendor == 'Google Cloud Certified' && (
+                    <FontAwesomeIcon color="#3f7de7" className="ml-1" icon={faGoogle as IconProp} />
+                  )}
+                  {data.vendor == '情報処理推進機構(IPA)' && (
+                    <FontAwesomeIcon
+                      color="#e7370e"
+                      className="ml-1"
+                      icon={faGraduationCap as IconProp}
+                    />
+                  )}
                 </p>
               </li>
             );
@@ -139,12 +154,12 @@ const About: NextPage<Props> = (props: Props) => {
             </Swiper>
           </div>
           {/* PC */}
-          <div className="hidden md:block">
-            <div className="grid grid-cols-3 gap-1">
+          <div className="m-auto hidden w-full md:block">
+            <div className="m-auto grid max-w-3xl grid-cols-3 gap-1">
               {props.images?.map((data) => {
                 return (
                   <Link
-                    className="relative h-64 overflow-hidden"
+                    className="relative h-56 overflow-hidden"
                     href={data.permalink}
                     key={data.id}
                     target="_blank"

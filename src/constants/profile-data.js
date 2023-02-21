@@ -1,25 +1,30 @@
 const config = {
+  introduction: {
+    title: 'INTRODUCTION',
+    name: 'TOMOYA FUJIWARA',
+    text: `三重県出身 95年生まれ 大阪府在住のWebエンジニア\n学生時代は陸上競技に10年間打ち込み、卒業とともに未経験でIT企業に就職。\n2019年〜現在までフロントエンジニアとして商品比較サイトの開発に携わる。\nフルスタックエンジニアを目指し日々邁進中\n趣味はアウトドア、週末は野山に飛び出します。\n新しくてワクワクするようなプロダクトに興味があります。`
+  },
   products: {
-    name: 'PRODUCTS',
+    title: 'PRODUCTS',
     items: [
       {
         name: 'tomoya.me',
         category: 'Webサイト',
         thumnail: 'tomoya.me/about.png',
-        // thumnail: 'tomoya.me/tomoya.me.png',
-        explanation: `当ポートフォリオサイト。\n以前から興味のあったNext.js TypeScript TailwindCSSを使い、自身の学習も兼ねてゼロから自分で作成しました！\n今後もブログ記事などのコンテンツ拡張も予定しております。\nお気軽にお立ち寄りいただけると幸いです。`,
+        explanation: `当ブログ兼ポートフォリオサイト。\n以前から興味のあったNext.js TypeScript TailwindCSSを使い、自身の学習も兼ねてフルスクラッチで作成しました！\n今後もコンテンツ拡張も予定しております。\nお気軽にお立ち寄りいただけると幸いです。`,
         tags: [
           'Next.js',
+          'React',
+          'TypeScript',
           'Tailwind CSS',
           'microCMS',
-          'SSG',
           'Figma',
         ],
       },
     ],
   },
   certification: {
-    name: 'CERTIFICATION',
+    title: 'CERTIFICATION',
     items: [
       {
         name: 'Associate Cloud Engineer',

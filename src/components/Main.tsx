@@ -18,7 +18,7 @@ const Main = ({ children, title, subtitle, description }: Props) => {
         pageDescription={description}
       />
       <Header />
-      <div className="mx-auto flex flex-col items-center justify-center lg:max-w-screen-xl">
+      <div className="mx-auto flex flex-col items-center justify-center lg:max-w-screen-2xl lg:px-10">
         <section className="mt-40 flex h-24 w-full items-start px-5 text-3xl sm:h-40">
           <h3 className="text-lg font-bold">
             {title}

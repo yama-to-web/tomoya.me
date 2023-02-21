@@ -1,6 +1,3 @@
-import type { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faClock } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import moment from 'moment';
 import Link from 'next/link';
@@ -60,13 +57,8 @@ const ArticleCard = ({ article }: Props) => {
           {/* タグ */}
           <Tags tags={article.tags} size="sm" />
           {/* 公開日 */}
-          <div className="mt-1 flex items-center font-semibold text-default/50">
-            <FontAwesomeIcon
-              size="xs"
-              style={{ marginRight: '0.2rem' }}
-              icon={faClock as IconProp}
-            />
-            <span className="text-sm">{moment(article.createdAt).format('YYYY.MM.DD')}</span>
+          <div className="mt-1 flex items-center text-xs text-default/50">
+            <span>公開日：{moment(article.createdAt).format('YYYY.MM.DD')}</span>
           </div>
         </div>
       </motion.div>

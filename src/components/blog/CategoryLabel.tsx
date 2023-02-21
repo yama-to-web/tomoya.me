@@ -8,13 +8,13 @@ const CategoryLabel = ({ category }: Props) => {
 
   switch (categoryName) {
     case 'tech':
-      labelColor = 'bg-blue-400/80';
+      labelColor = 'bg-blue-600';
       break;
     case 'gadget':
-      labelColor = 'bg-violet-400/80';
+      labelColor = 'bg-violet-600';
       break;
     default:
-      labelColor = 'bg-orange-400/80';
+      labelColor = 'bg-orange-500';
       break;
   }
   return (

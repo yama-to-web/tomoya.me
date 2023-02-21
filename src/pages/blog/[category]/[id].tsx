@@ -74,14 +74,8 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
           </div>
           {/* 公開日 */}
           <div className="my-2 flex items-center">
-            <FontAwesomeIcon
-              size="xs"
-              style={{ marginRight: '0.2rem' }}
-              icon={faClock as IconProp}
-              color={'gray'}
-            />
             <span className="text-xs text-gray-400">
-              {moment(article.createdAt).format('YYYY.MM.DD')}
+              公開日：{moment(article.createdAt).format('YYYY.MM.DD')}
             </span>
           </div>
           {/* シェアボタン */}
