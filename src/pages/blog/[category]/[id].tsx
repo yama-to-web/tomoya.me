@@ -1,6 +1,3 @@
-import type { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faClock } from '@fortawesome/free-regular-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { load } from 'cheerio';
 import hljs from 'highlight.js';
 import type { MicroCMSQueries } from 'microcms-js-sdk';
@@ -64,13 +61,13 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
         <div className="mt-3 px-4">
           {/* タイトル */}
           <h1 className="my-5 text-2xl font-semibold xl:text-3xl">{article.title}</h1>
-          <div className="flex flex-col gap-2 sm:flex-row">
+          <div className="flex flex-col items-center gap-2 sm:flex-row">
             {/* カテゴリ */}
             <Link href={`/blog/${article.category}`}>
               <CategoryLabel category={article.category} />
             </Link>
             {/* タグ */}
-            <Tags tags={article.tags} size="sm" />
+            <Tags tags={article.tags} size="md" />
           </div>
           {/* 公開日 */}
           <div className="my-2 flex items-center">

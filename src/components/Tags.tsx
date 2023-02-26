@@ -9,7 +9,7 @@ type Props = {
 };
 
 const Tags = ({ tags = [], border = false, size = 'xs' }: Props) => {
-  const borderClass = border ? ' rounded-md border border-teal-600 px-1 py-0.5' : '';
+  const borderClass = border ? ' rounded-md border border-teal-600 text-teal-600 px-1 py-0.5' : '';
   const sizeClass = ' text-' + size;
 
   return (
@@ -19,8 +19,8 @@ const Tags = ({ tags = [], border = false, size = 'xs' }: Props) => {
           return (
             <li
               className={
-                'text-teal-600' +
                 borderClass +
+                'text-gray-600' +
                 sizeClass +
                 (border ? " before:content-['#']" : '') +
                 (index == tags.length - 1 || border ? '' : ' mr-1.5')
@@ -29,7 +29,7 @@ const Tags = ({ tags = [], border = false, size = 'xs' }: Props) => {
             >
               {!border && (
                 <FontAwesomeIcon
-                  className="mr-0.5 text-teal-600"
+                  className="mr-0.5 text-gray-600"
                   size="sm"
                   icon={faTag as IconProp}
                 />

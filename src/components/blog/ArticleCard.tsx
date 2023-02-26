@@ -33,7 +33,7 @@ const ArticleCard = ({ article }: Props) => {
         }}
       >
         {/* サムネイル */}
-        <div className="overflow-hidden rounded-lg sm:mr-5 sm:w-72">
+        <div className="overflow-hidden rounded-md sm:mr-5 sm:w-72">
           <motion.img
             width="300"
             height="200"
@@ -50,15 +50,17 @@ const ArticleCard = ({ article }: Props) => {
         </div>
         {/* Card Body */}
         <div className="flex-1 p-2">
-          {/* カテゴリ */}
-          <CategoryLabel category={article.category} />
           {/* 記事タイトル */}
-          <div className="mb-4 text-lg font-bold sm:text-xl">{article.title}</div>
+          <div className="mt-1 mb-4 text-lg font-bold sm:text-xl">{article.title}</div>
           {/* タグ */}
           <Tags tags={article.tags} size="sm" />
           {/* 公開日 */}
           <div className="mt-1 flex items-center text-xs text-default/50">
             <span>公開日：{moment(article.createdAt).format('YYYY.MM.DD')}</span>
+          </div>
+          {/* カテゴリ */}
+          <div className="mt-2">
+            <CategoryLabel category={article.category} />
           </div>
         </div>
       </motion.div>

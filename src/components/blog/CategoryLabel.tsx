@@ -20,7 +20,7 @@ const CategoryLabel = ({ category }: Props) => {
   return (
     <div
       className={
-        'w-fit rounded-xl py-1 px-2 text-xxs font-bold tracking-widest text-white ' + labelColor
+        'w-fit rounded py-0.5 px-2 text-xs font-semibold tracking-widest text-white ' + labelColor
       }
     >
       {categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}
