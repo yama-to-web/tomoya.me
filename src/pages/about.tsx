@@ -2,6 +2,8 @@ import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { HatGraduation } from '@styled-icons/fluentui-system-regular';
+import { Googlecloud } from '@styled-icons/simple-icons';
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -49,7 +51,7 @@ const About: NextPage<Props> = (props: Props) => {
           {products.items.map((data) => {
             return (
               <li
-                className="flex flex-col gap-5 border-b-2 border-b-gray-100 md:flex-row md:items-center"
+                className="flex flex-col gap-5 border-b-2 border-b-gray-100 pb-2 md:flex-row md:items-center"
                 key={data.name}
               >
                 <div className="h-80">
@@ -87,15 +89,11 @@ const About: NextPage<Props> = (props: Props) => {
                 <p className="text-base leading-6">
                   {data.name}
                   <span className="pl-1 text-xs before:content-['-']"> {data.vendor}</span>
-                  {data.vendor == 'Google Cloud Certified' && (
-                    <FontAwesomeIcon color="#3f7de7" className="ml-1" icon={faGoogle as IconProp} />
+                  {data.vendor == 'GCP' && (
+                    <Googlecloud color="#4285F4" className="ml-1" size={20} />
                   )}
                   {data.vendor == '情報処理推進機構(IPA)' && (
-                    <FontAwesomeIcon
-                      color="#e7370e"
-                      className="ml-1"
-                      icon={faGraduationCap as IconProp}
-                    />
+                    <HatGraduation color="#e7370e" className="ml-1" size={20} />
                   )}
                 </p>
               </li>

@@ -17,14 +17,13 @@ const CategoryLabel = ({ category }: Props) => {
       labelColor = '-orange-500';
       break;
   }
+  const textColor = 'text' + labelColor;
+  const borderColor = 'border' + labelColor;
+
   return (
     <div
       className={
-        'w-fit rounded border py-0.5 px-2 text-sm font-semibold tracking-widest' +
-        ' text' +
-        labelColor +
-        ' border' +
-        labelColor
+        'w-fit rounded border py-0.5 px-2 text-sm tracking-widest' + ` ${textColor} ${borderColor}`
       }
     >
       {categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}

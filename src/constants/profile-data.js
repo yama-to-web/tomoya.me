@@ -18,6 +18,7 @@ const config = {
           'Typescript',
           'Tailwind CSS',
           'microCMS',
+
           'Figma',
         ],
       },
@@ -29,7 +30,7 @@ const config = {
       {
         name: 'Associate Cloud Engineer',
         date: '2022.05.23 ~ 2024.05.22',
-        vendor: 'Google Cloud Certified',
+        vendor: 'GCP',
       },
       {
         name: '基本情報技術者',
