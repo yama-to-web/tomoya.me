@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import moment from 'moment';
 import Link from 'next/link';
-import Tags from 'components/Tags';
+import IconTags from 'components/IconTags';
 import CategoryLabel from 'components/blog/CategoryLabel';
 import type { ArticleType } from 'types/index';
 
@@ -51,16 +51,16 @@ const ArticleCard = ({ article }: Props) => {
         {/* Card Body */}
         <div className="flex-1 p-2">
           {/* 記事タイトル */}
-          <div className="mt-1 mb-4 text-lg font-bold sm:text-xl">{article.title}</div>
-          {/* タグ */}
-          <Tags tags={article.tags} size="sm" />
-          {/* 公開日 */}
-          <div className="mt-1 flex items-center text-xs text-default/50">
-            <span>公開日：{moment(article.createdAt).format('YYYY.MM.DD')}</span>
-          </div>
-          {/* カテゴリ */}
-          <div className="mt-2">
+          <div className="my-1 text-lg font-bold sm:text-xl">{article.title}</div>
+          <div className="my-3 flex items-center gap-3">
+            {/* カテゴリ */}
             <CategoryLabel category={article.category} />
+            {/* タグ */}
+            <IconTags tags={article.tags} />
+          </div>
+          {/* 公開日 */}
+          <div className="m-1 flex items-center text-xs text-default/50">
+            <span>公開日：{moment(article.createdAt).format('YYYY.MM.DD')}</span>
           </div>
         </div>
       </motion.div>

@@ -8,19 +8,23 @@ const CategoryLabel = ({ category }: Props) => {
 
   switch (categoryName) {
     case 'tech':
-      labelColor = 'bg-blue-600';
+      labelColor = '-blue-600';
       break;
     case 'gadget':
-      labelColor = 'bg-violet-600';
+      labelColor = '-violet-600';
       break;
     default:
-      labelColor = 'bg-orange-500';
+      labelColor = '-orange-500';
       break;
   }
   return (
     <div
       className={
-        'w-fit rounded py-0.5 px-2 text-xs font-semibold tracking-widest text-white ' + labelColor
+        'w-fit rounded border py-0.5 px-2 text-sm font-semibold tracking-widest' +
+        ' text' +
+        labelColor +
+        ' border' +
+        labelColor
       }
     >
       {categoryName.charAt(0).toUpperCase() + categoryName.slice(1)}

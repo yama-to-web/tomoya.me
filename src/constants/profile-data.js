@@ -15,7 +15,7 @@ const config = {
         tags: [
           'Next.js',
           'React',
-          'TypeScript',
+          'Typescript',
           'Tailwind CSS',
           'microCMS',
           'Figma',

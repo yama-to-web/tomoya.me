@@ -7,9 +7,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import IconTags from 'components/IconTags';
 import Main from 'components/Main';
 import Section from 'components/Section';
-import Tags from 'components/Tags';
 import { introduction, certification, products } from 'constants/profile-data';
 import { loadInstaPosts } from 'lib/fetch-posts';
 import type { InstaImg } from 'types/index';
@@ -38,19 +38,6 @@ const About: NextPage<Props> = (props: Props) => {
             <div className="mt-4 whitespace-pre-wrap text-sm leading-loose tracking-wider ">
               {introduction.text}
             </div>
-            {/* <div className="mt-4 text-xs leading-loose tracking-wider">
-              三重県出身 95年生まれ 大阪府在住のWebエンジニア
-              <br />
-              学生時代は陸上競技に10年間打ち込み、卒業とともに未経験でIT企業に就職
-              <br />
-              2019年〜現在までフロントエンジニアとして商品比較サイトの開発に携わる
-              <br />
-              フルスタックエンジニアを目指し日々邁進中
-              <br />
-              趣味はアウトドア、週末は野山に飛び出します
-              <br />
-              新しくてワクワクするようなプロダクトに興味があります
-            </div> */}
           </div>
         </div>
       </Section>
@@ -80,7 +67,7 @@ const About: NextPage<Props> = (props: Props) => {
                   <p className="mb-4 ml-1 whitespace-pre-wrap border-l border-gray-300 bg-gray-50 p-2 text-sm">
                     {data.explanation}
                   </p>
-                  <Tags tags={data.tags} border />
+                  <IconTags tags={data.tags} />
                 </div>
               </li>
             );

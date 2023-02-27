@@ -6,7 +6,7 @@ import type { GetStaticProps, GetStaticPaths, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import BreadCrumb from 'components/BreadCrumb';
-import Tags from 'components/Tags';
+import IconTags from 'components/IconTags';
 import CategoryLabel from 'components/blog/CategoryLabel';
 import ShareBtn from 'components/blog/ShareBtn';
 import Toc from 'components/blog/Toc';
@@ -61,13 +61,13 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
         <div className="mt-3 px-4">
           {/* タイトル */}
           <h1 className="my-5 text-2xl font-semibold xl:text-3xl">{article.title}</h1>
-          <div className="flex flex-col items-center gap-2 sm:flex-row">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
             {/* カテゴリ */}
             <Link href={`/blog/${article.category}`}>
               <CategoryLabel category={article.category} />
             </Link>
             {/* タグ */}
-            <Tags tags={article.tags} size="md" />
+            <IconTags tags={article.tags} />
           </div>
           {/* 公開日 */}
           <div className="my-2 flex items-center">
@@ -91,7 +91,7 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
             dangerouslySetInnerHTML={{ __html: `${article.body}` }}
           />
           {/* タグ */}
-          <Tags tags={article.tags} size="sm" />
+          <IconTags tags={article.tags} />
           <div className="mt-10 grid place-content-center place-items-center gap-2 sm:place-content-end">
             <p className="text-xs text-gray-500 before:mr-1 before:content-['＼'] after:ml-1 after:content-['／']">
               記事をシェアする

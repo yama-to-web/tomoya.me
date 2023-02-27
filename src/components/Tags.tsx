@@ -20,7 +20,7 @@ const Tags = ({ tags = [], border = false, size = 'xs' }: Props) => {
             <li
               className={
                 borderClass +
-                'text-gray-600' +
+                'text-gray-500' +
                 sizeClass +
                 (border ? " before:content-['#']" : '') +
                 (index == tags.length - 1 || border ? '' : ' mr-1.5')
@@ -29,7 +29,7 @@ const Tags = ({ tags = [], border = false, size = 'xs' }: Props) => {
             >
               {!border && (
                 <FontAwesomeIcon
-                  className="mr-0.5 text-gray-600"
+                  className="mr-0.5 text-gray-500"
                   size="sm"
                   icon={faTag as IconProp}
                 />
