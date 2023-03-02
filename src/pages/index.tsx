@@ -30,7 +30,7 @@ const Home: NextPage<Props> = (props: Props) => {
       <div className="absolute flex flex-col items-center justify-center p-5">
         <div className="z-50">
           <motion.div
-            className="mx-auto"
+            className="my-16 mx-auto"
             initial={{
               opacity: 0,
               scale: 0.99,
@@ -43,10 +43,10 @@ const Home: NextPage<Props> = (props: Props) => {
               },
             }}
           >
-            <Image src="/title.png" width="500" height="100" alt="tomoya.me" />
+            <Image src="/title.png" width="600" height="120" alt="tomoya.me" />
           </motion.div>
           <motion.div
-            className="lg: mt-8 flex flex-col items-start justify-center text-white lg:flex-row lg:items-center lg:justify-between"
+            className="flex flex-col items-start justify-center gap-5 text-white lg:my-8 lg:flex-row lg:items-center lg:justify-between"
             initial={{
               opacity: 0,
               y: 30,
@@ -59,8 +59,8 @@ const Home: NextPage<Props> = (props: Props) => {
               },
             }}
           >
-            <Nav></Nav>
-            <Sns gap="mx-1"></Sns>
+            <Nav />
+            <Sns />
           </motion.div>
           <p className="mt-3 text-xs text-white">
             This background image is grabbed from my latest instagram post automatically.

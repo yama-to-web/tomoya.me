@@ -1,7 +1,3 @@
-import type { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { HatGraduation } from '@styled-icons/fluentui-system-regular';
 import { Googlecloud } from '@styled-icons/simple-icons';
 import type { GetStaticProps, NextPage } from 'next';
