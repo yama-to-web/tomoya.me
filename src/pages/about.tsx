@@ -47,10 +47,10 @@ const About: NextPage<Props> = (props: Props) => {
           {products.items.map((data) => {
             return (
               <li
-                className="flex flex-col gap-5 border-b-2 border-b-gray-100 pb-2 md:flex-row md:items-center"
+                className="flex flex-col gap-5 border-b-2 border-b-gray-100 pb-5 md:flex-row md:items-center"
                 key={data.name}
               >
-                <div className="h-80">
+                <div className="sm:h-80">
                   <Image
                     src={`/products/${data.thumnail}`}
                     width={300}
@@ -81,8 +81,7 @@ const About: NextPage<Props> = (props: Props) => {
             return (
               <li className="border-b-2 border-b-gray-100 py-2" key={data.name}>
                 <p className="text-sm text-gray-500">{data.date}</p>
-
-                <p className="text-base leading-6">
+                <p className="text-lg leading-6">
                   {data.name}
                   <span className="pl-1 text-xs before:content-['-']"> {data.vendor}</span>
                   {data.vendor == 'GCP' && (

@@ -90,10 +90,10 @@ const Header = (props: Props) => {
       <nav className="flex w-full flex-row items-center">
         <Link href="/" className="flex items-center" passHref>
           <div className="mx-1 hidden h-9 w-9 lg:block">
-            <Image src="/icon.png" alt="icon" width={30} height={30} />
+            <Image src="/icon.png" alt="icon" width={50} height={50} />
           </div>
           <div className="flex flex-row items-center text-xxs lg:flex-col-reverse">
-            <span className="font-semibold tracking-widest">TOMOYA FUJIWARA</span>
+            <h1 className="font-semibold tracking-widest">TOMOYA FUJIWARA</h1>
             <span className="mx-1 lg:hidden">|</span>
             <h2>tomoya.me</h2>
           </div>
