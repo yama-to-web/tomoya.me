@@ -40,7 +40,7 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
           <Image
             width={1500}
             height={1000}
-            className="h-full w-full object-cover text-center shadow-sm sm:rounded-2xl"
+            className="h-full w-full object-cover text-center shadow-sm"
             src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
             alt={`${article.title}のイメージ`}
           />

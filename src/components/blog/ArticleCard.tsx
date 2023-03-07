@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import moment from 'moment';
+import Image from 'next/image';
 import Link from 'next/link';
 import IconTags from 'components/IconTags';
 import CategoryLabel from 'components/blog/CategoryLabel';
@@ -33,8 +34,8 @@ const ArticleCard = ({ article }: Props) => {
         }}
       >
         {/* サムネイル */}
-        <div className="overflow-hidden rounded-md sm:mr-5 sm:w-72">
-          <motion.img
+        <div className="overflow-hidden sm:mr-5 sm:w-72">
+          <Image
             width="300"
             height="200"
             className="h-40 w-full object-cover object-center"

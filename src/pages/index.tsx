@@ -22,52 +22,69 @@ const Home: NextPage<Props> = (props: Props) => {
   }
 
   return (
-    <main className="relative flex flex-col items-center justify-center">
+    <>
       <CommonMeta pageTitle="Home" pageDescription="" />
-      <div className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover">
-        <Image src={mvPath} fill alt="instagram image" className="object-cover" />
-      </div>
-      <div className="absolute flex flex-col items-center justify-center p-5">
-        <div className="z-50">
-          <motion.div
-            className="my-16 mx-auto"
-            initial={{
-              opacity: 0,
-              scale: 0.99,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              transition: {
-                duration: 1.2,
-              },
-            }}
-          >
-            <Image src="/title.png" width="600" height="120" alt="tomoya.me" />
-          </motion.div>
-          <motion.div
-            className="flex flex-col items-start justify-center gap-5 text-white lg:my-8 lg:flex-row lg:items-center lg:justify-between"
-            initial={{
-              opacity: 0,
-              y: 30,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 1.8,
-              },
-            }}
-          >
-            <Nav />
-            <Sns />
-          </motion.div>
-          <p className="mt-3 text-xs text-white">
-            This background image is grabbed from my latest instagram post automatically.
-          </p>
+      <motion.main
+        className="relative flex flex-col items-center justify-center"
+        initial="pageInitial"
+        animate="pageAnimate"
+        variants={{
+          pageInitial: {
+            opacity: 0,
+          },
+          pageAnimate: {
+            opacity: 1,
+            transition: {
+              duration: 1.8,
+            },
+          },
+        }}
+      >
+        <div className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover">
+          <Image src={mvPath} fill alt="instagram image" className="object-cover" />
         </div>
-      </div>
-    </main>
+        <div className="absolute flex flex-col items-center justify-center p-5">
+          <div className="z-50">
+            <motion.div
+              className="my-16 mx-auto"
+              initial={{
+                opacity: 0,
+                scale: 0.99,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                transition: {
+                  duration: 1.2,
+                },
+              }}
+            >
+              <Image src="/title.png" width="600" height="120" alt="tomoya.me" />
+            </motion.div>
+            <motion.div
+              className="flex flex-col items-start justify-center gap-5 text-white lg:my-8 lg:flex-row lg:items-center lg:justify-between"
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 1.8,
+                },
+              }}
+            >
+              <Nav />
+              <Sns />
+            </motion.div>
+            <p className="mt-3 text-xs text-white">
+              This background image is grabbed from my latest instagram post automatically.
+            </p>
+          </div>
+        </div>
+      </motion.main>
+    </>
   );
 };
 
