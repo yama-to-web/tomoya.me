@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import IconTags from 'components/IconTags';
 import Main from 'components/Main';
 import Section from 'components/Section';
-import { introduction, certification, products } from 'constants/profile-data';
+import { introduction, certification, products, career } from 'constants/profile-data';
 import { loadInstaPosts } from 'lib/fetch-posts';
 import type { InstaImg } from 'types/index';
 
@@ -36,6 +36,85 @@ const About: NextPage<Props> = (props: Props) => {
             <div className="mt-4 whitespace-pre-wrap text-sm leading-loose tracking-wider ">
               {introduction.text}
             </div>
+          </div>
+        </div>
+      </Section>
+      {/*
+       * キャリア
+       */}
+      <Section title={career.title}>
+        <div className="flex flex-col items-start justify-between gap-8 sm:flex-row">
+          <div className="sm:w-1/2">
+            <p className="mb-5 text-xl font-bold">Main</p>
+            <ul>
+              {career.history.main.map((val, idx) => {
+                return (
+                  <li
+                    key={idx}
+                    className="relative ml-5 flex flex-col justify-between gap-3 border-l-2 border-cyan-400 pb-10 pl-5 before:absolute before:inset-0 before:ml-[-0.575rem] before:h-4 before:w-4 before:rounded-full before:bg-cyan-400 before:content-[''] sm:flex-row"
+                  >
+                    <p className="-mt-1 w-48 text-sm">{val.date}</p>
+                    <div className="-mt-1.5 w-full">
+                      <p className="font-semibold">{val.title}</p>
+                      {val.text.length != 0 && (
+                        <div className="mt-4">
+                          <p className="text-sm font-semibold">■担当業務</p>
+                          <p className="my-2 whitespace-pre-wrap text-sm">{val.text}</p>
+                        </div>
+                      )}
+                      {val.skills.length != 0 && (
+                        <div className="mt-4">
+                          <p className="text-sm font-semibold">■経験スキル</p>
+                          <ul className="ml-2 border-l-2 border-l-gray-300 p-1">
+                            {val.skills.map((val, idx) => (
+                              <li className="my-1 text-sm" key={idx}>
+                                ・{val}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="sm:w-1/2">
+            <p className="mb-5 text-xl font-bold">Sub</p>
+            <ul>
+              {career.history.sub.map((val, idx) => {
+                return (
+                  <li
+                    key={idx}
+                    className="relative ml-5 flex flex-col justify-between gap-3 border-l-2 border-teal-400 pb-10 pl-5 before:absolute before:inset-0 before:ml-[-0.575rem] before:h-4 before:w-4 before:rounded-full before:bg-teal-400 before:content-[''] sm:flex-row"
+                  >
+                    <p className="-mt-1 w-48 text-sm">{val.date}</p>
+                    <div className="-mt-1.5 w-full">
+                      <p className="font-semibold">{val.title}</p>
+                      {val.text.length != 0 && (
+                        <div className="mt-4">
+                          <p className="text-sm font-semibold">■担当業務</p>
+                          <p className="my-2 whitespace-pre-wrap text-sm">{val.text}</p>
+                        </div>
+                      )}
+                      {val.skills.length != 0 && (
+                        <div className="mt-4">
+                          <p className="text-sm font-semibold">■経験スキル</p>
+                          <ul className="ml-2 border-l-2 border-l-gray-300 p-1">
+                            {val.skills.map((val, idx) => (
+                              <li className="my-1 text-sm" key={idx}>
+                                ・{val}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </Section>

@@ -4,6 +4,45 @@ const config = {
     name: 'TOMOYA FUJIWARA',
     text: `三重県出身 95年生まれ 大阪府在住のWebエンジニア\n学生時代は陸上競技に10年間打ち込み、卒業とともに未経験でIT企業に就職。\n2019年〜現在までフロントエンジニアとして商品比較サイトの開発に携わる。\nフルスタックエンジニアを目指し日々邁進中\n趣味はアウトドア、週末は野山に飛び出します。\n新しくてワクワクするようなプロダクトに興味があります。`
   },
+  career: {
+    title: 'CAREER',
+    history: {
+      main: [
+        {
+          date: '2019年4月',
+          title: 'SES企業に就職',
+          text: '',
+          skills: []
+        },
+        {
+          date: '2019年4月~7月',
+          title: '社外研修',
+          text: '',
+          skills: ['HTML/CSS/Javascriipt', 'PHP', 'Java']
+        },
+        {
+          date: '2019年7月〜',
+          title: '大手商品比較サイトの運用・保守',
+          text: `・開発、ソースレビュー、テスト\n・フロントエンジニア\n・Line AIチャットボットの開発`,
+          skills: ['PHP（Yii2, Twig）', 'HTML/CSS/Javascript（jQuery）', 'GCP（Functions/Datastore/Dailogflow）', 'AWS（AppSync/Dynamodb）']
+        },
+      ],
+      sub: [
+        {
+          date: '2022年2月〜3月',
+          title: 'コーポレートサイト作成',
+          text: '・開発',
+          skills: ['Wordpress', 'PHP', 'HTML/CSS', 'jQuery']
+        },
+        {
+          date: '2023年2月〜',
+          title: '日報管理システム開発',
+          text: '・開発、DB設計（一部）',
+          skills: ['React（Next.js, Redux, Mui）']
+        },
+      ]
+    }
+  },
   products: {
     title: 'PRODUCTS',
     items: [
