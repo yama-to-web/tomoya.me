@@ -24,7 +24,7 @@ const config = {
           date: '2019年7月〜',
           title: '大手商品比較サイトの運用・保守',
           text: `・開発、ソースレビュー、テスト\n・フロントエンジニア\n・Line AIチャットボットの開発`,
-          skills: ['PHP（Yii2, Twig）', 'HTML/CSS/Javascript（jQuery）', 'GCP（Functions/Datastore/Dailogflow）', 'AWS（AppSync/Dynamodb）']
+          skills: ['PHP（Yii2, Twig）', 'HTML/CSS/Javascript', 'jQuery', 'GCP（Functions/Datastore/Dailogflow）', 'AWS（AppSync/Dynamodb）']
         },
       ],
       sub: [
@@ -32,13 +32,13 @@ const config = {
           date: '2022年2月〜3月',
           title: 'コーポレートサイト作成',
           text: '・開発',
-          skills: ['Wordpress', 'PHP', 'HTML/CSS', 'jQuery']
+          skills: ['Wordpress', 'PHP', 'HTML/CSS/Javascript', 'jQuery']
         },
         {
           date: '2023年2月〜',
           title: '日報管理システム開発',
           text: '・開発、DB設計（一部）',
-          skills: ['React（Next.js, Redux, Mui）']
+          skills: ['React（Next.js, Redux, Redux Toolkit）', 'Mui']
         },
       ]
     }
@@ -57,7 +57,6 @@ const config = {
           'Typescript',
           'Tailwind CSS',
           'microCMS',
-
           'Figma',
         ],
       },

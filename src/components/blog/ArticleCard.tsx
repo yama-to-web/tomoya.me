@@ -34,7 +34,7 @@ const ArticleCard = ({ article }: Props) => {
         }}
       >
         {/* サムネイル */}
-        <div className="overflow-hidden sm:mr-5 sm:w-72">
+        <div className="overflow-hidden rounded-md sm:mr-5 sm:w-72">
           <Image
             width="300"
             height="200"

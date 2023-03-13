@@ -36,11 +36,11 @@ const Article: NextPage<Props> = ({ article, toc }: Props) => {
       {/* コンテンツ */}
       <div className="w-full max-w-3xl overflow-hidden">
         {/* サムネイル */}
-        <div className="mb-2 w-full max-w-3xl lg:h-[400px]">
+        <div className="mb-2 max-w-3xl lg:h-[400px]">
           <Image
             width={1500}
             height={1000}
-            className="h-full w-full object-cover text-center shadow-sm"
+            className="h-full w-full object-cover text-center shadow-sm sm:rounded-xl"
             src={article.eyecatch ? article.eyecatch.url : '/no_image.png'}
             alt={`${article.title}のイメージ`}
           />

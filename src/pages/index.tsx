@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import type { NextPage, GetStaticProps } from 'next';
 import Image from 'next/image';
+import { Autoplay, EffectFade } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import CommonMeta from 'components/CommonMeta';
 import Nav from 'components/Nav';
 import Sns from 'components/Sns';
 import { loadInstaPosts } from 'lib/fetch-posts';
 import type { InstaImg } from 'types/index';
+import 'swiper/css/effect-fade';
 
 type Props = {
   images?: Array<InstaImg>;
@@ -40,9 +43,30 @@ const Home: NextPage<Props> = (props: Props) => {
           },
         }}
       >
-        <div className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover">
-          <Image src={mvPath} fill alt="instagram image" className="object-cover" />
-        </div>
+        <Swiper
+          className="w-full"
+          slidesPerView={1}
+          loop
+          speed={10000}
+          centeredSlides
+          effect="fade"
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, EffectFade]}
+        >
+          {props.images?.map((val, index) => {
+            return (
+              <SwiperSlide
+                key={index}
+                className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover"
+              >
+                <Image src={val.media_url} fill alt="instagram image" className="object-cover" />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
         <div className="absolute flex flex-col items-center justify-center p-5">
           <div className="z-50">
             <motion.div
