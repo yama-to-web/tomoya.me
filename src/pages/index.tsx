@@ -15,15 +15,6 @@ type Props = {
 };
 
 const Home: NextPage<Props> = (props: Props) => {
-  const instaImgs = props.images;
-  let mvPath;
-
-  if (instaImgs) {
-    mvPath = instaImgs[Math.floor(Math.random() * instaImgs.length)].media_url;
-  } else {
-    mvPath = '/mv' + Math.floor(Math.random() * 2) + '.jpg';
-  }
-
   return (
     <>
       <CommonMeta pageTitle="Home" pageDescription="" />
@@ -47,7 +38,7 @@ const Home: NextPage<Props> = (props: Props) => {
           className="w-full"
           slidesPerView={1}
           loop
-          speed={10000}
+          speed={9000}
           centeredSlides
           effect="fade"
           autoplay={{
