@@ -117,7 +117,7 @@ const About: NextPage<Props> = (props: Props) => {
             >
               {props.images?.map((data, index) => {
                 return (
-                  <SwiperSlide key={index}>
+                  <SwiperSlide key={data.id}>
                     <Link
                       className="inline-block h-60 sm:h-80"
                       href={data.permalink}

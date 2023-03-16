@@ -29,7 +29,7 @@ const Home: NextPage<Props> = (props: Props) => {
           pageAnimate: {
             opacity: 1,
             transition: {
-              duration: 1.8,
+              duration: 2,
             },
           },
         }}
@@ -38,6 +38,7 @@ const Home: NextPage<Props> = (props: Props) => {
           className="w-full"
           slidesPerView={1}
           loop
+          allowTouchMove={false}
           speed={9000}
           centeredSlides
           effect="fade"
@@ -47,10 +48,10 @@ const Home: NextPage<Props> = (props: Props) => {
           }}
           modules={[Autoplay, EffectFade]}
         >
-          {props.images?.map((val, index) => {
+          {props.images?.map((val) => {
             return (
               <SwiperSlide
-                key={index}
+                key={val.id}
                 className="after:bg-mask z-0 min-h-screen w-screen bg-fixed after:bg-cover"
               >
                 <Image src={val.media_url} fill alt="instagram image" className="object-cover" />

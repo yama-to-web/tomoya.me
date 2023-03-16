@@ -92,10 +92,10 @@ const config = {
     },
   ],
   accounts: [
-    {
-      id: 'twitter',
-      url: 'https://twitter.com/yama_to_web',
-    },
+    // {
+    //   id: 'twitter',
+    //   url: 'https://twitter.com/yama_to_web',
+    // },
     {
       id: 'instagram',
       url: 'https://www.instagram.com/yama_to_web',
