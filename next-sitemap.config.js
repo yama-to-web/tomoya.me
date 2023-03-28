@@ -4,5 +4,9 @@ module.exports = {
   generateRobotsTxt: false,
   sitemapSize: 7000,
   generateIndexSitemap: false,
-  outDir: './public',
+  transform: async (config, path) => {
+    return {
+      loc: path,
+    };
+  },
 };

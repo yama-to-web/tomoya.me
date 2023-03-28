@@ -1,38 +1,88 @@
 import { HatGraduation } from '@styled-icons/fluentui-system-regular';
 import { Googlecloud } from '@styled-icons/simple-icons';
+import { MicroCMSImage } from 'microcms-js-sdk';
+import moment from 'moment';
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useInstagram } from '../hooks/useInstagram';
 import IconTags from 'components/IconTags';
 import Main from 'components/Main';
 import Section from 'components/Section';
 import Career from 'components/about/Career';
-import { introduction, certification, products, career } from 'constants/profile-data';
-import { loadInstaPosts } from 'lib/fetch-posts';
-import type { InstaImg } from 'types/index';
+import { accounts } from 'constants/profile-data';
+import { microcms } from 'lib/client';
 
-type Props = {
-  images?: Array<InstaImg>;
+type Work = {
+  period: [{ from_date: string; to_date: string }];
+  title: string;
+  text: string;
+  skills: string;
 };
 
-const About: NextPage<Props> = (props: Props) => {
+type Props = {
+  profile: {
+    introduction: {
+      title: string;
+      name: string;
+      content: string;
+      image: MicroCMSImage;
+    };
+    career: {
+      title: string;
+      main: Array<Work>;
+      sub: Array<Work>;
+    };
+    certification: {
+      title: string;
+      items: [
+        {
+          name: string;
+          date: string;
+          vendor: string;
+        },
+      ];
+    };
+    products: {
+      title: string;
+      items: [
+        {
+          name: string;
+          category: string;
+          text: string;
+          tags: string[];
+          image: MicroCMSImage;
+        },
+      ];
+    };
+  };
+};
+
+const About: NextPage<Props> = ({ profile }: Props) => {
+  // Insta画像
+  const { data: insta_images } = useInstagram();
   return (
     <Main title="ABOUT" description="Webエンジニア 藤原智弥の自己紹介ページです。">
       {/*
        * 自己紹介
        */}
-      <Section title={introduction.title}>
+      <Section title={profile.introduction.title}>
         <div className="flex flex-col items-start justify-between gap-y-8 sm:flex-row">
           <div className="w-full sm:w-[calc(50%_-_1rem)] md:w-[calc(50%_-_5rem)] lg:w-[calc(50%_-_10rem)]">
-            <Image src="/profile.png" width="592" height="592" alt="Tomoya FujiwaraのProfile画像" />
+            <Image
+              src={profile.introduction.image.url}
+              width="592"
+              height="592"
+              alt="Tomoya FujiwaraのProfile画像"
+            />
           </div>
           <div className="w-full sm:w-[calc(50%_-_1rem)] sm:min-w-[calc(50%_-_1rem)] lg:py-10">
             <div className="mb-10">
-              <p className="mb-1 text-3xl font-bold tracking-widest">{introduction.name}</p>
+              <p className="mb-1 text-3xl font-bold tracking-widest">{profile.introduction.name}</p>
             </div>
             <div className="mt-4 whitespace-pre-wrap text-sm leading-loose tracking-wider ">
-              {introduction.text}
+              {profile.introduction.content}
             </div>
           </div>
         </div>
@@ -40,15 +90,39 @@ const About: NextPage<Props> = (props: Props) => {
       {/*
        * キャリア
        */}
-      <Section title={career.title}>
-        <Career />
+      <Section title={profile.career.title}>
+        <Career {...profile.career} />
+      </Section>
+      {/*
+       * 資格
+       */}
+      <Section title={profile.certification.title}>
+        <ul className="pl-1">
+          {profile.certification.items.map((item) => {
+            return (
+              <li className="border-b-2 border-b-gray-100 py-2" key={item.name}>
+                <p className="text-sm text-gray-500">{moment(item.date).format('YYYY.MM.DD')}</p>
+                <p className="text-lg leading-6">
+                  {item.name}
+                  <span className="pl-1 text-xs before:content-['-']"> {item.vendor}</span>
+                  {item.vendor == 'GCP' && (
+                    <Googlecloud color="#4285F4" className="ml-1" size={20} />
+                  )}
+                  {item.vendor == 'IPA' && (
+                    <HatGraduation color="#e7370e" className="ml-1" size={20} />
+                  )}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
       </Section>
       {/*
        * プロダクト
        */}
-      <Section title={products.title}>
+      <Section title={profile.products.title}>
         <ul>
-          {products.items.map((data) => {
+          {profile.products.items.map((data) => {
             return (
               <li
                 className="flex flex-col gap-5 border-b-2 border-b-gray-100 pb-5 md:flex-row md:items-center"
@@ -56,7 +130,7 @@ const About: NextPage<Props> = (props: Props) => {
               >
                 <div className="sm:h-80">
                   <Image
-                    src={`/products/${data.thumnail}`}
+                    src={data.image.url}
                     width={300}
                     height={200}
                     className="h-full w-full object-contain"
@@ -67,34 +141,10 @@ const About: NextPage<Props> = (props: Props) => {
                   <p className="py-1 text-xs text-gray-500">{data.category}</p>
                   <p className="mb-4 text-3xl leading-6">{data.name}</p>
                   <p className="mb-4 ml-1 whitespace-pre-wrap border-l border-gray-300 bg-gray-50 p-2 text-sm">
-                    {data.explanation}
+                    {data.text}
                   </p>
                   <IconTags tags={data.tags} />
                 </div>
-              </li>
-            );
-          })}
-        </ul>
-      </Section>
-      {/*
-       * 資格
-       */}
-      <Section title={certification.title}>
-        <ul className="pl-1">
-          {certification.items.map((data) => {
-            return (
-              <li className="border-b-2 border-b-gray-100 py-2" key={data.name}>
-                <p className="text-sm text-gray-500">{data.date}</p>
-                <p className="text-lg leading-6">
-                  {data.name}
-                  <span className="pl-1 text-xs before:content-['-']"> {data.vendor}</span>
-                  {data.vendor == 'GCP' && (
-                    <Googlecloud color="#4285F4" className="ml-1" size={20} />
-                  )}
-                  {data.vendor == '情報処理推進機構(IPA)' && (
-                    <HatGraduation color="#e7370e" className="ml-1" size={20} />
-                  )}
-                </p>
               </li>
             );
           })}
@@ -115,7 +165,7 @@ const About: NextPage<Props> = (props: Props) => {
               centeredSlides
               effect="fade"
             >
-              {props.images?.map((data, index) => {
+              {insta_images?.map((data) => {
                 return (
                   <SwiperSlide key={data.id}>
                     <Link
@@ -140,7 +190,7 @@ const About: NextPage<Props> = (props: Props) => {
           {/* PC */}
           <div className="m-auto hidden w-full md:block">
             <div className="m-auto grid max-w-3xl grid-cols-3 gap-1">
-              {props.images?.map((data) => {
+              {insta_images?.map((data) => {
                 return (
                   <Link
                     className="relative h-56 overflow-hidden"
@@ -158,7 +208,7 @@ const About: NextPage<Props> = (props: Props) => {
           </div>
           <Link
             className="border-b border-b-gray-600"
-            href="https://www.instagram.com/yama_to_web/"
+            href={accounts.find((item) => item.id === 'instagram')?.url as string}
             target="_blank"
             rel="noopener noreferrer"
             passHref
@@ -174,11 +224,12 @@ const About: NextPage<Props> = (props: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const images = await loadInstaPosts();
+  const profile = await microcms.get({
+    endpoint: 'profile',
+  });
 
   return {
-    props: { images },
-    revalidate: 60 * 60 * 24, //24hours
+    props: { profile },
   };
 };
 export default About;

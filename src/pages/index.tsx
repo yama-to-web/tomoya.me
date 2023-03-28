@@ -1,20 +1,17 @@
 import { motion } from 'framer-motion';
-import type { NextPage, GetStaticProps } from 'next';
+import type { NextPage } from 'next';
 import Image from 'next/image';
 import { Autoplay, EffectFade } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import CommonMeta from 'components/CommonMeta';
 import Nav from 'components/Nav';
 import Sns from 'components/Sns';
-import { loadInstaPosts } from 'lib/fetch-posts';
-import type { InstaImg } from 'types/index';
+import { useInstagram } from 'hooks/useInstagram';
 import 'swiper/css/effect-fade';
 
-type Props = {
-  images?: Array<InstaImg>;
-};
-
-const Home: NextPage<Props> = (props: Props) => {
+const Home: NextPage = () => {
+  // Insta画像
+  const { data: insta_images } = useInstagram();
   return (
     <>
       <CommonMeta pageTitle="Home" pageDescription="" />
@@ -48,7 +45,7 @@ const Home: NextPage<Props> = (props: Props) => {
           }}
           modules={[Autoplay, EffectFade]}
         >
-          {props.images?.map((val) => {
+          {insta_images?.map((val) => {
             return (
               <SwiperSlide
                 key={val.id}
@@ -102,15 +99,6 @@ const Home: NextPage<Props> = (props: Props) => {
       </motion.main>
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const images = await loadInstaPosts(3);
-
-  return {
-    props: { images },
-    revalidate: 60 * 60 * 24, //24hours
-  };
 };
 
 export default Home;
