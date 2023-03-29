@@ -72,7 +72,7 @@ const Note: NextPage<React.ReactNode> = (props: Props) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(`https://note.com/api/v2/creators/yama_to_web/contents?kind=note&page=1`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/note`);
   const posts = await res.json();
   const allowedKeys = ['name', 'likeCount', 'publishAt', 'eyecatch', 'body', 'noteUrl'];
   const contents = posts.data.contents;
@@ -91,6 +91,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { articles },
+    revalidate: 60 * 60 * 24, //24hours
   };
 };
 
