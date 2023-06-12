@@ -1,6 +1,5 @@
 import { HatGraduation } from '@styled-icons/fluentui-system-regular';
 import { Googlecloud } from '@styled-icons/simple-icons';
-import { MicroCMSImage } from 'microcms-js-sdk';
 import moment from 'moment';
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
@@ -11,52 +10,12 @@ import IconTags from 'components/IconTags';
 import Main from 'components/Main';
 import Section from 'components/Section';
 import Career from 'components/about/Career';
-import { accounts } from 'constants/profile-data';
+import { accounts } from 'constants/common';
 import { microcms } from 'lib/client';
-
-type Work = {
-  period: [{ from_date: string; to_date: string }];
-  title: string;
-  text: string;
-  skills: string;
-};
+import { ProfileType } from 'types';
 
 type Props = {
-  profile: {
-    introduction: {
-      title: string;
-      name: string;
-      content: string;
-      image: MicroCMSImage;
-    };
-    career: {
-      title: string;
-      main: Array<Work>;
-      sub: Array<Work>;
-    };
-    certification: {
-      title: string;
-      items: [
-        {
-          name: string;
-          date: string;
-          vendor: string;
-        },
-      ];
-    };
-    products: {
-      title: string;
-      items: [
-        {
-          name: string;
-          category: string;
-          text: string;
-          tags: string[];
-          image: MicroCMSImage;
-        },
-      ];
-    };
-  };
+  profile: ProfileType;
 };
 
 const About: NextPage<Props> = ({ profile }: Props) => {

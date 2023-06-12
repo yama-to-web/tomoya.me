@@ -139,7 +139,9 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 
   // コードハイライト
   $('code').each((_, elm) => {
-    const result = hljs.highlightAuto($(elm).text());
+    const langClass = elm.attribs.class;
+    const langSet = langClass != undefined ? [langClass.replace('language-', '')] : langClass;
+    const result = hljs.highlightAuto($(elm).text(), langSet);
     $(elm).html(result.value);
     $(elm).addClass('hljs');
   });

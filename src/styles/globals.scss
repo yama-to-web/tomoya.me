@@ -100,6 +100,10 @@
       img {
         @apply shadow-md shadow-gray-300 my-2;
       }
+
+      div[data-filename]::before {
+        @apply table pt-1 pb-3 px-2 -mb-8 text-sm text-white content-[attr(data-filename)] bg-slate-700 rounded-t;
+      }
     }
   }
 }

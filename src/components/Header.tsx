@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { slide as Menu, State } from 'react-burger-menu';
 import Sns from 'components/Sns';
-import { links } from 'constants/profile-data';
+import { siteRoutes } from 'constants/common';
 
 type Props = {
   isActive?: boolean;
@@ -99,7 +99,7 @@ const Header = (props: Props) => {
           </div>
         </Link>
         <ul className="ml-auto hidden lg:flex">
-          {links.map((data) => {
+          {siteRoutes.map((data) => {
             return (
               <li
                 key={data.content}
@@ -127,7 +127,7 @@ const Header = (props: Props) => {
         onStateChange={isMenuOpen}
       >
         <div className="m-auto ml-0 flex flex-col items-start font-thin text-white">
-          {links.map((data) => {
+          {siteRoutes.map((data) => {
             return (
               <Link
                 href={data.path}

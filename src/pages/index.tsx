@@ -10,7 +10,6 @@ import { useInstagram } from 'hooks/useInstagram';
 import 'swiper/css/effect-fade';
 
 const Home: NextPage = () => {
-  // Insta画像
   const { data: insta_images } = useInstagram();
   return (
     <>
