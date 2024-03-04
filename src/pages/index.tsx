@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     <>
       <CommonMeta pageTitle="Home" pageDescription="" />
       <motion.main
-        className="relative flex flex-col items-center justify-center"
+        className="relative flex min-h-screen flex-col items-center justify-center"
         initial="pageInitial"
         animate="pageAnimate"
         variants={{

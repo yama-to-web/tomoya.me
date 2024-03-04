@@ -10,7 +10,7 @@ interface Accounts {
 export const accounts: Accounts[] = [
   {
     id: 'instagram',
-    url: 'https://www.instagram.com/yama_to_web',
+    url: 'https://www.instagram.com/tom___fj',
     icon: faInstagram,
   },
   {
