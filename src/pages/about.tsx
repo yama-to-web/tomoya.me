@@ -178,6 +178,20 @@ const About: NextPage<Props> = ({ profile }: Props) => {
           </Link>
         </div>
       </Section>
+      <Section>
+        <h4 className="mb-10 w-full text-center text-2xl">Podcast</h4>
+        <div className="mx-auto p-5 md:w-10/12">
+          <iframe
+            allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+            frameBorder="0"
+            height="450"
+            width="100%"
+            className="m-auto max-w-2xl overflow-hidden rounded-lg shadow-md"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+            src="https://embed.podcasts.apple.com/jp/podcast/in-and-out/id1713040031"
+          ></iframe>
+        </div>
+      </Section>
     </Main>
   );
 };

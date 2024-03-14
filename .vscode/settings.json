@@ -6,13 +6,10 @@
   "editor.formatOnSave": true,
   // ファイル保存時、ESLint による自動フォーマット
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   // vscode-stylelint のアップデート対応
-  "stylelint.validate": [
-    "css",
-    "scss"
-  ],
+  "stylelint.validate": ["css", "scss"],
   // css, scss ファイルは Stylelint でフォーマットするため、Pretteir によるフォーマットを回避
   "[css]": {
     "editor.formatOnSave": false

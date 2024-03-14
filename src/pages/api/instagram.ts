@@ -7,7 +7,7 @@ const limit = 6;
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     const response = await axios.get(
-      `https://graph.facebook.com/v14.0/17841450072012853?fields=media.limit(${limit}){media_url,permalink}&access_token=${INSTAGRAM_ACCESS_TOKEN}`,
+      `https://graph.facebook.com/v14.0/17841450072012853?fields=media.limit(${limit}){media_url,permalink,media_type}&access_token=${INSTAGRAM_ACCESS_TOKEN}`,
     );
     res.status(200).json(response.data);
   } catch (error) {
